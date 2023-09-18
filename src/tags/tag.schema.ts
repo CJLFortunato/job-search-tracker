@@ -17,7 +17,7 @@ const tagSchema = new mongoose.Schema<Tag>({
     ref: 'Application',
   }],
 }, {
-  timestamps: true
-})
+  timestamps: true,
+});
 
 export default mongoose.model<Tag>('Tag', tagSchema);
