@@ -90,7 +90,19 @@
       }
   ],
   "max-len": [2, {"code": 100, "ignoreComments": true}],
-  "semi": [2, "always"]
+  "semi": [2, "always"],
+  "prefer-destructuring": ["error", {
+    "VariableDeclarator": {
+      "array": false,
+      "object": true
+    },
+    "AssignmentExpression": {
+      "array": false,
+      "object": false
+    }
+  }, {
+    "enforceForRenamedProperties": true
+  }]
   },
   "settings": {
     "react": {
