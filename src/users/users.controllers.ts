@@ -52,4 +52,39 @@ export default class UserControllers {
       throw new Error('Invalid user data');
     }
   }
+
+  static async loginUser (req, res) {
+    const { body } = req;
+    const {
+      email,
+      password,
+    } = body;
+
+    if (!email || !password) {
+      res.status(400);
+      throw new Error('Please add all fields');
+    }
+
+    const user = await User.findOne({
+      email,
+    });
+
+    if (!user) {
+      res.status(400);
+      throw new Error('Incorrect email address');
+    }
+
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+
+    if (isPasswordCorrect) {
+      res.status(200).json({
+        _id: user.id,
+        email: user.email,
+        token: generateJWT(user.id),
+      });
+    } else {
+      res.status(400);
+      throw new Error('Incorrect password');
+    }
+  }
 }

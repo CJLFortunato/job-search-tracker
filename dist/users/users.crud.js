@@ -7,17 +7,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-/* eslint-disable no-console */
-import mongoose from 'mongoose';
-const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const conn = yield mongoose.connect(process.env.MONGO_URI);
-        console.log(`DB connected: ${conn.connection.host}`);
+import User from './user.schema.js';
+export default class UserCRUD {
+    static findUser(email) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = yield User.findOne({
+                email,
+            });
+            return user;
+        });
     }
-    catch (error) {
-        console.log(error);
-        process.exit(1);
+    static registerUser(email, password) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = yield User.create({
+                email,
+                password,
+            });
+            return user;
+        });
     }
-});
-export default connectDB;
-//# sourceMappingURL=db.js.map
+}
+//# sourceMappingURL=users.crud.js.map
