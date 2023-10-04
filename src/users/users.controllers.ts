@@ -87,4 +87,29 @@ export default class UserControllers {
       throw new Error('Incorrect password');
     }
   }
+
+  static async modifyUser (req, res) {
+    const { body } = req;
+    const {
+      email,
+      password,
+    } = body;
+
+    if (!email || !password) {
+      res.status(400);
+      throw new Error('Please add all fields');
+    }
+
+    const user = await User.findOne({
+      email,
+    });
+
+    if (!user) {
+      res.status(400);
+      throw new Error('User not found');
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(req.params.id, body);
+    res.status(200).json(updatedUser);
+  }
 }
