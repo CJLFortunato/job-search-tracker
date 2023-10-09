@@ -16,13 +16,12 @@ export default class UserControllers {
   static async registerUser (req: Request, res: Response, next) {
     const { body } = req;
     const {
-      name,
       email,
       password,
     } = body;
 
     try {
-      if (!name || !email || !password) {
+      if (!email || !password) {
         res.status(400);
         throw new Error('Please add all fields');
       }
