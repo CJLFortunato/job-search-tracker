@@ -10,3 +10,7 @@ export interface NewUser {
   password: string;
 }
 // ================================== props types
+
+export interface UserFormProps {
+  isLogin: boolean
+}

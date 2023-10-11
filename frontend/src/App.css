@@ -1,3 +1,30 @@
+.user-form form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-form form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+.user-form form label input {
+  margin-top: 1rem;
+  width: 90%;
+  align-self: center;
+}
+.user-form form button {
+  height: 2.5rem;
+  border-radius: 20px;
+  border: none;
+  background-color: rgb(255, 161, 127);
+  width: 90%;
+}
+
 header {
   background-color: rgb(255, 161, 127);
   height: 3.5rem;
@@ -30,6 +57,13 @@ header .app-title {
 
 h1 {
   text-align: center;
+}
+
+input {
+  height: 2.7rem;
+  border-radius: 10px;
+  border: 1px solid rgb(255, 161, 127);
+  border-bottom: 2px solid rgb(255, 161, 127);
 }
 
 /*# sourceMappingURL=App.css.map */

@@ -1,3 +1,5 @@
+@use 'loginsignup';
+
 header {
   background-color: rgb(255, 161, 127);
   height: 3.5rem;
@@ -34,4 +36,11 @@ header {
 
 h1 {
   text-align: center;
+}
+
+input {
+  height: 2.7rem;
+  border-radius: 10px;
+  border: 1px solid rgb(255, 161, 127);
+  border-bottom: 2px solid rgb(255, 161, 127);
 }

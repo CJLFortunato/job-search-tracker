@@ -1,0 +1,33 @@
+.user-form {
+  form {
+    display: flex;
+    // border: 1px solid blue;
+    flex-direction: column;
+    width: 30%;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+
+    label {
+      display: flex;
+      // border: 1px solid blue;
+      flex-direction: column;
+      margin-bottom: 2rem;
+      width: 100%;
+
+      input {
+        margin-top: 1rem;
+        width: 90%;
+        align-self: center;
+      }
+    }
+
+    button {
+      height: 2.5rem;
+      border-radius: 20px;
+      border: none;
+      background-color: rgb(255, 161, 127);
+      width: 90%;
+    }
+  }
+}
