@@ -1,11 +1,16 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
+
+import Header from './components/Header';
+
 import './normalize.css';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello world</h1>
+      <Header />
+      <Outlet />
     </div>
   );
 }

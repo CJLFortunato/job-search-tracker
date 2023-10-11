@@ -1,5 +1,26 @@
-h1 {
-  color: deeppink;
+header {
+  background-color: rgb(255, 161, 127);
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .header-ctn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+header a {
+  display: block;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
+header .app-title {
+  justify-self: flex-start;
+  font-size: 2rem;
+  margin-left: 4rem;
 }
 
 /*# sourceMappingURL=App.css.map */
