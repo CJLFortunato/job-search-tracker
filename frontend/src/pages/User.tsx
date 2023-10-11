@@ -2,7 +2,9 @@ import React from 'react';
 
 function User() {
   return (
-    <div>User</div>
+    <div className="page user">
+      <h1>Votre compte</h1>
+    </div>
   );
 }
 
