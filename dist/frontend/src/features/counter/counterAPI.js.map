@@ -1,0 +1,1 @@
+{"version":3,"file":"counterAPI.js","sourceRoot":"","sources":["../../../../../frontend/src/features/counter/counterAPI.ts"],"names":[],"mappings":"AAAA,4DAA4D;AAC5D,MAAM,UAAU,UAAU,CAAC,MAAM,GAAG,CAAC;IACnC,OAAO,IAAI,OAAO,CAAmB,CAAC,OAAO,EAAE,EAAE,CAC/C,UAAU,CAAC,GAAG,EAAE,CAAC,OAAO,CAAC,EAAE,IAAI,EAAE,MAAM,EAAE,CAAC,EAAE,GAAG,CAAC,CACjD,CAAC;AACJ,CAAC"}

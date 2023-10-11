@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && node dist/server.js",
     "lint": "eslint -c .eslintrc.json --ext .js,.jsx,.ts,.tsx .",
-    "dev": "nodemon ./src/server.ts"
+    "dev": "nodemon ./src/server.ts",
+    "client": "npm start --prefix frontend"
   },
   "keywords": [],
   "author": "",

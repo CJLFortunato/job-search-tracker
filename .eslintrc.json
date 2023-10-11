@@ -21,9 +21,12 @@
   ],
   "root": true,
   "rules": {
-            // Disable rule because not compatible with the immer library
-    "no-param-reassign": ["error", { "props": false }],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }],
+    "no-param-reassign": ["error", {
+      "props": false
+    }],
+    "react/jsx-filename-extension": [1, {
+      "extensions": [".js", ".jsx", ".tsx", ".ts"]
+    }],
     "linebreak-style": "off",
     "@typescript-eslint/semi": "off",
     "@typescript-eslint/space-before-function-paren": "off",
@@ -52,8 +55,7 @@
           "internal",
           ["parent", "sibling", "index"]
         ],
-        "pathGroups": [
-          {
+        "pathGroups": [{
             "pattern": "react*",
             "group": "builtin"
           },
@@ -88,21 +90,24 @@
         ],
         "pathGroupsExcludedImportTypes": ["builtin"]
       }
-  ],
-  "max-len": [2, {"code": 100, "ignoreComments": true}],
-  "semi": [2, "always"],
-  "prefer-destructuring": ["error", {
-    "VariableDeclarator": {
-      "array": false,
-      "object": true
-    },
-    "AssignmentExpression": {
-      "array": false,
-      "object": false
-    }
-  }, {
-    "enforceForRenamedProperties": true
-  }]
+    ],
+    "max-len": [2, {
+      "code": 100,
+      "ignoreComments": true
+    }],
+    "semi": [2, "always"],
+    "prefer-destructuring": ["error", {
+      "VariableDeclarator": {
+        "array": false,
+        "object": true
+      },
+      "AssignmentExpression": {
+        "array": false,
+        "object": false
+      }
+    }, {
+      "enforceForRenamedProperties": true
+    }]
   },
   "settings": {
     "react": {
@@ -115,7 +120,7 @@
       ".tsx"
     ],
     "import/parsers": {
-      "@typescript-eslint/parser": [ ".ts", ".tsx" ]
+      "@typescript-eslint/parser": [".ts", ".tsx"]
     }
   }
 }
