@@ -5,7 +5,7 @@ import {
 const initialState = {
   user: undefined,
   isLoading: false,
-  error: ''
+  error: '',
 };
 
 export const userSlice = createSlice({
@@ -16,11 +16,11 @@ export const userSlice = createSlice({
       state.isLoading = false;
       state.error = '';
       state.user = undefined;
-    }
+    },
   },
 });
 
 export const {
-  reset
-} = userSlice.actions;
+  actions: { reset },
+} = userSlice;
 export default userSlice.reducer;
