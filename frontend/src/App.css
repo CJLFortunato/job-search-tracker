@@ -28,7 +28,7 @@
 .kanban-large {
   border: 1px solid lightsalmon;
   min-height: 83vh;
-  display: flex;
+  display: none;
   width: 95%;
   margin: 0 auto;
 }
@@ -41,6 +41,48 @@
   text-align: center;
   margin-top: 0;
   padding-top: 0.6rem;
+  height: 3rem;
+}
+
+.kanban-carousel {
+  border: 1px solid lightsalmon;
+  min-height: 83vh;
+  display: flex;
+  width: 95%;
+  margin: 0 auto;
+}
+.kanban-carousel .carousel {
+  overflow: hidden;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 88%;
+  z-index: 20;
+}
+.kanban-carousel .carousel .inner {
+  white-space: nowrap;
+  transition: transform 0.3s;
+  border: 1px solid blue;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  z-index: 20;
+}
+.kanban-carousel .carousel .inner section {
+  border: 1px solid green;
+  width: 81vw;
+  height: 93vh;
+}
+.kanban-carousel .carousel .inner section h2 {
+  background-color: rgb(255, 208, 189);
+  text-align: center;
+  margin-top: 0;
+  padding-top: 0.6rem;
+  height: 3rem;
+}
+.kanban-carousel button {
   height: 3rem;
 }
 
@@ -83,6 +125,15 @@ input {
   border-radius: 10px;
   border: 1px solid rgb(255, 161, 127);
   border-bottom: 2px solid rgb(255, 161, 127);
+}
+
+@media screen and (min-width: 1024px) {
+  .kanban-large {
+    display: flex;
+  }
+  .kanban-carousel {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=App.css.map */

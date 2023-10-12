@@ -45,3 +45,13 @@ input {
   border: 1px solid rgb(255, 161, 127);
   border-bottom: 2px solid rgb(255, 161, 127);
 }
+
+@media screen and (min-width: 1024px) {
+  .kanban-large {
+    display: flex;
+  }
+
+  .kanban-carousel {
+    display: none;
+  }
+}

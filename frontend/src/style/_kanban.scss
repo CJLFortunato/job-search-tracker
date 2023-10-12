@@ -1,7 +1,7 @@
 .kanban-large {
   border: 1px solid lightsalmon;
   min-height: 83vh;
-  display: flex;
+  display: none;
   width: 95%;
   margin: 0 auto;
 
@@ -16,5 +16,53 @@
       padding-top: .6rem;
       height: 3rem;
     }
+  }
+}
+
+.kanban-carousel {
+  border: 1px solid lightsalmon;
+  min-height: 83vh;
+  display: flex;
+  width: 95%;
+  margin: 0 auto;
+
+
+  .carousel {
+    overflow: hidden;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 88%;
+    z-index: 20;
+
+    .inner {
+      white-space: nowrap;
+      transition: transform 0.3s;
+      border: 1px solid blue;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: row;
+      z-index: 20;
+
+      section {
+        border: 1px solid green;
+        width: 81vw;
+        height: 93vh;
+
+        h2 {
+          background-color: rgb(255, 208, 189);
+          text-align: center;
+          margin-top: 0;
+          padding-top: .6rem;
+          height: 3rem;
+        }
+      }
+    }
+  }
+
+  button {
+    height: 3rem;
   }
 }
