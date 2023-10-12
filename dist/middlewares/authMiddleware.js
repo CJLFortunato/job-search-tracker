@@ -11,6 +11,7 @@ import jwt from 'jsonwebtoken';
 import User from '../users/user.schema.js';
 const authMiddleware = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     let token;
+    console.log(req.headers);
     try {
         if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
             try {

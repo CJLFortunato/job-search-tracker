@@ -4,6 +4,7 @@ import User from '../users/user.schema.js';
 
 const authMiddleware = async (req, res, next) => {
   let token;
+  console.log(req.headers);
   try {
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
       try {

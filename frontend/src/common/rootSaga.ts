@@ -1,6 +1,12 @@
 import { fork } from 'redux-saga/effects';
 
 import {
+  getAppsSaga,
+  createAppSaga,
+  updateAppsSaga,
+  deleteAppsSaga,
+} from '../features/applications/apps.saga';
+import {
   loginSaga,
   registerSaga,
   getUserSaga,
@@ -14,4 +20,9 @@ export default function* rootSaga() {
   yield fork(getUserSaga);
   yield fork(updateUserSaga);
   yield fork(deleteUserSaga);
+
+  yield fork(getAppsSaga);
+  yield fork(createAppSaga);
+  yield fork(updateAppsSaga);
+  yield fork(deleteAppsSaga);
 }

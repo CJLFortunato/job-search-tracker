@@ -16,12 +16,13 @@ import {
   deleteAppsFailure,
 } from './apps.slice';
 
-function* workGetApps(action: any): any {
+function* workGetApps(): any {
   try {
     const response: any = yield call(AppsAPI.getApps);
     yield put(getAppsSuccess(response));
-  } catch {
-    yield put(getAppsFailure(action.payload));
+  } catch (err: any) {
+    console.log(err);
+    yield put(getAppsFailure(err.message));
   }
 }
 
@@ -29,8 +30,8 @@ function* workCreateApp(action: any): any {
   try {
     const response: any = yield call(AppsAPI.createApp, action.payload);
     yield put(createAppsSuccess(response));
-  } catch {
-    yield put(createAppsFailure(action.payload));
+  } catch (err: any) {
+    yield put(createAppsFailure(err.message));
   }
 }
 
@@ -38,8 +39,8 @@ function* workUpdateApps(action: any): any {
   try {
     const response: any = yield call(AppsAPI.updateApp, action.payload);
     yield put(updateAppsSuccess(response));
-  } catch {
-    yield put(updateAppsFailure(action.payload));
+  } catch (err: any) {
+    yield put(updateAppsFailure(err.message));
   }
 }
 
@@ -47,12 +48,12 @@ function* workDeleteApps(action: any): any {
   try {
     const response: any = yield call(AppsAPI.deleteApp, action.payload);
     yield put(deleteAppsSuccess(response));
-  } catch {
-    yield put(deleteAppsFailure(action.payload));
+  } catch (err: any) {
+    yield put(deleteAppsFailure(err.message));
   }
 }
 
-export function* registerSaga() {
+export function* createAppSaga() {
   yield takeEvery(createApps, workCreateApp);
 }
 

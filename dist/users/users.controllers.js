@@ -42,7 +42,7 @@ export default class UserControllers {
                     password: hashedPassword,
                 });
                 if (user) {
-                    const tokenCookie = cookie.serialize('jwt_token', generateJWT(user.id), {
+                    const tokenCookie = cookie.serialize('cleanup', generateJWT(user.id), {
                         httpOnly: true,
                         secure: false,
                         maxAge: 21600,
