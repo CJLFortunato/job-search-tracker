@@ -5,6 +5,7 @@ class UserAPI {
       body: JSON.stringify(payload),
       headers: {
         'Content-Type': 'Application/JSON',
+        'Access-Control-Allow-Origin': '*',
       },
     });
     const data = await response.json();
@@ -17,6 +18,7 @@ class UserAPI {
       body: JSON.stringify(payload),
       headers: {
         'Content-Type': 'Application/JSON',
+        'Access-Control-Allow-Origin': '*',
       },
     });
     const data = await response.json();
@@ -35,6 +37,7 @@ class UserAPI {
       body: JSON.stringify(payload),
       headers: {
         'Content-Type': 'Application/JSON',
+        'Access-Control-Allow-Origin': '*',
       },
     });
     const data = await response.json();

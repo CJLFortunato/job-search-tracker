@@ -23,7 +23,6 @@ const appSchema = new mongoose.Schema({
     },
     companyLink: {
         type: String,
-        required: [true, 'Please make sure all fields are filled'],
     },
     appType: {
         type: String,
@@ -86,11 +85,11 @@ const appSchema = new mongoose.Schema({
                 required: false,
             },
         },
-        tags: [{
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Tag',
-            }],
     },
+    tags: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Tag',
+        }],
 }, {
     timestamps: true,
 });

@@ -7,10 +7,10 @@ function Header() {
       <div>
         <Link to="/" className="app-title">Titre</Link>
       </div>
-      <div className="header-ctn">
+      <nav className="header-ctn">
         <Link to="/login">Se connecter</Link>
         <Link to="/signup">S&apos;inscrire</Link>
-      </div>
+      </nav>
     </header>
   );
 }
