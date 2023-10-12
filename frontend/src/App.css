@@ -25,6 +25,25 @@
   width: 90%;
 }
 
+.kanban-large {
+  border: 1px solid lightsalmon;
+  min-height: 83vh;
+  display: flex;
+  width: 95%;
+  margin: 0 auto;
+}
+.kanban-large section {
+  border: 1px solid lightsalmon;
+  width: 20%;
+}
+.kanban-large section h2 {
+  background-color: rgb(255, 208, 189);
+  text-align: center;
+  margin-top: 0;
+  padding-top: 0.6rem;
+  height: 3rem;
+}
+
 header {
   background-color: rgb(255, 161, 127);
   height: 3.5rem;

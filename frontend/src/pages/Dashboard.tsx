@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import KanbanLarge from '../features/applications/components/KanbanLarge';
 import useUser from '../features/user/useUser';
 
 function Dashboard() {
@@ -12,6 +13,7 @@ function Dashboard() {
   return (
     <div className="page dashboard">
       <h1>Vos candidatures</h1>
+      <KanbanLarge />
     </div>
   );
 }

@@ -9,7 +9,7 @@ import {
 import { Application } from './types';
 import { useAppDispatch, useAppSelector } from '../../common/hooks';
 
-function useUser() {
+function useApps() {
   const dispatch = useAppDispatch();
   const apps = useAppSelector((state) => state.appsReducer.apps);
 
@@ -34,4 +34,4 @@ function useUser() {
   };
 }
 
-export default useUser;
+export default useApps;

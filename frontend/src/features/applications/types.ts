@@ -48,3 +48,15 @@ export interface State {
   isLoading: boolean,
   error: string,
 }
+
+export interface ColumnProps {
+  columnData: {
+    id: number,
+    label: string
+  },
+  apps: Application[],
+}
+
+export interface AppCardProps {
+  app: Application,
+}
