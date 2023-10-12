@@ -36,7 +36,7 @@ export default class UserControllers {
       }
 
       // Hash password
-      const salt = await bcrypt.genSalt(24);
+      const salt = await bcrypt.genSalt(12);
       const hashedPassword = await bcrypt.hash(password, salt);
 
       // Create user
@@ -45,11 +45,12 @@ export default class UserControllers {
         password: hashedPassword,
       });
       if (user) {
-        const tokenCookie = cookie.serialize('jwt_token', generateJWT(user.id), {
+        const tokenCookie = cookie.serialize('cleanup', generateJWT(user.id), {
           httpOnly: true, // il ne se transmet que via les requetes HTTP -> Impossible de le recupérer en JS avec document.cookie
           secure: false, // si true, le cookie ne sera transmis que si il y a un certificat SSL en place (imperatif sur un site en production)
           maxAge: 21600, // durée de validité du token, en secondes
           path: '/', // le chemin depuis l'URL racine de votre app qui indique où est valide le token
+          domain: 'localhost',
         });
 
         res.setHeader('Set-Cookie', tokenCookie);
@@ -96,6 +97,7 @@ export default class UserControllers {
           secure: false, // si true, le cookie ne sera transmis que si il y a un certificat SSL en place (imperatif sur un site en production)
           maxAge: 21600, // durée de validité du token, en secondes
           path: '/', // le chemin depuis l'URL racine de votre app qui indique où est valide le token
+          domain: 'http://localhost:3000',
         });
 
         res.setHeader('Set-Cookie', tokenCookie);

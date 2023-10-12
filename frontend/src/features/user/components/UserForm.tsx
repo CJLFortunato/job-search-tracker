@@ -68,7 +68,7 @@ function UserForm(props: UserFormProps) {
               Confirmer votre mot de passe
               <input
                 type="password"
-                name="password"
+                name="password2"
                 id="password2"
                 placeholder="Confirmez votre mot de passe"
                 value={formData.password2}

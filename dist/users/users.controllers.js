@@ -34,7 +34,7 @@ export default class UserControllers {
                     throw new Error('User already exists');
                 }
                 // Hash password
-                const salt = yield bcrypt.genSalt(24);
+                const salt = yield bcrypt.genSalt(12);
                 const hashedPassword = yield bcrypt.hash(password, salt);
                 // Create user
                 const user = yield User.create({
@@ -46,7 +46,8 @@ export default class UserControllers {
                         httpOnly: true,
                         secure: false,
                         maxAge: 21600,
-                        path: '/', // le chemin depuis l'URL racine de votre app qui indique où est valide le token
+                        path: '/',
+                        domain: 'localhost',
                     });
                     res.setHeader('Set-Cookie', tokenCookie);
                     res.status(201).json({
@@ -86,7 +87,8 @@ export default class UserControllers {
                         httpOnly: true,
                         secure: false,
                         maxAge: 21600,
-                        path: '/', // le chemin depuis l'URL racine de votre app qui indique où est valide le token
+                        path: '/',
+                        domain: 'http://localhost:3000',
                     });
                     res.setHeader('Set-Cookie', tokenCookie);
                     res.status(200).json({
