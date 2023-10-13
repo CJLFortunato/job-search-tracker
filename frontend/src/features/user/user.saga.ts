@@ -27,8 +27,8 @@ function* workRegister(action: any): any {
     const response: any = yield call(UserAPI.register, action.payload);
     localStorage.setItem('user', JSON.stringify(response));
     yield put(registerSuccess(response));
-  } catch {
-    yield put(registerFailure(action.payload));
+  } catch (err: any) {
+    yield put(registerFailure(err.message));
   }
 }
 
@@ -37,8 +37,8 @@ function* workLogin(action: any): any {
     const response: any = yield call(UserAPI.login, action.payload);
     localStorage.setItem('user', JSON.stringify(response));
     yield put(loginSuccess(response));
-  } catch {
-    yield put(loginFailure(action.payload));
+  } catch (err: any) {
+    yield put(loginFailure(err.message));
   }
 }
 
@@ -46,8 +46,8 @@ function* workGetUser(action: any): any {
   try {
     const response: any = yield call(UserAPI.getUser, action.payload);
     yield put(getUserSuccess(response));
-  } catch {
-    yield put(getUserFailure(action.payload));
+  } catch (err: any) {
+    yield put(getUserFailure(err.message));
   }
 }
 
@@ -55,8 +55,8 @@ function* workUpdateUser(action: any): any {
   try {
     const response: any = yield call(UserAPI.updateUser, action.payload);
     yield put(updateUserSuccess(response));
-  } catch {
-    yield put(updateUserFailure(action.payload));
+  } catch (err: any) {
+    yield put(updateUserFailure(err.message));
   }
 }
 
@@ -64,18 +64,18 @@ function* workDeleteUser(action: any): any {
   try {
     yield call(UserAPI.deleteUser, action.payload);
     yield put(deleteUserSuccess());
-  } catch {
-    yield put(deleteUserFailure(action.payload));
+  } catch (err: any) {
+    yield put(deleteUserFailure(err.message));
   }
 }
 
-function* workLogout(action: any): any {
+function* workLogout(): any {
   try {
     const response: any = yield call(UserAPI.logout);
     localStorage.removeItem('user');
     yield put(logoutSuccess(response));
-  } catch {
-    yield put(logoutFailure(action.payload));
+  } catch (err: any) {
+    yield put(logoutFailure(err.message));
   }
 }
 

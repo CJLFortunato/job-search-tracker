@@ -9,6 +9,7 @@ class UserAPI {
       },
     });
     const data = await response.json();
+    if (!response.ok) throw new Error(data.message);
     return data;
   }
 
@@ -23,12 +24,14 @@ class UserAPI {
       credentials: 'include',
     });
     const data = await response.json();
+    if (!response.ok) throw new Error(data.message);
     return data;
   }
 
   static async getUser (payload: any) {
     const response = await fetch(`http://localhost:5000/v1/api/users/${payload}`);
     const data = await response.json();
+    if (!response.ok) throw new Error(data.message);
     return data;
   }
 
@@ -42,6 +45,7 @@ class UserAPI {
       },
     });
     const data = await response.json();
+    if (!response.ok) throw new Error(data.message);
     return data;
   }
 
@@ -50,6 +54,7 @@ class UserAPI {
       method: 'DELETE',
     });
     const data = await response.json();
+    if (!response.ok) throw new Error(data.message);
     return data;
   }
 
@@ -61,6 +66,7 @@ class UserAPI {
       credentials: 'include',
     });
     const data = await response.json();
+    if (!response.ok) throw new Error(data.message);
     return data;
   }
 }
