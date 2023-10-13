@@ -9,7 +9,12 @@ function Column(props: ColumnProps) {
     <section>
       <h2>{columnData.label}</h2>
       {
-        apps?.map((app) => <Appcard app={app} key={app.id} />)
+        apps?.map((app) => (
+          <Appcard
+            app={app}
+            key={`${app.id}-${Math.floor(Math.random() * 100)}`}
+          />
+        ))
       }
     </section>
   );

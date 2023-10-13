@@ -32,11 +32,11 @@ export interface Application {
   contactName: string | null,
   coverLetter: boolean,
   status: number,
-  steps: {
-    apply: Apply,
-    followUp: FollowUp,
-    interview: Interview,
-    answer: Answer,
+  steps?: {
+    apply?: Apply,
+    followUp?: FollowUp,
+    interview?: Interview,
+    answer?: Answer,
   },
   tags: string[],
   createdAt?: string,
@@ -61,4 +61,8 @@ export interface ColumnProps {
 
 export interface AppCardProps {
   app: Application,
+}
+
+export interface AddFormProps {
+  setOpenForm: Function,
 }

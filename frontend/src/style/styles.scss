@@ -1,5 +1,6 @@
 @use 'loginsignup';
 @use 'kanban';
+@use 'appForms';
 
 header {
   background-color: rgb(255, 161, 127);
@@ -39,11 +40,24 @@ h1 {
   text-align: center;
 }
 
-input {
+input,
+select {
   height: 2.7rem;
   border-radius: 10px;
   border: 1px solid rgb(255, 161, 127);
   border-bottom: 2px solid rgb(255, 161, 127);
+}
+
+input[type="radio"] {
+  height: 2rem;
+}
+
+button {
+  height: 2.5rem;
+  background-color: rgb(255, 161, 127);
+  border: none;
+  border-radius: 15px;
+  width: 15vw;
 }
 
 @media screen and (min-width: 1024px) {

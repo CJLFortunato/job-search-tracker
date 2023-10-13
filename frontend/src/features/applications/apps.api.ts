@@ -1,12 +1,14 @@
 class AppAPI {
   static async createApp (payload: any) {
-    const response = await fetch('http://localhost:5000/v1/api/apps/register', {
+    console.log(payload);
+    const response = await fetch('http://localhost:5000/v1/api/apps', {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {
         'Content-Type': 'Application/JSON',
         'Access-Control-Allow-Origin': '*',
       },
+      credentials: 'include',
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message);
@@ -30,6 +32,7 @@ class AppAPI {
         'Content-Type': 'Application/JSON',
         'Access-Control-Allow-Origin': '*',
       },
+      credentials: 'include',
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message);
@@ -39,6 +42,7 @@ class AppAPI {
   static async deleteApp (payload: any) {
     const response = await fetch(`http://localhost:5000/v1/api/apps/${payload.id}`, {
       method: 'DELETE',
+      credentials: 'include',
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message);

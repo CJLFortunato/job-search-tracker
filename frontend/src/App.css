@@ -100,6 +100,54 @@
   border-radius: 10px;
 }
 
+.add-form {
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.add-form form {
+  background-color: white;
+  position: absolute;
+  left: 20%;
+  top: 10%;
+  width: 60%;
+  height: 700px;
+  padding: 2%;
+}
+.add-form form .grid-ctn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 6rem;
+  align-items: center;
+  justify-items: center;
+}
+.add-form form .grid-ctn label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  width: 80%;
+}
+.add-form form .grid-ctn label input,
+.add-form form .grid-ctn label select {
+  margin-top: 0.6rem;
+  width: 90%;
+  align-self: center;
+}
+.add-form form .radio-ctn {
+  width: 90%;
+  margin: 0 auto;
+}
+.add-form form .radio-ctn label {
+  display: flex;
+  margin-bottom: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 10%;
+}
+
 header {
   background-color: rgb(255, 161, 127);
   height: 3.5rem;
@@ -134,11 +182,24 @@ h1 {
   text-align: center;
 }
 
-input {
+input,
+select {
   height: 2.7rem;
   border-radius: 10px;
   border: 1px solid rgb(255, 161, 127);
   border-bottom: 2px solid rgb(255, 161, 127);
+}
+
+input[type=radio] {
+  height: 2rem;
+}
+
+button {
+  height: 2.5rem;
+  background-color: rgb(255, 161, 127);
+  border: none;
+  border-radius: 15px;
+  width: 15vw;
 }
 
 @media screen and (min-width: 1024px) {
