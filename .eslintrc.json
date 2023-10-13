@@ -10,7 +10,7 @@
     "airbnb",
     "airbnb-typescript"
   ],
-  "ignorePatterns": ["/dist", "/node_modules"],
+  "ignorePatterns": ["/dist", "/node_modules", "/frontend"],
   "parserOptions": {
     "project": "./tsconfig.json",
     "ecmaVersion": "latest",
