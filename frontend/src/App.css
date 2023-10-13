@@ -35,6 +35,9 @@
 .kanban-large section {
   border: 1px solid lightsalmon;
   width: 20%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 .kanban-large section h2 {
   background-color: rgb(255, 208, 189);
@@ -42,6 +45,7 @@
   margin-top: 0;
   padding-top: 0.6rem;
   height: 3rem;
+  width: 100%;
 }
 
 .kanban-carousel {
@@ -74,6 +78,9 @@
   border: 1px solid green;
   width: 81vw;
   height: 93vh;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 .kanban-carousel .carousel .inner section h2 {
   background-color: rgb(255, 208, 189);
@@ -81,9 +88,16 @@
   margin-top: 0;
   padding-top: 0.6rem;
   height: 3rem;
+  width: 100%;
 }
 .kanban-carousel button {
   height: 3rem;
+}
+
+.app-card {
+  width: 95%;
+  border: 1px solid coral;
+  border-radius: 10px;
 }
 
 header {

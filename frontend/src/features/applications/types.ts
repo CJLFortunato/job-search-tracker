@@ -39,6 +39,8 @@ export interface Application {
     answer: Answer,
   },
   tags: string[],
+  createdAt?: string,
+  updateddAt?: string,
 }
 
 // prop types

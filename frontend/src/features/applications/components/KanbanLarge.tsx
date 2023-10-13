@@ -9,7 +9,13 @@ function KanbanLarge() {
   return (
     <div className="kanban-large">
       {
-        COLUMNS.map((col) => <Column columnData={col} apps={apps} key={col.id} />)
+        COLUMNS.map((col) => (
+          <Column
+            columnData={col}
+            apps={apps.filter((app) => app.status === col.id)}
+            key={col.id}
+          />
+        ))
       }
     </div>
   );
