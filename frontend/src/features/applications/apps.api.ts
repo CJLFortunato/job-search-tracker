@@ -14,7 +14,9 @@ class AppAPI {
   }
 
   static async getApps () {
-    const response = await fetch('http://localhost:5000/v1/api/apps');
+    const response = await fetch('http://localhost:5000/v1/api/apps', {
+      credentials: 'include',
+    });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message);
     return data;

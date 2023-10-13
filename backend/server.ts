@@ -1,5 +1,6 @@
 import express from 'express';
 
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
@@ -14,10 +15,13 @@ const app = express();
 const port = process.env.PORT || 5000;
 connectDB();
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+}));
 app.use(express.json());
+app.use(cookieParser());
 app.all('/', (req, res, next) => {
-  console.log('test');
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'X-Requested-With');
   next();
@@ -26,6 +30,5 @@ app.use('/v1/api/apps', appsRouter);
 app.use('/v1/api/tags', tagsRouter);
 app.use('/v1/api/users', userRouter);
 app.use(errorHandler);
-console.log('test reload');
 // eslint-disable-next-line no-console
 app.listen(port, () => console.log(`Express is listening at http://localhost:${port}`));

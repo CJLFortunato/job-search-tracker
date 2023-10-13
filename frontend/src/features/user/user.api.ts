@@ -20,6 +20,7 @@ class UserAPI {
         'Content-Type': 'Application/JSON',
         'Access-Control-Allow-Origin': '*',
       },
+      credentials: 'include',
     });
     const data = await response.json();
     return data;

@@ -47,7 +47,7 @@ export default class UserControllers {
                         secure: false,
                         maxAge: 21600,
                         path: '/',
-                        domain: 'localhost',
+                        domain: 'localhost:3000',
                     });
                     res.setHeader('Set-Cookie', tokenCookie);
                     res.status(201).json({
@@ -83,18 +83,23 @@ export default class UserControllers {
                 }
                 const isPasswordCorrect = yield bcrypt.compare(password, user.password);
                 if (isPasswordCorrect) {
-                    const tokenCookie = cookie.serialize('jwt_token', generateJWT(user.id), {
+                    // const tokenCookie = cookie.serialize('jwt_token', generateJWT(user.id), {
+                    //   httpOnly: true, // il ne se transmet que via les requetes HTTP -> Impossible de le recupérer en JS avec document.cookie
+                    //   secure: false, // si true, le cookie ne sera transmis que si il y a un certificat SSL en place (imperatif sur un site en production)
+                    //   maxAge: 21600, // durée de validité du token, en secondes
+                    //   path: '/', // le chemin depuis l'URL racine de votre app qui indique où est valide le token
+                    //   domain: 'localhost:3000',
+                    // });
+                    res.cookie('jwt_token', generateJWT(user.id), {
                         httpOnly: true,
                         secure: false,
-                        maxAge: 21600,
-                        path: '/',
-                        domain: 'http://localhost:3000',
+                        // maxAge: 5000000000000000000000000, // durée de validité du token, en secondes
+                        path: '/', // le chemin depuis l'URL racine de votre app qui indique où est valide le token
                     });
-                    res.setHeader('Set-Cookie', tokenCookie);
                     res.status(200).json({
                         _id: user.id,
                         email: user.email,
-                    });
+                    }).send();
                 }
                 else {
                     res.status(400);
