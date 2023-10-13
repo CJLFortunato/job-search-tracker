@@ -11,6 +11,11 @@ export interface NewUser {
 }
 // ================================== props types
 
+export interface State {
+  user: User | undefined,
+  isLoading: boolean,
+  error: string,
+}
 export interface UserFormProps {
   isLogin: boolean
 }

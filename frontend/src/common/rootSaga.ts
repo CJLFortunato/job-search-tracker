@@ -12,10 +12,12 @@ import {
   getUserSaga,
   updateUserSaga,
   deleteUserSaga,
+  logoutSaga,
 } from '../features/user/user.saga';
 
 export default function* rootSaga() {
   yield fork(loginSaga);
+  yield fork(logoutSaga);
   yield fork(registerSaga);
   yield fork(getUserSaga);
   yield fork(updateUserSaga);

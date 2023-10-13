@@ -3,8 +3,12 @@ import {
   createSlice,
 } from '@reduxjs/toolkit';
 
-const initialState = {
-  user: undefined,
+import { State } from './types';
+
+const user = JSON.parse(localStorage.getItem('user') || '""');
+
+const initialState: State = {
+  user: user || undefined,
   isLoading: false,
   error: '',
 };
@@ -13,11 +17,6 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    reset: (state) => {
-      state.isLoading = false;
-      state.error = '';
-      state.user = undefined;
-    },
     register: (state, action) => {
       state.isLoading = true;
     },
@@ -73,12 +72,26 @@ export const userSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    logout: (state) => {
+      state.isLoading = true;
+    },
+    logoutSuccess: (state) => {
+      state.isLoading = false;
+      state.error = '';
+      state.user = undefined;
+    },
+    logoutFailure: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
 
 export const {
   actions: {
-    reset,
+    logout,
+    logoutSuccess,
+    logoutFailure,
     register,
     registerSuccess,
     registerFailure,

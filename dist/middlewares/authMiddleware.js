@@ -10,15 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import jwt from 'jsonwebtoken';
 import User from '../users/user.schema.js';
 const authMiddleware = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.cookies);
     try {
         const { cookies } = req;
         const token = cookies.jwt_token;
-        console.log(token);
         if (token) {
             try {
                 const decoded = jwt.verify(token, process.env.JWT_SECRET);
-                console.log(decoded);
                 // Get user from token
                 req.user = yield User.findById(decoded.id).select('-password');
                 next();

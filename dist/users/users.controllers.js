@@ -169,5 +169,19 @@ export default class UserControllers {
             }
         });
     }
+    static logout(req, res, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                res.clearCookie('jwt_token', {
+                    httpOnly: true,
+                    secure: false,
+                    path: '/',
+                }).send({});
+            }
+            catch (error) {
+                next(error);
+            }
+        });
+    }
 }
 //# sourceMappingURL=users.controllers.js.map

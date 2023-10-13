@@ -52,6 +52,17 @@ class UserAPI {
     const data = await response.json();
     return data;
   }
+
+  static async logout () {
+    const response = await fetch('http://localhost:5000/v1/api/users/logout', {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+      credentials: 'include',
+    });
+    const data = await response.json();
+    return data;
+  }
 }
 
 export default UserAPI;

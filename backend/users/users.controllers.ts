@@ -186,4 +186,16 @@ export default class UserControllers {
       next(error);
     }
   }
+
+  static async logout (req: Request, res: Response, next) {
+    try {
+      res.clearCookie('jwt_token', {
+        httpOnly: true,
+        secure: false,
+        path: '/',
+      }).send({});
+    } catch (error) {
+      next(error);
+    }
+  }
 }

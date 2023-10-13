@@ -1,5 +1,5 @@
 import { NewUser } from './types';
-import { register, login } from './user.slice';
+import { register, login, logout } from './user.slice';
 import { useAppDispatch, useAppSelector } from '../../common/hooks';
 
 function useUser() {
@@ -13,7 +13,16 @@ function useUser() {
   const loginUser = (newUser: NewUser) => {
     dispatch(login(newUser));
   };
-  return { user, registerUser, loginUser };
+
+  const logoutUser = () => {
+    dispatch(logout());
+  };
+  return {
+    user,
+    registerUser,
+    loginUser,
+    logoutUser,
+  };
 }
 
 export default useUser;

@@ -1,15 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import useUser from '../features/user/useUser';
+
 function Header() {
+  const { user, logoutUser } = useUser();
   return (
     <header>
       <div>
         <Link to="/" className="app-title">Titre</Link>
       </div>
       <nav className="header-ctn">
-        <Link to="/login">Se connecter</Link>
-        <Link to="/signup">S&apos;inscrire</Link>
+        {
+          user
+            ? (
+              <button type="button" onClick={logoutUser}>Se déconnecter</button>
+            )
+            : (
+              <>
+                <Link to="/login">Se connecter</Link>
+                <Link to="/signup">S&apos;inscrire</Link>
+              </>
+            )
+        }
       </nav>
     </header>
   );

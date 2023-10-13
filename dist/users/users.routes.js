@@ -2,6 +2,7 @@ import express from 'express';
 import authMiddleware from '../middlewares/authMiddleware.js';
 import UsersControllers from './users.controllers.js';
 const router = express.Router();
+router.route('/logout').get(authMiddleware, UsersControllers.logout);
 // GET current user, protected
 router.route('/:id').get(authMiddleware, UsersControllers.findUser);
 // POST register user
