@@ -25,7 +25,7 @@ import {
 function* workRegister(action: any): any {
   try {
     const response: any = yield call(UserAPI.register, action.payload);
-    localStorage.setItem('user', JSON.stringify(response));
+    sessionStorage.setItem('user', JSON.stringify(response));
     yield put(registerSuccess(response));
   } catch (err: any) {
     yield put(registerFailure(err.message));
@@ -35,7 +35,7 @@ function* workRegister(action: any): any {
 function* workLogin(action: any): any {
   try {
     const response: any = yield call(UserAPI.login, action.payload);
-    localStorage.setItem('user', JSON.stringify(response));
+    sessionStorage.setItem('user', JSON.stringify(response));
     yield put(loginSuccess(response));
   } catch (err: any) {
     yield put(loginFailure(err.message));
@@ -72,7 +72,7 @@ function* workDeleteUser(action: any): any {
 function* workLogout(): any {
   try {
     const response: any = yield call(UserAPI.logout);
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
     yield put(logoutSuccess(response));
   } catch (err: any) {
     yield put(logoutFailure(err.message));

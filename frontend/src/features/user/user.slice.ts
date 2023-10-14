@@ -5,7 +5,7 @@ import {
 
 import { State } from './types';
 
-const user = JSON.parse(localStorage.getItem('user') || '""');
+const user = JSON.parse(sessionStorage.getItem('user') || '""');
 
 const initialState: State = {
   user: user || undefined,
