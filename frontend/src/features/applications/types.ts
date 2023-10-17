@@ -66,3 +66,7 @@ export interface AppCardProps {
 export interface AddFormProps {
   setOpenForm: Function,
 }
+
+export interface StepsProps {
+  application: Application
+}
