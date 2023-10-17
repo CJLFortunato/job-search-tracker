@@ -1,16 +1,14 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 
 import { useAppDispatch } from 'common/hooks';
 import { updateApps } from 'features/applications/apps.slice';
 import { StepsProps } from 'features/applications/types';
-import useApps from 'features/applications/useApps';
 
-
-function ApplyStep(props: StepsProps) {
-  const { application }  =props;
+function AnswerStep(props: StepsProps) {
+  const { application } = props;
   const initForm = {
     date: '',
-    type: ''
+    answer: ''
   };
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState(initForm);
@@ -28,37 +26,53 @@ function ApplyStep(props: StepsProps) {
     e.preventDefault();
     dispatch(updateApps({
       ...application,
+      status: 4,
       steps: {
         ...application.steps,
-        apply: formData
+        answer: formData
       }
     }));
+    setOpen(false);
   };
 
   return (
     <>
-      <option value="apply">J&apos;ai postulé</option>
-      <div className="modal">
-        <h2>Informations de candidature</h2>
-        <form>
-          <label htmlFor="date">
-            Date à laquelle vous avez candidaté
-            <input type="date" name="date" id="date" />
-          </label>
-          <label htmlFor="type">
-            Comment vous avez candidaté
-            <select name="type" id="type">
-              <option value="">Comment avez vous candidaté ?</option>
-              <option value="form">Formulaire du site</option>
-              <option value="email">Email</option>
-              <option value="phone">Téléphone</option>
-              <option value="in person">En personne</option>
-            </select>
-          </label>
-        </form>
-      </div>
+      <option
+        value="apply"
+        onClick={() => setOpen(true)}
+        selected={application.status === 4}
+      >
+        Réponse de l&apos;entreprise
+      </option>
+      {open && (
+        <div className="modal">
+          <h2>Réponse de l&apos;entreprise</h2>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="date">
+              Date de la réponse
+              <input
+                type="date"
+                name="date"
+                id="date"
+                value={formData.date}
+                onChange={handleChange}
+              />
+            </label>
+            <label htmlFor="answer">
+              Réponse
+              <select name="answer" id="answer" value={formData.answer} onChange={handleChange}>
+                <option value="">Réponse</option>
+                <option value="yes">Candidature acceptée</option>
+                <option value="no">Candidature rejetée</option>
+                <option value="noanswer">Aucune réponse</option>
+              </select>
+            </label>
+            <button type="submit">Valider</button>
+          </form>
+        </div>
+      )}
     </>
   );
 }
 
-export default ApplyStep;
+export default AnswerStep;

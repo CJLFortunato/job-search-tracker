@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { AppCardProps } from '../types';
+import SelectStep from './stepComponents/SelectStep';
 
 function Appcard(props: AppCardProps) {
   const { app } = props;
@@ -29,6 +30,7 @@ function Appcard(props: AppCardProps) {
       open && (
         <div className="app-details">
           <article>
+            <SelectStep application={app} />
             <button type="button" onClick={() => setOpen(false)}>X</button>
             <h3>
               <a href={app.jobLink}>{app.jobTitle}</a>
