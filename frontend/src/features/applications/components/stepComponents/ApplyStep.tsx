@@ -42,10 +42,9 @@ function ApplyStep(props: StepsProps) {
     <>
       <option
         value="apply"
-        onClick={() => setOpen(true)}
         selected={application.status === 1}
       >
-        J&apos;ai postulé
+        <button type="button" onClick={() => setOpen(true)}>J&apos;ai postulé</button>
       </option>
       {open && (
         <div className="modal">

@@ -73,7 +73,7 @@ export default class UserControllers {
       email,
       password,
     } = body;
-
+    console.log(body);
     try {
       if (!email || !password) {
         res.status(400);
@@ -83,7 +83,7 @@ export default class UserControllers {
       const user = await User.findOne({
         email,
       });
-
+      console.log(user);
       if (!user) {
         res.status(400);
         throw new Error('Incorrect email address');
