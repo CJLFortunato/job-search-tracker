@@ -40,12 +40,7 @@ function ApplyStep(props: StepsProps) {
   }, [open]);
   return (
     <>
-      <option
-        value="apply"
-        selected={application.status === 1}
-      >
-        <button type="button" onClick={() => setOpen(true)}>J&apos;ai postulé</button>
-      </option>
+      <button type="button" onClick={() => setOpen(true)}>J&apos;ai postulé</button>
       {open && (
         <div className="modal">
           <h2>Informations de candidature</h2>
@@ -71,6 +66,7 @@ function ApplyStep(props: StepsProps) {
               </select>
             </label>
             <button type="submit">Valider</button>
+            <button type="button" onClick={() => setOpen(false)}>Annuler</button>
           </form>
         </div>
       )}

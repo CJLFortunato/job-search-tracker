@@ -9,13 +9,13 @@ import InterviewStep from './InterviewStep';
 function SelectStep(props: StepsProps) {
   const { application } = props;
   return (
-    <select>
-      <option value="0" selected={application.status === 0}>A postuler</option>
+    <div>
+      <button type="button">A postuler</button>
       <ApplyStep application={application} />
       <FollowUpStep application={application} />
       <InterviewStep application={application} />
       <AnswerStep application={application} />
-    </select>
+    </div>
   );
 }
 

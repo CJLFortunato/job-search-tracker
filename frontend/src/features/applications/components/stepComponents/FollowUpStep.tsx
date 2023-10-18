@@ -40,13 +40,12 @@ function FollowUpStep(props: StepsProps) {
 
   return (
     <>
-      <option
-        value="apply"
+      <button
         onClick={() => setOpen(true)}
-        selected={application.status === 2}
+        type="button"
       >
         J&apos;ai relancé
-      </option>
+      </button>
       {open && (
         <div className="modal">
           <h2>Informations de relance</h2>
@@ -73,6 +72,7 @@ function FollowUpStep(props: StepsProps) {
               </select>
             </label>
             <button type="submit">Valider</button>
+            <button type="button" onClick={() => setOpen(false)}>Annuler</button>
           </form>
         </div>
       )}

@@ -37,13 +37,12 @@ function AnswerStep(props: StepsProps) {
 
   return (
     <>
-      <option
-        value="apply"
+      <button
         onClick={() => setOpen(true)}
-        selected={application.status === 4}
+        type="button"
       >
         Réponse de l&apos;entreprise
-      </option>
+      </button>
       {open && (
         <div className="modal">
           <h2>Réponse de l&apos;entreprise</h2>
@@ -68,6 +67,7 @@ function AnswerStep(props: StepsProps) {
               </select>
             </label>
             <button type="submit">Valider</button>
+            <button type="button" onClick={() => setOpen(false)}>Annuler</button>
           </form>
         </div>
       )}

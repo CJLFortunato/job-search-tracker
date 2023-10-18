@@ -40,13 +40,12 @@ function InterviewStep(props: StepsProps) {
 
   return (
     <>
-      <option
-        value="apply"
+      <button
         onClick={() => setOpen(true)}
-        selected={application.status === 3}
+        type="button"
       >
         J&apos;ai eu un entretien
-      </option>
+      </button>
       {open && (
         <div className="modal">
           <h2>Informations sur l&apos;entretien</h2>
@@ -71,6 +70,7 @@ function InterviewStep(props: StepsProps) {
               </select>
             </label>
             <button type="submit">Valider</button>
+            <button type="button" onClick={() => setOpen(false)}>Annuler</button>
           </form>
         </div>
       )}
