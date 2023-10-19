@@ -48,7 +48,7 @@ export const appsSlice = createSlice({
     },
     updateAppsSuccess: (state, action) => {
       state.isLoading = false;
-      const remainingApps = state.apps.filter((app) => app.id !== action.payload.id);
+      const remainingApps = state.apps.filter((app) => app._id !== action.payload._id);
       state.apps = [...remainingApps, action.payload];
     },
     updateAppsFailure: (state, action) => {
@@ -60,7 +60,7 @@ export const appsSlice = createSlice({
     },
     deleteAppsSuccess: (state, action) => {
       state.isLoading = false;
-      state.apps = state.apps.filter((app) => app.id !== action.payload.id);
+      state.apps = state.apps.filter((app) => app._id !== action.payload._id);
     },
     deleteAppsFailure: (state, action) => {
       state.isLoading = false;

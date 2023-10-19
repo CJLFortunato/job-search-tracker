@@ -20,7 +20,6 @@ function FollowUpStep(props: StepsProps) {
       ...formData,
       [name]: value,
     });
-    setOpen(false);
   };
 
   const handleSubmit = (e:any) => {
@@ -36,6 +35,7 @@ function FollowUpStep(props: StepsProps) {
         followUp: updatedStep,
       }
     }));
+    setOpen(false);
   };
 
   return (

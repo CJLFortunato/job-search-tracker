@@ -21,7 +21,7 @@ interface Answer {
 
 export interface Application {
   user: string,
-  id?: string,
+  _id?: string,
   jobTitle: string,
   companyName: string,
   contractType: string,
@@ -69,4 +69,8 @@ export interface AddFormProps {
 
 export interface StepsProps {
   application: Application
+}
+
+export interface DeleteButtonProps {
+  id: string
 }

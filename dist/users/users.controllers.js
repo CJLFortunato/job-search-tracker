@@ -44,7 +44,7 @@ export default class UserControllers {
                 if (user) {
                     const tokenCookie = cookie.serialize('cleanup', generateJWT(user.id), {
                         httpOnly: true,
-                        secure: false,
+                        secure: process.env.NODE_ENV === 'prod',
                         maxAge: 21600,
                         path: '/',
                         domain: 'localhost:3000',
@@ -69,7 +69,6 @@ export default class UserControllers {
         return __awaiter(this, void 0, void 0, function* () {
             const { body } = req;
             const { email, password, } = body;
-            console.log(body);
             try {
                 if (!email || !password) {
                     res.status(400);
@@ -78,25 +77,16 @@ export default class UserControllers {
                 const user = yield User.findOne({
                     email,
                 });
-                console.log(user);
                 if (!user) {
                     res.status(400);
                     throw new Error('Incorrect email address');
                 }
                 const isPasswordCorrect = yield bcrypt.compare(password, user.password);
                 if (isPasswordCorrect) {
-                    // const tokenCookie = cookie.serialize('jwt_token', generateJWT(user.id), {
-                    //   httpOnly: true, // il ne se transmet que via les requetes HTTP -> Impossible de le recupérer en JS avec document.cookie
-                    //   secure: false, // si true, le cookie ne sera transmis que si il y a un certificat SSL en place (imperatif sur un site en production)
-                    //   maxAge: 21600, // durée de validité du token, en secondes
-                    //   path: '/', // le chemin depuis l'URL racine de votre app qui indique où est valide le token
-                    //   domain: 'localhost:3000',
-                    // });
                     res.cookie('jwt_token', generateJWT(user.id), {
                         httpOnly: true,
-                        secure: false,
-                        // maxAge: 5000000000000000000000000, // durée de validité du token, en secondes
-                        path: '/', // le chemin depuis l'URL racine de votre app qui indique où est valide le token
+                        secure: process.env.NODE_ENV === 'prod',
+                        path: '/',
                     });
                     res.status(200).json({
                         _id: user.id,

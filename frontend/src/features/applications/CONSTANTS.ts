@@ -5,11 +5,11 @@ const COLUMNS = [
   },
   {
     id: 1,
-    label: 'J\'ai postulé',
+    label: 'En cours',
   },
   {
     id: 2,
-    label: 'Relancer',
+    label: 'Relancé',
   },
   {
     id: 3,

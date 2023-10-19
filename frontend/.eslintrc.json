@@ -107,7 +107,8 @@
       }
     }, {
       "enforceForRenamedProperties": true
-    }]
+    }],
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }]
   },
   "settings": {
     "react": {

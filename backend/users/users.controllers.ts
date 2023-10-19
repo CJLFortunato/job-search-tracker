@@ -47,7 +47,7 @@ export default class UserControllers {
       if (user) {
         const tokenCookie = cookie.serialize('cleanup', generateJWT(user.id), {
           httpOnly: true, // il ne se transmet que via les requetes HTTP -> Impossible de le recupérer en JS avec document.cookie
-          secure: false, // si true, le cookie ne sera transmis que si il y a un certificat SSL en place (imperatif sur un site en production)
+          secure: process.env.NODE_ENV === 'prod', // si true, le cookie ne sera transmis que si il y a un certificat SSL en place (imperatif sur un site en production)
           maxAge: 21600, // durée de validité du token, en secondes
           path: '/', // le chemin depuis l'URL racine de votre app qui indique où est valide le token
           domain: 'localhost:3000',
@@ -73,7 +73,6 @@ export default class UserControllers {
       email,
       password,
     } = body;
-    console.log(body);
     try {
       if (!email || !password) {
         res.status(400);
@@ -83,7 +82,6 @@ export default class UserControllers {
       const user = await User.findOne({
         email,
       });
-      console.log(user);
       if (!user) {
         res.status(400);
         throw new Error('Incorrect email address');
@@ -92,19 +90,10 @@ export default class UserControllers {
       const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
       if (isPasswordCorrect) {
-        // const tokenCookie = cookie.serialize('jwt_token', generateJWT(user.id), {
-        //   httpOnly: true, // il ne se transmet que via les requetes HTTP -> Impossible de le recupérer en JS avec document.cookie
-        //   secure: false, // si true, le cookie ne sera transmis que si il y a un certificat SSL en place (imperatif sur un site en production)
-        //   maxAge: 21600, // durée de validité du token, en secondes
-        //   path: '/', // le chemin depuis l'URL racine de votre app qui indique où est valide le token
-        //   domain: 'localhost:3000',
-        // });
-
         res.cookie('jwt_token', generateJWT(user.id), {
-          httpOnly: true, // il ne se transmet que via les requetes HTTP -> Impossible de le recupérer en JS avec document.cookie
-          secure: false, // si true, le cookie ne sera transmis que si il y a un certificat SSL en place (imperatif sur un site en production)
-          // maxAge: 5000000000000000000000000, // durée de validité du token, en secondes
-          path: '/', // le chemin depuis l'URL racine de votre app qui indique où est valide le token
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'prod',
+          path: '/',
         });
         res.status(200).json({
           _id: user.id,

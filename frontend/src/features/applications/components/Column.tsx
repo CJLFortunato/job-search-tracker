@@ -12,7 +12,7 @@ function Column(props: ColumnProps) {
         apps?.map((app) => (
           <Appcard
             app={app}
-            key={`${app.id}-${Math.floor(Math.random() * 100)}`}
+            key={`${app._id}-${Math.floor(Math.random() * 100)}`}
           />
         ))
       }

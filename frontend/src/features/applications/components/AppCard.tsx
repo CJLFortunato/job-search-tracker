@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { AppCardProps } from '../types';
+import DeleteButton from './DeleteButton';
 import SelectStep from './stepComponents/SelectStep';
 
 function Appcard(props: AppCardProps) {
@@ -31,6 +32,7 @@ function Appcard(props: AppCardProps) {
         <div className="app-details">
           <article>
             <SelectStep application={app} />
+            <DeleteButton id={app._id || ''} />
             <button type="button" onClick={() => setOpen(false)}>X</button>
             <h3>
               <a href={app.jobLink}>{app.jobTitle}</a>

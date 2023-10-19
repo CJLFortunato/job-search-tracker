@@ -29,10 +29,10 @@ export default class ApplicationsControllers {
   static async updateApp(req: any, res: Response, next) {
     try {
       const app = await Application.findById(req.params.id);
-
+      console.log(app);
       if (!app) {
         res.status(400);
-        throw new Error('Goal not found');
+        throw new Error('Application not found');
       }
 
       if (app.user.toString() !== req.user.id) {
@@ -40,7 +40,9 @@ export default class ApplicationsControllers {
         throw new Error('User not authorized');
       }
 
-      const updatedApp = await Application.findByIdAndUpdate(req.params.id, req.body);
+      const updatedApp = await Application.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+      });
       res.status(200).json(updatedApp);
     } catch (error) {
       next(error);
