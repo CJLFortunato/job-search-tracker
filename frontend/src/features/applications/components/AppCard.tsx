@@ -1,32 +1,47 @@
 import React, { useState } from 'react';
 
+import { Draggable } from 'react-beautiful-dnd';
+
 import { AppCardProps } from '../types';
 import DeleteButton from './DeleteButton';
 import SelectStep from './stepComponents/SelectStep';
 
 function Appcard(props: AppCardProps) {
-  const { app } = props;
+  const { app, index } = props;
   const [open, setOpen] = useState(false);
   return (
     <div className="app-card-ctn">
-      <div
-        className="app-card"
-        onClick={() => setOpen(true)}
-        onKeyDown={() => setOpen(true)}
-        role="button"
-        tabIndex={0}
-      >
-        <h3>
-          {app.jobTitle}
-          {' - '}
-          {app.companyName}
-        </h3>
-        <ul>
-          <li>{app.contractType}</li>
-          <li>{app.location}</li>
-          <li>{new Date(app.createdAt || '').toLocaleDateString()}</li>
-        </ul>
-      </div>
+      <Draggable draggableId={app.jobTitle} index={index}>
+        {(provided, snapshot) => (
+          <div
+            className="app-card"
+            onClick={() => setOpen(true)}
+            onKeyDown={() => setOpen(true)}
+            role="button"
+            tabIndex={0}
+            ref={provided.innerRef}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...provided.draggableProps}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...provided.dragHandleProps}
+            style={{
+              backgroundColor: snapshot.isDragging ? '#FFFFCC' : 'white',
+              ...provided.draggableProps.style,
+            }}
+          >
+            <h3>
+              {app.jobTitle}
+              {' - '}
+              {app.companyName}
+            </h3>
+            <ul>
+              <li>{app.contractType}</li>
+              <li>{app.location}</li>
+              <li>{new Date(app.createdAt || '').toLocaleDateString()}</li>
+            </ul>
+          </div>
+        )}
+      </Draggable>
       {
       open && (
         <div className="app-details">

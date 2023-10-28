@@ -1,4 +1,5 @@
 import React from 'react';
+import { DragDropContext } from 'react-beautiful-dnd';
 import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 
@@ -14,7 +15,9 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <DragDropContext onDragEnd={(result: any) => console.log(result)}>
+        <RouterProvider router={router} />
+      </DragDropContext>
     </Provider>
   </React.StrictMode>,
 );

@@ -57,10 +57,12 @@ export interface ColumnProps {
     label: string
   },
   apps: Application[],
+  isMobile: boolean,
 }
 
 export interface AppCardProps {
   app: Application,
+  index: number,
 }
 
 export interface AddFormProps {

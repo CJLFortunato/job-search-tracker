@@ -33,6 +33,7 @@ function KanbanCarousel() {
                 columnData={col}
                 apps={apps.filter((app) => app.status === col.id)}
                 key={col.id}
+                isMobile
               />
             ))
           }
