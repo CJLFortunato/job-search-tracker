@@ -8,7 +8,7 @@ function FollowUpStep(props: StepsProps) {
   const { application } = props;
   const initForm = {
     date: '',
-    type: ''
+    type: '',
   };
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState(initForm);
@@ -22,7 +22,7 @@ function FollowUpStep(props: StepsProps) {
     });
   };
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     const updatedStep = application.steps?.followUp
       ? [...application.steps.followUp]
@@ -33,7 +33,7 @@ function FollowUpStep(props: StepsProps) {
       steps: {
         ...application.steps,
         followUp: updatedStep,
-      }
+      },
     }));
     setOpen(false);
   };

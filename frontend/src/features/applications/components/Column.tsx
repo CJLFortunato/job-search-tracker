@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Droppable } from 'react-beautiful-dnd';
 
 import Appcard from './AppCard';
@@ -25,7 +24,7 @@ function Column(props: ColumnProps) {
                   apps?.map((app, i) => (
                     <Appcard
                       app={app}
-                      key={`${app.id}-${Math.floor(Math.random() * 100)}`}
+                      key={`${app._id}-${Math.floor(Math.random() * 100)}`}
                       index={i}
                     />
                   ))

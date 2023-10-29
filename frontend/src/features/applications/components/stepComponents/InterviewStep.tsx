@@ -8,7 +8,7 @@ function InterviewStep(props: StepsProps) {
   const { application } = props;
   const initForm = {
     date: '',
-    type: ''
+    type: '',
   };
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState(initForm);
@@ -33,7 +33,7 @@ function InterviewStep(props: StepsProps) {
       steps: {
         ...application.steps,
         interview: updatedStep,
-      }
+      },
     }));
     setOpen(false);
   };

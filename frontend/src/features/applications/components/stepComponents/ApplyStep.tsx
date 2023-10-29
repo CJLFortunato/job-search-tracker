@@ -8,7 +8,7 @@ function ApplyStep(props: StepsProps) {
   const { application } = props;
   const initForm = {
     date: '',
-    type: ''
+    type: '',
   };
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState(initForm);
@@ -22,15 +22,15 @@ function ApplyStep(props: StepsProps) {
     });
   };
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     dispatch(updateApps({
       ...application,
       status: 1,
       steps: {
         ...application.steps,
-        apply: formData
-      }
+        apply: formData,
+      },
     }));
     setOpen(false);
   };

@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-
 import { Draggable } from 'react-beautiful-dnd';
 
-import { AppCardProps } from '../types';
 import DeleteButton from './DeleteButton';
 import SelectStep from './stepComponents/SelectStep';
+import { AppCardProps } from '../types';
 
 function Appcard(props: AppCardProps) {
   const { app, index } = props;
   const [open, setOpen] = useState(false);
   return (
     <div className="app-card-ctn">
-      <Draggable draggableId={app.jobTitle} index={index}>
+      <Draggable draggableId={app._id || app.jobTitle} index={index}>
         {(provided, snapshot) => (
           <div
             className="app-card"
@@ -43,46 +42,46 @@ function Appcard(props: AppCardProps) {
         )}
       </Draggable>
       {
-      open && (
-        <div className="app-details">
-          <article>
-            <SelectStep application={app} />
-            <DeleteButton id={app._id || ''} />
-            <button type="button" onClick={() => setOpen(false)}>X</button>
-            <h3>
-              <a href={app.jobLink}>{app.jobTitle}</a>
-              {' - '}
-              <a href={app.companyLink}>{app.companyName}</a>
-            </h3>
-            <ul>
-              <li>
-                Type de contrat:
-                {app.contractType}
-              </li>
-              <li>
-                Localisation:
-                {app.location}
-              </li>
-              <li>
-                Contact:
-                {app.contactName || 'Pas de contact'}
-              </li>
-              <li>
-                Type d&apos;application:
-                {app.appType}
-              </li>
-              <li>
-                Lettre de motivation obligatoire:
-                {app.coverLetter ? 'Oui' : 'Non'}
-              </li>
-              <li>
-                Annonce sauvegardée le:
-                {new Date(app.createdAt || '').toLocaleDateString()}
-              </li>
-            </ul>
-          </article>
-        </div>
-      )
+        open && (
+          <div className="app-details">
+            <article>
+              <SelectStep application={app} />
+              <DeleteButton id={app._id || ''} />
+              <button type="button" onClick={() => setOpen(false)}>X</button>
+              <h3>
+                <a href={app.jobLink}>{app.jobTitle}</a>
+                {' - '}
+                <a href={app.companyLink}>{app.companyName}</a>
+              </h3>
+              <ul>
+                <li>
+                  Type de contrat:
+                  {app.contractType}
+                </li>
+                <li>
+                  Localisation:
+                  {app.location}
+                </li>
+                <li>
+                  Contact:
+                  {app.contactName || 'Pas de contact'}
+                </li>
+                <li>
+                  Type d&apos;application:
+                  {app.appType}
+                </li>
+                <li>
+                  Lettre de motivation obligatoire:
+                  {app.coverLetter ? 'Oui' : 'Non'}
+                </li>
+                <li>
+                  Annonce sauvegardée le:
+                  {new Date(app.createdAt || '').toLocaleDateString()}
+                </li>
+              </ul>
+            </article>
+          </div>
+        )
       }
     </div>
   );

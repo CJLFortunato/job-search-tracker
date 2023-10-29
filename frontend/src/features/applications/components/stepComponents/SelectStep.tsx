@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { StepsProps } from 'features/applications/types';
+
 import AnswerStep from './AnswerStep';
 import ApplyStep from './ApplyStep';
 import FollowUpStep from './FollowUpStep';
