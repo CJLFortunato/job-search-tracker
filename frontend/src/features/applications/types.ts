@@ -63,6 +63,7 @@ export interface ColumnProps {
 export interface AppCardProps {
   app: Application,
   index: number,
+  isMobile: boolean,
 }
 
 export interface AddFormProps {
@@ -75,4 +76,9 @@ export interface StepsProps {
 
 export interface DeleteButtonProps {
   id: string
+}
+
+export interface AppDetailsProps {
+  app: Application,
+  setOpen: Function,
 }
