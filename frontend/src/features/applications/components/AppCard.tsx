@@ -21,9 +21,8 @@ function Appcard(props: AppCardProps) {
             >
               <h3>
                 {app.jobTitle}
-                {' - '}
-                {app.companyName}
               </h3>
+              <h4>{app.companyName}</h4>
               <ul>
                 <li>{app.contractType}</li>
                 <li>{app.location}</li>
@@ -52,9 +51,8 @@ function Appcard(props: AppCardProps) {
                 >
                   <h3>
                     {app.jobTitle}
-                    {' - '}
-                    {app.companyName}
                   </h3>
+                  <h4>{app.companyName}</h4>
                   <ul>
                     <li>{app.contractType}</li>
                     <li>{app.location}</li>

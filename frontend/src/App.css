@@ -1,3 +1,4 @@
+/*colors*/
 .user-form form {
   display: flex;
   flex-direction: column;
@@ -5,47 +6,58 @@
   margin: 0 auto;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 10px 10px 25px 0px hsla(0, 30%, 18%, 0.4);
+  border-radius: 15px;
+  padding: 3%;
+  background-color: white;
 }
 .user-form form label {
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
   width: 100%;
+  box-shadow: 10px 10px 25px 0px hsla(0, 30%, 18%, 0.4);
+  border-radius: 15px;
+  padding: 3%;
 }
 .user-form form label input {
   margin-top: 1rem;
+  margin-bottom: 0.5rem;
   width: 90%;
   align-self: center;
 }
-.user-form form button {
-  height: 2.5rem;
-  border-radius: 20px;
-  border: none;
-  background-color: rgb(255, 161, 127);
-  width: 90%;
+
+.btn-ctn {
+  margin-bottom: 1rem;
+  padding: 0 1%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .kanban-large {
-  border: 1px solid lightsalmon;
-  min-height: 83vh;
+  min-height: 80vh;
   display: none;
   width: 95%;
   margin: 0 auto;
 }
 .kanban-large section {
-  border: 1px solid lightsalmon;
+  margin: 0 1%;
+  box-shadow: 10px 10px 25px 0px hsla(0, 30%, 18%, 0.4);
+  border-radius: 15px;
   width: 20%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
 }
 .kanban-large section h2 {
-  background-color: rgb(255, 208, 189);
+  background: linear-gradient(white, transparent);
   text-align: center;
   margin-top: 0;
   padding-top: 0.6rem;
   height: 3rem;
   width: 100%;
+  color: hsl(25, 85%, 60%);
+  border-radius: 15px 15px 0 0;
 }
 
 .kanban-carousel {
@@ -75,6 +87,9 @@
   z-index: 20;
 }
 .kanban-carousel .carousel .inner section {
+  margin: 0 1%;
+  box-shadow: 10px 10px 25px 0px hsla(0, 30%, 18%, 0.4);
+  border-radius: 15px;
   border: 1px solid green;
   width: 81vw;
   height: 93vh;
@@ -94,14 +109,35 @@
   height: 3rem;
 }
 
+.column-ctn {
+  width: 100%;
+}
+
 .app-card-ctn {
-  min-width: 100%;
+  width: 100%;
+  background-color: transparent;
 }
 
 .app-card {
-  border: 1px solid coral;
+  width: 240px;
   border-radius: 10px;
   height: 200px;
+  margin: 1% auto;
+  box-shadow: 10px 10px 25px 0px hsla(0, 30%, 18%, 0.4);
+  border-radius: 15px 60px 15px 15px;
+}
+.app-card h3 {
+  padding: 5%;
+  padding-bottom: 1%;
+  font-size: 1.05rem;
+  margin: 0;
+  width: 90%;
+  color: hsl(25, 35%, 10%);
+}
+.app-card h4 {
+  padding: 0 5%;
+  margin: 0;
+  color: hsl(0, 0%, 50%);
 }
 
 .app-details {
@@ -211,12 +247,16 @@
   width: 70%;
 }
 
+body {
+  background-color: hsl(15, 65%, 95%);
+}
+
 header {
-  background-color: rgb(255, 161, 127);
   height: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: linear-gradient(white, transparent);
 }
 header .header-ctn {
   display: flex;
@@ -228,29 +268,40 @@ header a {
   margin: 0 1rem;
   text-decoration: none;
   font-weight: bold;
-  color: white;
+  color: hsl(42, 95%, 60%);
+}
+header a:hover {
+  color: hsl(200, 85%, 70%);
 }
 header .app-title {
   justify-self: flex-start;
   font-size: 2rem;
   margin-left: 4rem;
+  color: hsl(42, 95%, 60%);
+}
+header .logout-btn {
+  color: hsl(25, 85%, 60%);
+  background-color: transparent;
+  box-shadow: none;
+  font-weight: bold;
 }
 
 .page {
-  border: 1px solid deeppink;
   height: 93vh;
 }
 
 h1 {
   text-align: center;
+  color: hsl(42, 95%, 60%);
+  margin: 1rem;
 }
 
 input,
 select {
   height: 2.7rem;
   border-radius: 10px;
-  border: 1px solid rgb(255, 161, 127);
-  border-bottom: 2px solid rgb(255, 161, 127);
+  border: none;
+  box-shadow: 10px 10px 25px 0px hsla(0, 30%, 18%, 0.4);
 }
 
 input[type=radio] {
@@ -259,10 +310,21 @@ input[type=radio] {
 
 button {
   height: 2.5rem;
-  background-color: rgb(255, 161, 127);
+  background-color: hsl(42, 95%, 60%);
   border: none;
-  border-radius: 15px;
-  width: 15vw;
+  border-radius: 20px;
+  width: 10vw;
+  box-shadow: 10px 10px 25px 0px hsla(0, 30%, 18%, 0.4);
+  font-weight: bold;
+  color: white;
+}
+
+button:hover {
+  background-color: hsl(200, 85%, 70%);
+}
+
+p, li {
+  color: hsl(25, 35%, 10%);
 }
 
 @media screen and (min-width: 1024px) {

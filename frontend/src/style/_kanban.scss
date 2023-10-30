@@ -1,24 +1,43 @@
+@use 'variables';
+
+@mixin column {
+  margin: 0 1%;
+  box-shadow: variables.$shadow;
+  border-radius: 15px;
+}
+
+.btn-ctn {
+  // border: 1px solid blue;
+  margin-bottom: 1rem;
+  padding: 0 1%;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .kanban-large {
-  border: 1px solid lightsalmon;
-  min-height: 83vh;
+  // border: 1px solid lightsalmon;
+  min-height: 80vh;
   display: none;
   width: 95%;
   margin: 0 auto;
 
   section {
-    border: 1px solid lightsalmon;
+    @include column;
+    // border: 1px solid lightsalmon;
     width: 20%;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
 
     h2 {
-      background-color: rgb(255, 208, 189);
+      background: linear-gradient(white, transparent);
       text-align: center;
       margin-top: 0;
       padding-top: .6rem;
       height: 3rem;
       width: 100%;
+      color: variables.$secondary;
+      border-radius: 15px 15px 0 0 ;
     }
   }
 }
@@ -51,6 +70,7 @@
       z-index: 20;
 
       section {
+        @include column;
         border: 1px solid green;
         width: 81vw;
         height: 93vh;
@@ -75,15 +95,38 @@
   }
 }
 
+.column-ctn {
+  width: 100%;
+}
+
 .app-card-ctn {
-  min-width: 100%;
+  width: 100%;
+  background-color: transparent;
+  // border: 1px solid coral;
 }
 
 .app-card {
-  // width: 95%;
-  border: 1px solid coral;
+  width: 240px;
   border-radius: 10px;
   height: 200px;
+  margin: 1% auto;
+  box-shadow: variables.$shadow;
+  border-radius: 15px 60px 15px 15px;
+
+  h3 {
+    padding: 5%;
+    padding-bottom: 1%;
+    // border: 1px solid coral;
+    font-size: 1.05rem;
+    margin: 0;
+    width: 90%;
+    color: variables.$text;
+  }
+  h4 {
+    padding: 0 5%;
+    margin: 0;
+    color: hsl(0, 0%, 50%);
+  }
 }
 
 .app-details {

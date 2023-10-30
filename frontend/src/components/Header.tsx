@@ -14,7 +14,9 @@ function Header() {
         {
           user
             ? (
-              <button type="button" onClick={logoutUser}>Se déconnecter</button>
+              <button type="button" onClick={logoutUser} className="logout-btn">
+                Se déconnecter
+              </button>
             )
             : (
               <>

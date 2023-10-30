@@ -1,13 +1,18 @@
+@use 'variables';
 @use 'loginsignup';
 @use 'kanban';
 @use 'appForms';
 
+body {
+  background-color: variables.$background;
+}
+
 header {
-  background-color: rgb(255, 161, 127);
   height: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: linear-gradient(white, transparent);
 
   .header-ctn {
     display: flex;
@@ -20,32 +25,44 @@ header {
     margin: 0 1rem;
     text-decoration: none;
     font-weight: bold;
-    color: white;
+    color: variables.$primary;
+  }
+  a:hover {
+    color: variables.$accent;
   }
 
   .app-title {
     justify-self: flex-start;
     font-size: 2rem;
     margin-left: 4rem;
+    color: variables.$primary;
+  }
+
+  .logout-btn {
+    color: variables.$secondary;
+    background-color: transparent;
+    box-shadow: none;
+    font-weight: bold;
   }
 }
 
 .page {
-  border: 1px solid deeppink;
+  // border: 1px solid deeppink;
   height: 93vh;
-
 }
 
 h1 {
   text-align: center;
+  color: variables.$primary;
+  margin: 1rem;
 }
 
 input,
 select {
   height: 2.7rem;
   border-radius: 10px;
-  border: 1px solid rgb(255, 161, 127);
-  border-bottom: 2px solid rgb(255, 161, 127);
+  border: none;
+  box-shadow: variables.$shadow;
 }
 
 input[type="radio"] {
@@ -54,10 +71,21 @@ input[type="radio"] {
 
 button {
   height: 2.5rem;
-  background-color: rgb(255, 161, 127);
+  background-color: variables.$primary;
   border: none;
-  border-radius: 15px;
-  width: 15vw;
+  border-radius: 20px;
+  width: 10vw;
+  box-shadow: variables.$shadow;
+  font-weight: bold;
+  color: white;
+}
+
+button:hover {
+  background-color: variables.$accent;
+}
+
+p, li {
+  color: variables.$text;
 }
 
 @media screen and (min-width: 1024px) {

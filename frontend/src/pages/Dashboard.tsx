@@ -15,7 +15,9 @@ function Dashboard() {
   return (
     <div className="page dashboard">
       <h1>Vos candidatures</h1>
-      <AddApplication />
+      <div className="btn-ctn">
+        <AddApplication />
+      </div>
       <KanbanLarge />
       <KanbanCarousel />
     </div>

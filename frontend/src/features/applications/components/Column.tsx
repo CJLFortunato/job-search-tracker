@@ -11,7 +11,7 @@ function Column(props: ColumnProps) {
       <h2>{columnData.label}</h2>
       {isMobile
         ? (
-          <div>
+          <div className="column-ctn">
             {
               apps?.map((app, i) => (
                 <Appcard
@@ -32,7 +32,11 @@ function Column(props: ColumnProps) {
                   // eslint-disable-next-line react/jsx-props-no-spreading
                   {...provided.droppableProps}
                   ref={provided.innerRef}
-                  style={{ backgroundColor: snapshot.isDraggingOver ? '#FFFFCC' : 'white' }}
+                  style={{
+                    backgroundColor: snapshot.isDraggingOver
+                      ? 'hsla(25, 50%, 50%, 0.4)'
+                      : 'transparent'
+                  }}
                 >
                   {
                     apps?.map((app, i) => (
