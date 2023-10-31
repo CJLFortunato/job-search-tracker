@@ -1,5 +1,7 @@
-import { NewUser } from './types';
-import { register, login, logout } from './user.slice';
+import { NewUser, User } from './types';
+import {
+  register, login, logout, updateUser, deleteUser,
+} from './user.slice';
 import { useAppDispatch, useAppSelector } from '../../common/hooks';
 
 function useUser() {
@@ -17,11 +19,22 @@ function useUser() {
   const logoutUser = () => {
     dispatch(logout());
   };
+
+  const updateUsers = (newUser: User) => {
+    dispatch(updateUser(newUser));
+  };
+
+  const deleteUsers = (id: string) => {
+    dispatch(deleteUser(id));
+  };
+
   return {
     user,
     registerUser,
     loginUser,
     logoutUser,
+    updateUsers,
+    deleteUsers,
   };
 }
 

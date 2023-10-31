@@ -14,9 +14,13 @@ function Header() {
         {
           user
             ? (
-              <button type="button" onClick={logoutUser} className="logout-btn">
-                Se déconnecter
-              </button>
+              <>
+                <Link to="/dashboard">Vos candidatures</Link>
+                <Link to="/profile">Profil utilisateur</Link>
+                <button type="button" onClick={logoutUser} className="logout-btn">
+                  Se déconnecter
+                </button>
+              </>
             )
             : (
               <>

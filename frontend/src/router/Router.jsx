@@ -8,8 +8,8 @@ import Dashboard from '../pages/Dashboard';
 import Error from '../pages/Error';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
+import Profile from '../pages/Profile';
 import SignUp from '../pages/SignUp';
-import User from '../pages/User';
 
 const router = createBrowserRouter([
   {
@@ -34,8 +34,8 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: '/user',
-        element: <User />,
+        path: '/profile',
+        element: <Profile />,
       },
     ],
   },

@@ -23,8 +23,8 @@ function useApps() {
   const updateApp = (updatedApp: Application) => {
     dispatch(updateApps(updatedApp));
   };
-  const deleteApp = (appToDelete: Application) => {
-    dispatch(deleteApps(appToDelete));
+  const deleteApp = (id: string) => {
+    dispatch(deleteApps(id));
   };
   return {
     apps,

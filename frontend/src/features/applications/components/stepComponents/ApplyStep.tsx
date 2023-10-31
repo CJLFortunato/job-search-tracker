@@ -34,10 +34,7 @@ function ApplyStep(props: StepsProps) {
     }));
     setOpen(false);
   };
-  console.log('test');
-  React.useEffect(() => {
-    console.log(open);
-  }, [open]);
+
   return (
     <>
       <button type="button" onClick={() => setOpen(true)}>J&apos;ai postulé</button>

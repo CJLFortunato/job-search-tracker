@@ -1,6 +1,5 @@
 class AppAPI {
   static async createApp (payload: any) {
-    console.log(payload);
     const response = await fetch('http://localhost:5000/v1/api/apps', {
       method: 'POST',
       body: JSON.stringify(payload),
@@ -40,9 +39,12 @@ class AppAPI {
     return data;
   }
 
-  static async deleteApp (payload: any) {
+  static async deleteApp (payload: string) {
+    console.log('test265645');
     console.log(payload);
-    const response = await fetch(`http://localhost:5000/v1/api/apps/${payload.id}`, {
+    console.log(typeof payload);
+    console.log(`http://localhost:5000/v1/api/apps/${payload}`);
+    const response = await fetch(`http://localhost:5000/v1/api/apps/${payload}`, {
       method: 'DELETE',
       credentials: 'include',
     });

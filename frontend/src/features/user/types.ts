@@ -19,3 +19,7 @@ export interface State {
 export interface UserFormProps {
   isLogin: boolean
 }
+
+export interface DeleteButtonProps {
+  id: string
+}
