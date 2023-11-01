@@ -35,7 +35,7 @@ function AddForm(props: AddFormProps) {
       [name]: value,
     });
   };
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     if (
       !formData.jobTitle
@@ -54,7 +54,7 @@ function AddForm(props: AddFormProps) {
     setFormData(cleanForm);
   };
   return (
-    <div className="add-form">
+    <dialog className="add-form">
       <form onSubmit={handleSubmit}>
         <div className="grid-ctn">
           <label htmlFor="jobTitle">
@@ -177,7 +177,7 @@ function AddForm(props: AddFormProps) {
         <button type="submit">Ajouter</button>
         <button type="button" onClick={handleCancel}>Annuler</button>
       </form>
-    </div>
+    </dialog>
   );
 }
 

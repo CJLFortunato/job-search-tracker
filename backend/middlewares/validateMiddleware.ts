@@ -2,28 +2,29 @@ import { Request, Response } from 'express';
 
 import Joi from 'joi';
 
-import { userPayload, appPayload, tagPayload } from './payloadSchemas';
+import { userPayload, appPayload, tagPayload } from './payloadSchemas.js';
 
-const validatePayload = (req: Request, res: Response, next) => {
+const validatePayload = async (req: Request, res: Response, next) => {
   const {
     body,
   } = req;
 
+  const route = req.originalUrl.split('/')[3];
   try {
-    switch (req.originalUrl) {
-      case ('/v1/api/apps'):
+    switch (route) {
+      case ('apps'):
         Joi.assert(body, appPayload);
         break;
-      case ('/v1/api/users'):
+      case ('users'):
         Joi.assert(body, userPayload);
         break;
-      case ('/v1/api/tags'):
+      case ('tags'):
         Joi.assert(body, tagPayload);
         break;
       default:
-        next();
+        await next();
     }
-    next();
+    await next();
   } catch (e) {
     next(e.details[0].message);
   }

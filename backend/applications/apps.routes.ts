@@ -1,6 +1,7 @@
 import express from 'express';
 
 import authMiddleware from '../middlewares/authMiddleware.js';
+import validatePayload from '../middlewares/validateMiddleware.js';
 import ApplicationsControllers from './apps.controllers.js';
 
 const router = express.Router();
@@ -9,10 +10,10 @@ const router = express.Router();
 router.route('/').get(authMiddleware, ApplicationsControllers.getApps);
 
 // POST create an application
-router.route('/').post(authMiddleware, ApplicationsControllers.createApp);
+router.route('/').post(authMiddleware, validatePayload, ApplicationsControllers.createApp);
 
 // PUT modify an application
-router.route('/:id').put(authMiddleware, ApplicationsControllers.updateApp);
+router.route('/:id').put(authMiddleware, validatePayload, ApplicationsControllers.updateApp);
 
 // DELETE an application
 router.route('/:id').delete(authMiddleware, ApplicationsControllers.deleteApp);

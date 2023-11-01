@@ -1,20 +1,18 @@
 import express from 'express';
 
 import authMiddleware from '../middlewares/authMiddleware.js';
+import validatePayload from '../middlewares/validateMiddleware.js';
 import TagsControllers from './tags.controllers.js';
 
 const router = express.Router();
 
-// GET all applications
+// GET all tags for a given user
 router.route('/').get(authMiddleware, TagsControllers.getTags);
 
-// POST create an application
-router.route('/').post(authMiddleware, TagsControllers.createTag);
+// POST create a tag
+router.route('/').post(authMiddleware, validatePayload, TagsControllers.createTags);
 
-// PUT modify an application
-router.route('/:id').put(authMiddleware, TagsControllers.updateTag);
-
-// DELETE an application
+// DELETE a tag
 router.route('/:id').delete(authMiddleware, TagsControllers.deleteTag);
 
 export default router;

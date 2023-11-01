@@ -3,13 +3,11 @@ export const userPayload = Joi.object({
     email: Joi.string().email().required(),
     password: Joi.string().alphanum().min(8).required(),
 });
-export const tagPayload = Joi.object({
-    user: Joi.any().required(),
+export const tagPayload = Joi.array().items({
     label: Joi.string().alphanum().required(),
     applications: Joi.array().items(Joi.any()),
 });
 export const appPayload = Joi.object({
-    user: Joi.any().required(),
     jobTitle: Joi.string().alphanum().required(),
     companyName: Joi.string().alphanum().required(),
     contractType: Joi.string().alphanum().required(),
@@ -25,14 +23,14 @@ export const appPayload = Joi.object({
             date: Joi.string(),
             type: Joi.string().alphanum(),
         },
-        followUp: {
-            date: Joi.string().alphanum(),
-            type: Joi.string().alphanum(),
-        },
-        interview: {
-            date: Joi.string().alphanum(),
-            type: Joi.string().alphanum(),
-        },
+        followUp: [{
+                date: Joi.string().alphanum(),
+                type: Joi.string().alphanum(),
+            }],
+        interview: [{
+                date: Joi.string().alphanum(),
+                type: Joi.string().alphanum(),
+            }],
         answer: {
             date: Joi.string().alphanum(),
             outcome: Joi.string().alphanum(),

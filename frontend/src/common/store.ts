@@ -3,6 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 
 import rootSaga from './rootSaga';
 import appsReducer from '../features/applications/apps.slice';
+import tagsReducer from 'features/tags/tags.slice';
 import userReducer from '../features/user/user.slice';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -12,6 +13,7 @@ export const store = configureStore({
   reducer: {
     userReducer,
     appsReducer,
+    tagsReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middleware),
 });

@@ -7,7 +7,7 @@ import { AppDetailsProps } from '../types';
 function AppDetails(props: AppDetailsProps) {
   const { app, setOpen } = props;
   return (
-    <div className="app-details">
+    <dialog className="app-details">
       <article>
         <SelectStep application={app} />
         <DeleteButton id={app._id || ''} />
@@ -44,7 +44,7 @@ function AppDetails(props: AppDetailsProps) {
           </li>
         </ul>
       </article>
-    </div>
+    </dialog>
   );
 }
 

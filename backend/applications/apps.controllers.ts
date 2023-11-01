@@ -29,7 +29,6 @@ export default class ApplicationsControllers {
   static async updateApp(req: any, res: Response, next) {
     try {
       const app = await Application.findById(req.params.id);
-      console.log(app);
       if (!app) {
         res.status(400);
         throw new Error('Application not found');

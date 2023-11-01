@@ -142,11 +142,12 @@
 
 .app-details {
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
+  overflow: hidden;
 }
 .app-details article {
   background-color: white;
@@ -247,6 +248,22 @@
   width: 70%;
 }
 
+.tags-ctn {
+  display: flex;
+  flex-flow: row wrap;
+}
+.tags-ctn p {
+  display: inline-block;
+  margin: 0.5rem;
+  background-color: darkorange;
+  border-radius: 10px;
+}
+.tags-ctn p button {
+  width: 2rem;
+  background-color: transparent;
+  box-shadow: none;
+}
+
 body {
   background-color: hsl(15, 65%, 95%);
 }
@@ -323,8 +340,14 @@ button:hover {
   background-color: hsl(200, 85%, 70%);
 }
 
-p, li {
+p,
+li {
   color: hsl(25, 35%, 10%);
+}
+
+dialog {
+  display: block;
+  width: 50%;
 }
 
 @media screen and (min-width: 1024px) {

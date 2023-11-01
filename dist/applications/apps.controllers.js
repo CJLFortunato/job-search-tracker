@@ -35,7 +35,6 @@ export default class ApplicationsControllers {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const app = yield Application.findById(req.params.id);
-                console.log(app);
                 if (!app) {
                     res.status(400);
                     throw new Error('Application not found');

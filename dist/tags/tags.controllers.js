@@ -12,39 +12,20 @@ export default class TagsControllers {
     static getTags(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const apps = yield Tag.find({ user: req.user.id });
-                res.status(200).json(apps);
+                const tags = yield Tag.find({ user: req.user.id });
+                res.status(200).json(tags);
             }
             catch (error) {
                 next(error);
             }
         });
     }
-    static createTag(req, res, next) {
+    static createTags(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const newApp = yield Tag.create(Object.assign(Object.assign({}, req.body), { user: req.user.id }));
-                res.status(201).json(newApp);
-            }
-            catch (error) {
-                next(error);
-            }
-        });
-    }
-    static updateTag(req, res, next) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const app = yield Tag.findById(req.params.id);
-                if (!app) {
-                    res.status(400);
-                    throw new Error('Goal not found');
-                }
-                if (app.user.toString() !== req.user.id) {
-                    res.status(401);
-                    throw new Error('User not authorized');
-                }
-                const updatedApp = yield Tag.findByIdAndUpdate(req.params.id, req.body);
-                res.status(200).json(updatedApp);
+                const newTagsWithUsers = req.body.map((tag) => (Object.assign(Object.assign({}, tag), { user: req.user.id })));
+                const newTags = yield Tag.create(newTagsWithUsers);
+                res.status(201).json(newTags);
             }
             catch (error) {
                 next(error);
@@ -53,18 +34,21 @@ export default class TagsControllers {
     }
     static deleteTag(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log('in delete function');
             try {
-                const app = yield Tag.findById(req.params.id);
-                if (!app) {
+                const tag = yield Tag.findById(req.params.id);
+                console.log(tag);
+                if (!tag) {
                     res.status(400);
                     throw new Error('Goal not found');
                 }
-                if (app.user.toString() !== req.user.id) {
+                if (tag.user.toString() !== req.user.id) {
                     res.status(401);
                     throw new Error('User not authorized');
                 }
-                const deletedApp = yield Tag.findByIdAndDelete(req.params.id);
-                res.status(200).json(deletedApp);
+                const deletedTag = yield Tag.findByIdAndDelete(req.params.id);
+                console.log(deletedTag);
+                res.status(200).json(deletedTag);
             }
             catch (error) {
                 next(error);

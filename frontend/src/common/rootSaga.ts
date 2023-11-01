@@ -6,6 +6,7 @@ import {
   updateAppsSaga,
   deleteAppsSaga,
 } from '../features/applications/apps.saga';
+import { getTagsSaga, createTagSaga, deleteTagsSaga } from 'features/tags/tags.saga';
 import {
   loginSaga,
   registerSaga,
@@ -27,4 +28,8 @@ export default function* rootSaga() {
   yield fork(createAppSaga);
   yield fork(updateAppsSaga);
   yield fork(deleteAppsSaga);
+
+  yield fork(createTagSaga);
+  yield fork(getTagsSaga);
+  yield fork(deleteTagsSaga);
 }

@@ -77,6 +77,7 @@ export default class UserControllers {
                 const user = yield User.findOne({
                     email,
                 });
+                // console.log(user);
                 if (!user) {
                     res.status(400);
                     throw new Error('Incorrect email address');

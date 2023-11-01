@@ -2,6 +2,7 @@
 @use 'loginsignup';
 @use 'kanban';
 @use 'appForms';
+@use 'tags';
 
 body {
   background-color: variables.$background;
@@ -27,6 +28,7 @@ header {
     font-weight: bold;
     color: variables.$primary;
   }
+
   a:hover {
     color: variables.$accent;
   }
@@ -84,8 +86,15 @@ button:hover {
   background-color: variables.$accent;
 }
 
-p, li {
+p,
+li {
   color: variables.$text;
+}
+
+dialog {
+  display: block;
+  width: 50%;
+
 }
 
 @media screen and (min-width: 1024px) {

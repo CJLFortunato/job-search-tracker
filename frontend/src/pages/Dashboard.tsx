@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import AddApplication from '../features/applications/components/AddApplication';
 import KanbanCarousel from '../features/applications/components/KanbanCarousel';
 import KanbanLarge from '../features/applications/components/KanbanLarge';
+import ManageTags from 'features/tags/components/ManageTags';
 import useUser from '../features/user/useUser';
 
 function Dashboard() {
@@ -17,6 +18,7 @@ function Dashboard() {
       <h1>Vos candidatures</h1>
       <div className="btn-ctn">
         <AddApplication />
+        <ManageTags />
       </div>
       <KanbanLarge />
       <KanbanCarousel />
