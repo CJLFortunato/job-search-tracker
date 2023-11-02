@@ -6,7 +6,7 @@ import {
   updateApps,
   deleteApps,
 } from './apps.slice';
-import { Application } from './types';
+import { Application, ApplicationCreate } from './types';
 import { useAppDispatch, useAppSelector } from '../../common/hooks';
 
 function useApps() {
@@ -17,7 +17,7 @@ function useApps() {
     if (!apps.length) dispatch(getApps());
   }, []);
 
-  const createApp = (newApp: Application) => {
+  const createApp = (newApp: ApplicationCreate) => {
     dispatch(createApps(newApp));
   };
   const updateApp = (updatedApp: Application) => {

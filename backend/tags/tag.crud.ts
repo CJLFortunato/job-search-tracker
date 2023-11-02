@@ -8,10 +8,20 @@ const addTagToApp = async (tags: any[], app: any, userId: any) => {
     const tagInDb = await Tag.findById(tags[i]);
     if (tagInDb) {
       if (!tagInDb.applications.find((a) => a === app._id)) {
-        const updatedTag = await Tag.findByIdAndUpdate(tagInDb._id, {
+        console.log({
           ...tagInDb,
           applications: [...tagInDb.applications, app._id],
         });
+        const newObj = {
+          _id: tagInDb._id,
+          label: tagInDb.label,
+          user: tagInDb.user,
+          applications: [...tagInDb.applications, app._id],
+        };
+        console.log('newobj');
+        console.log(newObj);
+        const updatedTag = await Tag.findByIdAndUpdate(tagInDb._id, newObj);
+        console.log('updated tag', updatedTag);
         newTags.push(updatedTag._id);
       }
     } else {
@@ -20,6 +30,7 @@ const addTagToApp = async (tags: any[], app: any, userId: any) => {
         user: userId,
         applications: [app._id],
       });
+      console.log('new tag', newTag);
       newTags.push(newTag._id);
     }
   }

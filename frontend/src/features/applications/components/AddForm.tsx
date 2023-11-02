@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-import { AddFormProps } from '../types';
+import useTags from 'features/tags/useTags';
+
+import { AddFormProps, ApplicationCreate, } from '../types';
 import useApps from '../useApps';
 
 function AddForm(props: AddFormProps) {
@@ -20,7 +22,8 @@ function AddForm(props: AddFormProps) {
     status: 0,
     tags: [],
   };
-  const [formData, setFormData] = useState(cleanForm);
+  const { tags } = useTags();
+  const [formData, setFormData] = useState<ApplicationCreate>(cleanForm);
   const handleChange = (e: any) => {
     const { target: { name, value } } = e;
     if (name === 'coverLetter') {
@@ -30,11 +33,22 @@ function AddForm(props: AddFormProps) {
       });
       return;
     }
+    if (name === 'tags') {
+      setFormData({
+        ...formData,
+        tags: [...formData.tags, value],
+      });
+      return;
+    }
     setFormData({
       ...formData,
       [name]: value,
     });
+    console.log(value);
   };
+  React.useEffect(() => {
+    console.log(formData.tags);
+  }, [formData]);
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (
@@ -88,7 +102,7 @@ function AddForm(props: AddFormProps) {
               onChange={handleChange}
               value={formData.contractType}
             >
-              <option value="">Sélectionnez un type de contrat</option>
+              <option value="" disabled>Sélectionnez un type de contrat</option>
               <option value="cdi">CDI</option>
               <option value="cdd">CDD</option>
               <option value="stage">Stage</option>
@@ -145,8 +159,24 @@ function AddForm(props: AddFormProps) {
               id="contactName"
               name="contactName"
               onChange={handleChange}
-              value={formData.contactName}
+              value={formData.contactName || ''}
             />
+          </label>
+          <label htmlFor="tags">
+            Tags
+            <select
+              name="tags"
+              id="tags"
+              required
+              onChange={handleChange}
+              value={formData.tags}
+              multiple
+            >
+              <option value="" disabled>Sélectionnez des tags</option>
+              {
+                tags.map((tag) => <option value={tag._id} key={tag._id}>{tag.label}</option>)
+              }
+            </select>
           </label>
         </div>
         <div className="radio-ctn">

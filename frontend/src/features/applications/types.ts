@@ -1,3 +1,5 @@
+import { Tag } from "features/tags/types"
+
 // data Types
 interface Apply {
   date: string,
@@ -21,7 +23,30 @@ interface Answer {
 
 export interface Application {
   user: string,
-  _id?: string,
+  _id: string,
+  jobTitle: string,
+  companyName: string,
+  contractType: string,
+  jobLink: string,
+  companyLink: string,
+  appType: string,
+  location: string,
+  contactName: string | null,
+  coverLetter: boolean,
+  status: number,
+  steps?: {
+    apply?: Apply,
+    followUp?: FollowUp[],
+    interview?: Interview[],
+    answer?: Answer,
+  },
+  tags: Tag[],
+  createdAt?: string,
+  updateddAt?: string,
+}
+
+export interface ApplicationCreate {
+  user: string,
   jobTitle: string,
   companyName: string,
   contractType: string,

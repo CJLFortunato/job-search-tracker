@@ -6,7 +6,7 @@ import Application from './apps.schema.js';
 export default class ApplicationsControllers {
   static async getApps(req: any, res: Response, next) {
     try {
-      const apps = await Application.find({ user: req.user.id });
+      const apps = await Application.find({ user: req.user.id }).populate('tags').exec();
 
       res.status(200).json(apps);
     } catch (error) {
@@ -21,12 +21,12 @@ export default class ApplicationsControllers {
         user: req.user.id,
       });
 
-      const tags = addTagToApp(req.body.tags, newApp, req.user.id);
+      const tags = await addTagToApp(req.body.tags, newApp, req.user.id);
+      console.log(tags);
       const newAppWithTags = await Application.findByIdAndUpdate(newApp._id, {
         ...newApp,
         tags: [...newApp.tags, tags],
-      });
-
+      }).populate('tags');
       res.status(201).json(newAppWithTags);
     } catch (error) {
       next(error);

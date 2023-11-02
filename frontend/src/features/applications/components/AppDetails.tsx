@@ -6,6 +6,7 @@ import { AppDetailsProps } from '../types';
 
 function AppDetails(props: AppDetailsProps) {
   const { app, setOpen } = props;
+  console.log(app.tags);
   return (
     <dialog className="app-details">
       <article>
@@ -41,6 +42,11 @@ function AppDetails(props: AppDetailsProps) {
           <li>
             Annonce sauvegardée le:
             {new Date(app.createdAt || '').toLocaleDateString()}
+          </li>
+          <li>
+            {
+              app.tags.map((tag) => <p key={tag._id}>{tag.label}</p>)
+            }
           </li>
         </ul>
       </article>

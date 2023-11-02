@@ -7,12 +7,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import addTagToApp from '../tags/tag.crud.js';
 import Application from './apps.schema.js';
 export default class ApplicationsControllers {
     static getApps(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const apps = yield Application.find({ user: req.user.id });
+                const apps = yield Application.find({ user: req.user.id }).populate('tags').exec();
                 res.status(200).json(apps);
             }
             catch (error) {
@@ -24,7 +25,10 @@ export default class ApplicationsControllers {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const newApp = yield Application.create(Object.assign(Object.assign({}, req.body), { user: req.user.id }));
-                res.status(201).json(newApp);
+                const tags = yield addTagToApp(req.body.tags, newApp, req.user.id);
+                console.log(tags);
+                const newAppWithTags = yield Application.findByIdAndUpdate(newApp._id, Object.assign(Object.assign({}, newApp), { tags: [...newApp.tags, tags] })).populate('tags');
+                res.status(201).json(newAppWithTags);
             }
             catch (error) {
                 next(error);
@@ -43,7 +47,8 @@ export default class ApplicationsControllers {
                     res.status(401);
                     throw new Error('User not authorized');
                 }
-                const updatedApp = yield Application.findByIdAndUpdate(req.params.id, req.body, {
+                const tags = addTagToApp(req.body.tags, app, req.user.id);
+                const updatedApp = yield Application.findByIdAndUpdate(req.params.id, Object.assign(Object.assign({}, req.body), { tags: [...app.tags, tags] }), {
                     new: true,
                 });
                 res.status(200).json(updatedApp);
