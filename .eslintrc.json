@@ -105,6 +105,9 @@
       }
     }, {
       "enforceForRenamedProperties": false
+    }],
+    "no-underscore-dangle": ["error", {
+      "allow": ["_id"]
     }]
   },
   "settings": {

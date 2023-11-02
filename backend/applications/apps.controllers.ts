@@ -1,5 +1,6 @@
 import { Response } from 'express';
 
+import addTagToApp from '../tags/tag.crud.js';
 import Application from './apps.schema.js';
 
 export default class ApplicationsControllers {
@@ -20,7 +21,13 @@ export default class ApplicationsControllers {
         user: req.user.id,
       });
 
-      res.status(201).json(newApp);
+      const tags = addTagToApp(req.body.tags, newApp, req.user.id);
+      const newAppWithTags = await Application.findByIdAndUpdate(newApp._id, {
+        ...newApp,
+        tags: [...newApp.tags, tags],
+      });
+
+      res.status(201).json(newAppWithTags);
     } catch (error) {
       next(error);
     }
@@ -38,8 +45,11 @@ export default class ApplicationsControllers {
         res.status(401);
         throw new Error('User not authorized');
       }
-
-      const updatedApp = await Application.findByIdAndUpdate(req.params.id, req.body, {
+      const tags = addTagToApp(req.body.tags, app, req.user.id);
+      const updatedApp = await Application.findByIdAndUpdate(req.params.id, {
+        ...req.body,
+        tags: [...app.tags, tags],
+      }, {
         new: true,
       });
       res.status(200).json(updatedApp);
