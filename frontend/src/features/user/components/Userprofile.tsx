@@ -49,29 +49,37 @@ function UserProfile() {
   };
 
   return (
-    <div className="user-form">
+    <div className="profile-form">
+      <div className="divider">
+        Changer l&apos;adresse email
+        <hr />
+      </div>
       <form onSubmit={handleSubmitEmail}>
         <label htmlFor="email">
-          Email
+          Nouvelle adresse email
           <input
             type="email"
             name="email"
             id="email"
-            placeholder="Tapez votre adresse Email"
+            placeholder="Tapez votre nouvelle adresse email"
             value={newEmail}
             onChange={handleChange}
           />
         </label>
         <button type="submit">Enregister les modifications</button>
       </form>
+      <div className="divider">
+        Changer le mot de passe
+        <hr />
+      </div>
       <form onSubmit={handleSubmitpassword}>
         <label htmlFor="password">
-          Mot de passe
+          Nouveau mot de passe
           <input
             type="password"
             name="password"
             id="password"
-            placeholder="Tapez votre mot de passe"
+            placeholder="Tapez votre nouveau mot de passe"
             value={formData.password}
             onChange={handleChange}
           />
@@ -82,13 +90,17 @@ function UserProfile() {
             type="password"
             name="password2"
             id="password2"
-            placeholder="Confirmez votre mot de passe"
+            placeholder="Confirmez votre nouveau mot de passe"
             value={formData.password2}
             onChange={handleChange}
           />
         </label>
         <button type="submit">Enregistrer les modifications</button>
       </form>
+      <div className="divider">
+        Suppression de compte
+        <hr />
+      </div>
       <DeleteButton id={user?.id || ''} />
     </div>
   );

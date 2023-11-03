@@ -3,6 +3,7 @@
 @use 'kanban';
 @use 'appForms';
 @use 'tags';
+@use 'userPage';
 
 body {
   background-color: white;
@@ -48,6 +49,7 @@ header {
     box-shadow: none;
     font-weight: bold;
   }
+
   .logout-btn:hover {
     color: variables.$accent;
     background-color: transparent;
@@ -56,7 +58,7 @@ header {
 
 .page {
   // border: 1px solid deeppink;
-  min-height: 93vh;
+  min-height: 84.3vh;
 }
 
 h1 {
@@ -83,7 +85,8 @@ button {
   background-color: variables.$primary;
   border: none;
   border-radius: 20px;
-  width: 10vw;
+  // width: 10vw;
+  padding: 0 10px;
   font-weight: bold;
   color: white;
 }
@@ -107,10 +110,27 @@ footer {
   height: 3.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   background: variables.$primary;
   padding: 1%;
   margin-top: 1rem;
+  border-bottom: 3px solid variables.$primary;
+
+  a {
+    display: block;
+    margin-left: .7rem;
+    text-decoration: none;
+    font-weight: bold;
+    color: variables.$secondary;
+  }
+
+  a:hover {
+    color: variables.$accent;
+  }
+}
+
+.delete-btn {
+  background-color: variables.$error;
 }
 
 @media screen and (min-width: 1024px) {

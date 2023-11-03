@@ -3,8 +3,9 @@ import React from 'react';
 function Footer() {
   return (
     <footer>
-      This is a footer. I have no idea what I&apos;m going to put in here.
-      Github/portfolio link maybe.
+      Application réalisée par Clémence Fortunato
+      {' '}
+      <a href="https://github.com/CJLFortunato">GitHub</a>
     </footer>
   );
 }
