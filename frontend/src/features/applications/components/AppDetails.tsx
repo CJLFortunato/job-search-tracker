@@ -1,6 +1,7 @@
 import React from 'react';
 
 import DeleteButton from './DeleteButton';
+import EditApp from './EditApp';
 import SelectStep from './stepComponents/SelectStep';
 import { AppDetailsProps } from '../types';
 
@@ -11,6 +12,7 @@ function AppDetails(props: AppDetailsProps) {
     <dialog className="app-details">
       <article>
         <SelectStep application={app} />
+        <EditApp app={app} />
         <DeleteButton id={app._id || ''} />
         <button type="button" onClick={() => setOpen(false)}>X</button>
         <h3>

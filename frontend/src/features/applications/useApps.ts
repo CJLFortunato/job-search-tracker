@@ -6,7 +6,7 @@ import {
   updateApps,
   deleteApps,
 } from './apps.slice';
-import { Application, ApplicationCreate } from './types';
+import { ApplicationCreate, ApplicationUpdate } from './types';
 import { useAppDispatch, useAppSelector } from '../../common/hooks';
 
 function useApps() {
@@ -20,7 +20,7 @@ function useApps() {
   const createApp = (newApp: ApplicationCreate) => {
     dispatch(createApps(newApp));
   };
-  const updateApp = (updatedApp: Application) => {
+  const updateApp = (updatedApp: ApplicationUpdate) => {
     dispatch(updateApps(updatedApp));
   };
   const deleteApp = (id: string) => {

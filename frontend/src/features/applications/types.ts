@@ -68,6 +68,30 @@ export interface ApplicationCreate {
   updateddAt?: string,
 }
 
+export interface ApplicationUpdate {
+  _id: string,
+  user: string,
+  jobTitle: string,
+  companyName: string,
+  contractType: string,
+  jobLink: string,
+  companyLink: string,
+  appType: string,
+  location: string,
+  contactName: string | null,
+  coverLetter: boolean,
+  status: number,
+  steps?: {
+    apply?: Apply,
+    followUp?: FollowUp[],
+    interview?: Interview[],
+    answer?: Answer,
+  },
+  tags: string[],
+  createdAt?: string,
+  updateddAt?: string,
+}
+
 // prop types
 
 export interface State {
@@ -93,6 +117,8 @@ export interface AppCardProps {
 
 export interface AddFormProps {
   setOpenForm: Function,
+  isUpdate?: boolean,
+  app?: Application
 }
 
 export interface StepsProps {
@@ -106,4 +132,8 @@ export interface DeleteButtonProps {
 export interface AppDetailsProps {
   app: Application,
   setOpen: Function,
+}
+
+export interface EditAppProps {
+  app: Application,
 }

@@ -2,25 +2,25 @@ import React, { useState } from 'react';
 
 import useTags from 'features/tags/useTags';
 
-import { AddFormProps, ApplicationCreate, } from '../types';
+import { AddFormProps, ApplicationCreate, ApplicationUpdate } from '../types';
 import useApps from '../useApps';
 
 function AddForm(props: AddFormProps) {
-  const { setOpenForm } = props;
-  const { createApp } = useApps();
+  const { setOpenForm, isUpdate, app } = props;
+  const { createApp, updateApp } = useApps();
   const cleanForm = {
-    user: '',
-    jobTitle: '',
-    companyName: '',
-    contractType: '',
-    jobLink: '',
-    companyLink: '',
-    appType: '',
-    location: '',
-    contactName: '',
-    coverLetter: false,
-    status: 0,
-    tags: [],
+    user: app?.user || '',
+    jobTitle: app?.jobTitle || '',
+    companyName: app?.companyName || '',
+    contractType: app?.contractType || '',
+    jobLink: app?.jobLink || '',
+    companyLink: app?.companyLink || '',
+    appType: app?.appType || '',
+    location: app?.location || '',
+    contactName: app?.contactName || '',
+    coverLetter: app?.coverLetter || false,
+    status: app?.status || 0,
+    tags: app?.tags.map((t) => t._id) || [],
   };
   const { tags } = useTags();
   const [formData, setFormData] = useState<ApplicationCreate>(cleanForm);
@@ -49,8 +49,10 @@ function AddForm(props: AddFormProps) {
   React.useEffect(() => {
     console.log(formData.tags);
   }, [formData]);
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
+
     if (
       !formData.jobTitle
       || !formData.companyName
@@ -59,10 +61,23 @@ function AddForm(props: AddFormProps) {
     ) {
       return;
     }
+
+    if (isUpdate) {
+      const updatedApp: ApplicationUpdate = {
+        ...formData,
+        _id: app?._id || '',
+        tags: app
+          ? [...app.tags.map((t) => t._id), ...formData.tags]
+          : formData.tags
+      };
+      updateApp(updatedApp);
+    }
+
     createApp(formData);
     setOpenForm(false);
     setFormData(cleanForm);
   };
+
   const handleCancel = () => {
     setOpenForm(false);
     setFormData(cleanForm);
