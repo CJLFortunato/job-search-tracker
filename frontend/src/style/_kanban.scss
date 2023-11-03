@@ -1,9 +1,9 @@
 @use 'variables';
 
 @mixin column {
-  margin: 0 1%;
-  box-shadow: variables.$shadow;
+  margin: 0 .5%;
   border-radius: 15px;
+  background-color: variables.$background;
 }
 
 .btn-ctn {
@@ -30,7 +30,7 @@
     align-items: center;
 
     h2 {
-      background: linear-gradient(white, transparent);
+      background: variables.$primary;
       text-align: center;
       margin-top: 0;
       padding-top: .6rem;
@@ -38,6 +38,7 @@
       width: 100%;
       color: variables.$secondary;
       border-radius: 15px 15px 0 0;
+      font-family: 'Montserrat', sans-serif;
     }
   }
 }
@@ -106,12 +107,11 @@
 }
 
 .app-card {
-  width: 240px;
+  width: 95%;
   border-radius: 10px;
   height: 200px;
   margin: 1% auto;
-  box-shadow: variables.$shadow;
-  border-radius: 15px 60px 15px 15px;
+  box-shadow: 1px 1px 2px 0px hsla(0, 30%, 18%, 0.4);
 
   h3 {
     padding: 5%;
@@ -121,6 +121,7 @@
     margin: 0;
     width: 90%;
     color: variables.$text;
+    font-family: 'Montserrat', sans-serif;
   }
 
   h4 {

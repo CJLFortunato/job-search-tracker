@@ -6,7 +6,6 @@
   margin: 0 auto;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 10px 10px 25px 0px hsla(0, 30%, 18%, 0.4);
   border-radius: 15px;
   padding: 3%;
   background-color: white;
@@ -16,7 +15,6 @@
   flex-direction: column;
   margin-bottom: 2rem;
   width: 100%;
-  box-shadow: 10px 10px 25px 0px hsla(0, 30%, 18%, 0.4);
   border-radius: 15px;
   padding: 3%;
 }
@@ -41,23 +39,24 @@
   margin: 0 auto;
 }
 .kanban-large section {
-  margin: 0 1%;
-  box-shadow: 10px 10px 25px 0px hsla(0, 30%, 18%, 0.4);
+  margin: 0 0.5%;
   border-radius: 15px;
+  background-color: #eceded;
   width: 20%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
 }
 .kanban-large section h2 {
-  background: linear-gradient(white, transparent);
+  background: #f5b608;
   text-align: center;
   margin-top: 0;
   padding-top: 0.6rem;
   height: 3rem;
   width: 100%;
-  color: hsl(25, 85%, 60%);
+  color: #10355f;
   border-radius: 15px 15px 0 0;
+  font-family: "Montserrat", sans-serif;
 }
 
 .kanban-carousel {
@@ -87,9 +86,9 @@
   z-index: 20;
 }
 .kanban-carousel .carousel .inner section {
-  margin: 0 1%;
-  box-shadow: 10px 10px 25px 0px hsla(0, 30%, 18%, 0.4);
+  margin: 0 0.5%;
   border-radius: 15px;
+  background-color: #eceded;
   border: 1px solid green;
   width: 81vw;
   height: 93vh;
@@ -119,12 +118,11 @@
 }
 
 .app-card {
-  width: 240px;
+  width: 95%;
   border-radius: 10px;
   height: 200px;
   margin: 1% auto;
-  box-shadow: 10px 10px 25px 0px hsla(0, 30%, 18%, 0.4);
-  border-radius: 15px 60px 15px 15px;
+  box-shadow: 1px 1px 2px 0px hsla(0, 30%, 18%, 0.4);
 }
 .app-card h3 {
   padding: 5%;
@@ -132,7 +130,8 @@
   font-size: 1.05rem;
   margin: 0;
   width: 90%;
-  color: hsl(25, 35%, 10%);
+  color: #050a1e;
+  font-family: "Montserrat", sans-serif;
 }
 .app-card h4 {
   padding: 0 5%;
@@ -265,7 +264,8 @@
 }
 
 body {
-  background-color: hsl(15, 65%, 95%);
+  background-color: white;
+  font-family: "Hind", sans-serif;
 }
 
 header {
@@ -273,7 +273,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(white, transparent);
+  background: #f5b608;
 }
 header .header-ctn {
   display: flex;
@@ -285,32 +285,38 @@ header a {
   margin: 0 1rem;
   text-decoration: none;
   font-weight: bold;
-  color: hsl(42, 95%, 60%);
+  color: white;
 }
 header a:hover {
-  color: hsl(200, 85%, 70%);
+  color: #7fb0d8;
 }
 header .app-title {
   justify-self: flex-start;
   font-size: 2rem;
   margin-left: 4rem;
-  color: hsl(42, 95%, 60%);
+  color: white;
+  font-family: "Montserrat", sans-serif;
 }
 header .logout-btn {
-  color: hsl(25, 85%, 60%);
+  color: white;
   background-color: transparent;
   box-shadow: none;
   font-weight: bold;
 }
+header .logout-btn:hover {
+  color: #7fb0d8;
+  background-color: transparent;
+}
 
 .page {
-  height: 93vh;
+  min-height: 93vh;
 }
 
 h1 {
   text-align: center;
-  color: hsl(42, 95%, 60%);
+  color: #10355f;
   margin: 1rem;
+  font-family: "Montserrat", sans-serif;
 }
 
 input,
@@ -318,7 +324,7 @@ select {
   height: 2.7rem;
   border-radius: 10px;
   border: none;
-  box-shadow: 10px 10px 25px 0px hsla(0, 30%, 18%, 0.4);
+  background-color: #eceded;
 }
 
 input[type=radio] {
@@ -327,27 +333,36 @@ input[type=radio] {
 
 button {
   height: 2.5rem;
-  background-color: hsl(42, 95%, 60%);
+  background-color: #f5b608;
   border: none;
   border-radius: 20px;
   width: 10vw;
-  box-shadow: 10px 10px 25px 0px hsla(0, 30%, 18%, 0.4);
   font-weight: bold;
   color: white;
 }
 
 button:hover {
-  background-color: hsl(200, 85%, 70%);
+  background-color: #7fb0d8;
 }
 
 p,
 li {
-  color: hsl(25, 35%, 10%);
+  color: #050a1e;
 }
 
 dialog {
   display: block;
   width: 50%;
+}
+
+footer {
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f5b608;
+  padding: 1%;
+  margin-top: 1rem;
 }
 
 @media screen and (min-width: 1024px) {

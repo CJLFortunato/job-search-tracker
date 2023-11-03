@@ -5,7 +5,8 @@
 @use 'tags';
 
 body {
-  background-color: variables.$background;
+  background-color: white;
+  font-family: 'Hind', sans-serif;
 }
 
 header {
@@ -13,7 +14,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(white, transparent);
+  background: variables.$primary;
 
   .header-ctn {
     display: flex;
@@ -26,7 +27,7 @@ header {
     margin: 0 1rem;
     text-decoration: none;
     font-weight: bold;
-    color: variables.$primary;
+    color: white;
   }
 
   a:hover {
@@ -37,26 +38,32 @@ header {
     justify-self: flex-start;
     font-size: 2rem;
     margin-left: 4rem;
-    color: variables.$primary;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
   }
 
   .logout-btn {
-    color: variables.$secondary;
+    color: white;
     background-color: transparent;
     box-shadow: none;
     font-weight: bold;
+  }
+  .logout-btn:hover {
+    color: variables.$accent;
+    background-color: transparent;
   }
 }
 
 .page {
   // border: 1px solid deeppink;
-  height: 93vh;
+  min-height: 93vh;
 }
 
 h1 {
   text-align: center;
-  color: variables.$primary;
+  color: variables.$secondary;
   margin: 1rem;
+  font-family: 'Montserrat', sans-serif;
 }
 
 input,
@@ -64,7 +71,7 @@ select {
   height: 2.7rem;
   border-radius: 10px;
   border: none;
-  box-shadow: variables.$shadow;
+  background-color: variables.$background;
 }
 
 input[type="radio"] {
@@ -77,7 +84,6 @@ button {
   border: none;
   border-radius: 20px;
   width: 10vw;
-  box-shadow: variables.$shadow;
   font-weight: bold;
   color: white;
 }
@@ -95,6 +101,16 @@ dialog {
   display: block;
   width: 50%;
 
+}
+
+footer {
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: variables.$primary;
+  padding: 1%;
+  margin-top: 1rem;
 }
 
 @media screen and (min-width: 1024px) {
