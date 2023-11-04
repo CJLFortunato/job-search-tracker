@@ -1,3 +1,5 @@
+@use 'variables';
+
 .tags-ctn {
   display: flex;
   flex-flow: row wrap;
@@ -15,4 +17,49 @@
       box-shadow: none;
     }
   }
+}
+
+.select-tags {
+  // border: 1px solid green;
+  height: 6.5rem;
+  overflow: scroll;
+  margin: 0 auto;
+  width: 90%;
+  scrollbar-width: thin;
+  background-color: variables.$background;
+  border-radius: 10px;
+  padding: 1%;
+  margin-bottom: .5rem;
+
+  p {
+    margin: 0;
+  }
+
+  .tag-btn {
+    border-radius: 5px;
+    padding: 0 5px;
+    height: 1.6rem;
+    margin: 5px;
+    background-color: variables.$accent;
+  }
+
+  .tag-btn-active {
+    border-radius: 5px;
+    padding: 0 5px;
+    height: 1.6rem;
+    margin: 5px;
+    background-color: variables.$primary;
+  }
+}
+
+.select-tags::-webkit-scrollbar {
+  width: .5rem;
+}
+
+.select-tags::-webkit-scrollbar-thumb {
+  background-color: variables.$accent;
+}
+
+.select-tags::-webkit-scrollbar-corner {
+  background-color: transparent;
 }

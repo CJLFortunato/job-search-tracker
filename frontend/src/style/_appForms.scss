@@ -16,12 +16,20 @@
     padding: 2%;
     border-radius: 15px;
 
+    .tags-label {
+      margin: 0;
+      // border: 1px solid blue;
+      margin: 0 auto;
+      width: 90%;
+    }
+
     .grid-ctn {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-auto-rows: 6rem;
       align-items: center;
       justify-items: center;
+      // border: 1px solid blue;
 
       label {
         display: flex;
@@ -32,7 +40,7 @@
 
         input,
         select {
-          margin-top: .6rem;
+          // margin-top: .3rem;
           width: 90%;
           align-self: center;
         }
@@ -43,6 +51,10 @@
       // border: 1px solid blue;
       width: 90%;
       margin: 0 auto;
+
+      p {
+        margin: 0;
+      }
 
       label {
         display: flex;

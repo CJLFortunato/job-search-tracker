@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
+import SelectTags from 'features/tags/components/SelectTags';
 import useTags from 'features/tags/useTags';
 
 import { AddFormProps, ApplicationCreate, ApplicationUpdate } from '../types';
 import useApps from '../useApps';
+import { Tag } from 'features/tags/types';
 
 function AddForm(props: AddFormProps) {
   const { setOpenForm, isUpdate, app } = props;
@@ -33,13 +35,6 @@ function AddForm(props: AddFormProps) {
       });
       return;
     }
-    if (name === 'tags') {
-      setFormData({
-        ...formData,
-        tags: [...formData.tags, value],
-      });
-      return;
-    }
     setFormData({
       ...formData,
       [name]: value,
@@ -49,6 +44,13 @@ function AddForm(props: AddFormProps) {
   React.useEffect(() => {
     console.log(formData.tags);
   }, [formData]);
+
+  const handleSelectTags = (tag: Tag) => {
+    setFormData({
+      ...formData,
+      tags: [...formData.tags, tag._id],
+    });
+  };
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -85,6 +87,8 @@ function AddForm(props: AddFormProps) {
   return (
     <dialog className="add-form">
       <form onSubmit={handleSubmit}>
+        <p className="tags-label">Tags</p>
+        <SelectTags tags={tags} selectedTags={formData.tags} handleSelect={handleSelectTags} />
         <div className="grid-ctn">
           <label htmlFor="jobTitle">
             Intitulé du poste
@@ -176,21 +180,6 @@ function AddForm(props: AddFormProps) {
               onChange={handleChange}
               value={formData.contactName || ''}
             />
-          </label>
-          <label htmlFor="tags">
-            Tags
-            <select
-              name="tags"
-              id="tags"
-              onChange={handleChange}
-              value={formData.tags}
-              multiple
-            >
-              <option value="" disabled>Sélectionnez des tags</option>
-              {
-                tags.map((tag) => <option value={tag._id} key={tag._id}>{tag.label}</option>)
-              }
-            </select>
           </label>
         </div>
         <div className="radio-ctn">

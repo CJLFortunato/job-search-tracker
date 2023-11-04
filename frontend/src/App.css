@@ -192,6 +192,11 @@
   padding: 2%;
   border-radius: 15px;
 }
+.add-form form .tags-label {
+  margin: 0;
+  margin: 0 auto;
+  width: 90%;
+}
 .add-form form .grid-ctn {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -207,13 +212,15 @@
 }
 .add-form form .grid-ctn label input,
 .add-form form .grid-ctn label select {
-  margin-top: 0.6rem;
   width: 90%;
   align-self: center;
 }
 .add-form form .radio-ctn {
   width: 90%;
   margin: 0 auto;
+}
+.add-form form .radio-ctn p {
+  margin: 0;
 }
 .add-form form .radio-ctn label {
   display: flex;
@@ -261,6 +268,47 @@
   width: 2rem;
   background-color: transparent;
   box-shadow: none;
+}
+
+.select-tags {
+  height: 6.5rem;
+  overflow: scroll;
+  margin: 0 auto;
+  width: 90%;
+  scrollbar-width: thin;
+  background-color: #eceded;
+  border-radius: 10px;
+  padding: 1%;
+  margin-bottom: 0.5rem;
+}
+.select-tags p {
+  margin: 0;
+}
+.select-tags .tag-btn {
+  border-radius: 5px;
+  padding: 0 5px;
+  height: 1.6rem;
+  margin: 5px;
+  background-color: #7fb0d8;
+}
+.select-tags .tag-btn-active {
+  border-radius: 5px;
+  padding: 0 5px;
+  height: 1.6rem;
+  margin: 5px;
+  background-color: #f5b608;
+}
+
+.select-tags::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.select-tags::-webkit-scrollbar-thumb {
+  background-color: #7fb0d8;
+}
+
+.select-tags::-webkit-scrollbar-corner {
+  background-color: transparent;
 }
 
 .profile-form {

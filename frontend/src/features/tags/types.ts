@@ -25,3 +25,9 @@ export interface DisplayTagsProps {
 export interface TagChipProps {
   tag: Tag
 }
+
+export interface SelectTagsProps {
+  tags: Tag[],
+  selectedTags: string[],
+  handleSelect: Function,
+}
