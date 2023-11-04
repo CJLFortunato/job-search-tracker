@@ -17,6 +17,7 @@ export const tagPayload = Joi.array().items({
 });
 
 export const appPayload = Joi.object({
+  _id: Joi.string().optional(),
   user: Joi.any(),
   jobTitle: Joi.string().required(),
   companyName: Joi.string().required(),

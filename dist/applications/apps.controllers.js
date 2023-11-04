@@ -26,8 +26,9 @@ export default class ApplicationsControllers {
             try {
                 const newApp = yield Application.create(Object.assign(Object.assign({}, req.body), { user: req.user.id }));
                 const tags = yield addTagToApp(req.body.tags, newApp, req.user.id);
-                console.log(tags);
-                const newAppWithTags = yield Application.findByIdAndUpdate(newApp._id, Object.assign(Object.assign({}, newApp), { tags: [...newApp.tags, tags] })).populate('tags');
+                const newAppWithTags = yield Application.findByIdAndUpdate(newApp._id, Object.assign(Object.assign({}, newApp), { tags }), {
+                    new: true,
+                }).populate('tags');
                 res.status(201).json(newAppWithTags);
             }
             catch (error) {
@@ -47,10 +48,10 @@ export default class ApplicationsControllers {
                     res.status(401);
                     throw new Error('User not authorized');
                 }
-                const tags = addTagToApp(req.body.tags, app, req.user.id);
-                const updatedApp = yield Application.findByIdAndUpdate(req.params.id, Object.assign(Object.assign({}, req.body), { tags: [...app.tags, tags] }), {
+                const tags = yield addTagToApp(req.body.tags, app, req.user.id);
+                const updatedApp = yield Application.findByIdAndUpdate(req.params.id, Object.assign(Object.assign({}, req.body), { tags }), {
                     new: true,
-                });
+                }).populate('tags');
                 res.status(200).json(updatedApp);
             }
             catch (error) {

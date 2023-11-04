@@ -22,10 +22,12 @@ export default class ApplicationsControllers {
       });
 
       const tags = await addTagToApp(req.body.tags, newApp, req.user.id);
-      console.log(tags);
+
       const newAppWithTags = await Application.findByIdAndUpdate(newApp._id, {
         ...newApp,
-        tags: [...newApp.tags, tags],
+        tags,
+      }, {
+        new: true,
       }).populate('tags');
       res.status(201).json(newAppWithTags);
     } catch (error) {
@@ -45,13 +47,15 @@ export default class ApplicationsControllers {
         res.status(401);
         throw new Error('User not authorized');
       }
-      const tags = addTagToApp(req.body.tags, app, req.user.id);
+      const tags = await addTagToApp(req.body.tags, app, req.user.id);
+
       const updatedApp = await Application.findByIdAndUpdate(req.params.id, {
         ...req.body,
-        tags: [...app.tags, tags],
+        tags,
       }, {
         new: true,
-      });
+      }).populate('tags');
+
       res.status(200).json(updatedApp);
     } catch (error) {
       next(error);

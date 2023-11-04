@@ -19,7 +19,6 @@ function* workGetTags(): any {
     const response: any = yield call(TagsAPI.getTags);
     yield put(getTagsSuccess(response));
   } catch (err: any) {
-    console.log(err);
     yield put(getTagsFailure(err.message));
   }
 }

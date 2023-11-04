@@ -24,14 +24,12 @@ function UserForm(props: UserFormProps) {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log('test');
     if (formData.password2 && (formData.password !== formData.password2)) {
       console.log('mismatched passwords');
       return;
     }
     if (isLogin) {
       loginUser({ email: formData.email, password: formData.password });
-      console.log('isLogin');
       return;
     }
     registerUser({ email: formData.email, password: formData.password });

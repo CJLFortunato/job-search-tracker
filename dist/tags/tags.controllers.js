@@ -34,10 +34,8 @@ export default class TagsControllers {
     }
     static deleteTag(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log('in delete function');
             try {
                 const tag = yield Tag.findById(req.params.id);
-                console.log(tag);
                 if (!tag) {
                     res.status(400);
                     throw new Error('Goal not found');
@@ -47,7 +45,6 @@ export default class TagsControllers {
                     throw new Error('User not authorized');
                 }
                 const deletedTag = yield Tag.findByIdAndDelete(req.params.id);
-                console.log(deletedTag);
                 res.status(200).json(deletedTag);
             }
             catch (error) {

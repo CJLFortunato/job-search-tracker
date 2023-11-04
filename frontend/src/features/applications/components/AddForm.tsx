@@ -10,6 +10,7 @@ import { Tag } from 'features/tags/types';
 function AddForm(props: AddFormProps) {
   const { setOpenForm, isUpdate, app } = props;
   const { createApp, updateApp } = useApps();
+
   const cleanForm = {
     user: app?.user || '',
     jobTitle: app?.jobTitle || '',
@@ -24,8 +25,10 @@ function AddForm(props: AddFormProps) {
     status: app?.status || 0,
     tags: app?.tags.map((t) => t._id) || [],
   };
+
   const { tags } = useTags();
   const [formData, setFormData] = useState<ApplicationCreate>(cleanForm);
+
   const handleChange = (e: any) => {
     const { target: { name, value } } = e;
     if (name === 'coverLetter') {
@@ -39,13 +42,21 @@ function AddForm(props: AddFormProps) {
       ...formData,
       [name]: value,
     });
-    console.log(value);
   };
+
   React.useEffect(() => {
     console.log(formData.tags);
-  }, [formData]);
+  }, [formData.tags]);
 
   const handleSelectTags = (tag: Tag) => {
+    if (formData.tags.includes(tag._id)) {
+      const newTags = formData.tags.filter((t) => t !== tag._id);
+      setFormData({
+        ...formData,
+        tags: newTags,
+      });
+      return;
+    }
     setFormData({
       ...formData,
       tags: [...formData.tags, tag._id],
@@ -68,11 +79,10 @@ function AddForm(props: AddFormProps) {
       const updatedApp: ApplicationUpdate = {
         ...formData,
         _id: app?._id || '',
-        tags: app
-          ? [...app.tags.map((t) => t._id), ...formData.tags]
-          : formData.tags
+        tags: formData.tags
       };
       updateApp(updatedApp);
+      return;
     }
 
     createApp(formData);
@@ -207,7 +217,7 @@ function AddForm(props: AddFormProps) {
             />
           </label>
         </div>
-        <button type="submit">Ajouter</button>
+        <button type="submit">{isUpdate ? 'Modifier' : 'Ajouter'}</button>
         <button type="button" onClick={handleCancel}>Annuler</button>
       </form>
     </dialog>

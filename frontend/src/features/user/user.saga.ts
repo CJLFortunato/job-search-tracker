@@ -42,7 +42,6 @@ function* workLogin(action: any): any {
 }
 
 function* workUpdateUser(action: any): any {
-  // console.log(action.payload);
   try {
     const response: any = yield call(UserAPI.updateUser, action.payload);
     sessionStorage.setItem('user', JSON.stringify(response));

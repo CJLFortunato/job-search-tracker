@@ -24,7 +24,6 @@ class AppAPI {
   }
 
   static async updateApp (payload: any) {
-    console.log(payload);
     const response = await fetch(`http://localhost:5000/v1/api/apps/${payload._id}`, {
       method: 'PUT',
       body: JSON.stringify(payload),
@@ -40,10 +39,6 @@ class AppAPI {
   }
 
   static async deleteApp (payload: string) {
-    console.log('test265645');
-    console.log(payload);
-    console.log(typeof payload);
-    console.log(`http://localhost:5000/v1/api/apps/${payload}`);
     const response = await fetch(`http://localhost:5000/v1/api/apps/${payload}`, {
       method: 'DELETE',
       credentials: 'include',

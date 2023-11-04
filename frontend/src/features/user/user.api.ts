@@ -35,9 +35,6 @@ class UserAPI {
   }
 
   static async updateUser (payload: UpdateProps) {
-    console.log(payload);
-    console.log(payload._id);
-    console.log(`http://localhost:5000/v1/api/users/${payload._id}`);
     const response = await fetch(`http://localhost:5000/v1/api/users/${payload._id}`, {
       method: 'PUT',
       body: JSON.stringify(payload),

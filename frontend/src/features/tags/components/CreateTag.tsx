@@ -17,7 +17,6 @@ function CreateTag() {
       label: newTag,
       applications: [],
     }));
-    console.log(newTagsArray);
     createTagsFunction(newTagsArray);
     setTags('');
   };

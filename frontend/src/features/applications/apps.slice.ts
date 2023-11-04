@@ -29,7 +29,6 @@ export const appsSlice = createSlice({
     },
     getAppsFailure: (state, action) => {
       state.isLoading = false;
-      console.log(action.payload);
       state.error = action.payload;
     },
     createApps: (state, action) => {

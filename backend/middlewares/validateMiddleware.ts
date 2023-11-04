@@ -36,8 +36,8 @@ const validatePayload = async (req: Request, res: Response, next) => {
     }
     await next();
   } catch (e) {
-    console.log(e.details[0].message);
-    next(e.details[0].message);
+    // console.log(e.details[0].message);
+    throw new Error(e.details[0].message);
   }
 };
 

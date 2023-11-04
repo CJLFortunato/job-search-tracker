@@ -8,7 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 /* eslint-disable no-await-in-loop */
-// import { Application } from '../applications/types.js';
 import Tag from './tag.schema.js';
 const addTagToApp = (tags, app, userId) => __awaiter(void 0, void 0, void 0, function* () {
     const newTags = [];
@@ -16,23 +15,21 @@ const addTagToApp = (tags, app, userId) => __awaiter(void 0, void 0, void 0, fun
         const tagInDb = yield Tag.findById(tags[i]);
         if (tagInDb) {
             if (!tagInDb.applications.find((a) => a === app._id)) {
-                console.log(Object.assign(Object.assign({}, tagInDb), { applications: [...tagInDb.applications, app._id] }));
                 const newObj = {
                     _id: tagInDb._id,
                     label: tagInDb.label,
                     user: tagInDb.user,
                     applications: [...tagInDb.applications, app._id],
                 };
-                console.log('newobj');
-                console.log(newObj);
                 const updatedTag = yield Tag.findByIdAndUpdate(tagInDb._id, newObj);
-                console.log('updated tag', updatedTag);
                 newTags.push(updatedTag._id);
+            }
+            else {
+                newTags.push(tagInDb._id);
             }
         }
         else {
             const newTag = yield Tag.create(Object.assign(Object.assign({}, tags[i]), { user: userId, applications: [app._id] }));
-            console.log('new tag', newTag);
             newTags.push(newTag._id);
         }
     }

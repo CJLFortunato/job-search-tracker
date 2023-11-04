@@ -79,7 +79,6 @@ export default class UserControllers {
       const user = await User.findOne({
         email,
       });
-      // console.log(user);
 
       if (!user) {
         res.status(400);
@@ -116,7 +115,7 @@ export default class UserControllers {
         res.status(400);
         throw new Error('User not found');
       }
-      console.log(body);
+
       let updatedUser: any = {};
 
       if (body.password) {
@@ -135,7 +134,7 @@ export default class UserControllers {
           new: true,
         });
       }
-      console.log(updatedUser);
+
       const updatedUserWithoutPassword = {
         _id: updatedUser._id,
         email: updatedUser.email,

@@ -37,7 +37,6 @@ export const tagsSlice = createSlice({
     },
     createTagsSuccess: (state, action) => {
       state.isLoading = false;
-      console.log(action.payload);
       state.tags = [...state.tags, ...action.payload];
     },
     createTagsFailure: (state, action) => {

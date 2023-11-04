@@ -74,7 +74,6 @@ export default class UserControllers {
                 const user = yield User.findOne({
                     email,
                 });
-                // console.log(user);
                 if (!user) {
                     res.status(400);
                     throw new Error('Incorrect email address');
@@ -111,7 +110,6 @@ export default class UserControllers {
                     res.status(400);
                     throw new Error('User not found');
                 }
-                console.log(body);
                 let updatedUser = {};
                 if (body.password) {
                     // Hash password
@@ -126,7 +124,6 @@ export default class UserControllers {
                         new: true,
                     });
                 }
-                console.log(updatedUser);
                 const updatedUserWithoutPassword = {
                     _id: updatedUser._id,
                     email: updatedUser.email,

@@ -29,10 +29,9 @@ export default class TagsControllers {
   }
 
   static async deleteTag(req: any, res: Response, next) {
-    console.log('in delete function');
     try {
       const tag = await Tag.findById(req.params.id);
-      console.log(tag);
+
       if (!tag) {
         res.status(400);
         throw new Error('Goal not found');
@@ -44,7 +43,7 @@ export default class TagsControllers {
       }
 
       const deletedTag = await Tag.findByIdAndDelete(req.params.id);
-      console.log(deletedTag);
+
       res.status(200).json(deletedTag);
     } catch (error) {
       next(error);
