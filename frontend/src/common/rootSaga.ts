@@ -10,7 +10,6 @@ import { getTagsSaga, createTagSaga, deleteTagsSaga } from 'features/tags/tags.s
 import {
   loginSaga,
   registerSaga,
-  getUserSaga,
   updateUserSaga,
   deleteUserSaga,
   logoutSaga,
@@ -20,7 +19,6 @@ export default function* rootSaga() {
   yield fork(loginSaga);
   yield fork(logoutSaga);
   yield fork(registerSaga);
-  yield fork(getUserSaga);
   yield fork(updateUserSaga);
   yield fork(deleteUserSaga);
 

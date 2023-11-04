@@ -5,6 +5,12 @@ export const userPayload = Joi.object({
   password: Joi.string().min(8).required(),
 });
 
+export const userEditPayload = Joi.object({
+  _id: Joi.string().required(),
+  email: Joi.string().email(),
+  password: Joi.string().min(8).optional(),
+});
+
 export const tagPayload = Joi.array().items({
   label: Joi.string().required(),
   applications: Joi.array().items(Joi.any()),

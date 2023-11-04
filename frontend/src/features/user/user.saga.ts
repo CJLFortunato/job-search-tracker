@@ -1,5 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
+import { reset } from 'features/applications/apps.slice';
+
 import UserAPI from './user.api';
 import {
   register,
@@ -8,9 +10,6 @@ import {
   login,
   loginSuccess,
   loginFailure,
-  getUser,
-  getUserSuccess,
-  getUserFailure,
   updateUser,
   updateUserSuccess,
   updateUserFailure,
@@ -42,18 +41,11 @@ function* workLogin(action: any): any {
   }
 }
 
-function* workGetUser(action: any): any {
-  try {
-    const response: any = yield call(UserAPI.getUser, action.payload);
-    yield put(getUserSuccess(response));
-  } catch (err: any) {
-    yield put(getUserFailure(err.message));
-  }
-}
-
 function* workUpdateUser(action: any): any {
+  // console.log(action.payload);
   try {
     const response: any = yield call(UserAPI.updateUser, action.payload);
+    sessionStorage.setItem('user', JSON.stringify(response));
     yield put(updateUserSuccess(response));
   } catch (err: any) {
     yield put(updateUserFailure(err.message));
@@ -63,6 +55,7 @@ function* workUpdateUser(action: any): any {
 function* workDeleteUser(action: any): any {
   try {
     yield call(UserAPI.deleteUser, action.payload);
+    sessionStorage.removeItem('user');
     yield put(deleteUserSuccess());
   } catch (err: any) {
     yield put(deleteUserFailure(err.message));
@@ -73,6 +66,7 @@ function* workLogout(): any {
   try {
     const response: any = yield call(UserAPI.logout);
     sessionStorage.removeItem('user');
+    yield put(reset());
     yield put(logoutSuccess(response));
   } catch (err: any) {
     yield put(logoutFailure(err.message));
@@ -85,10 +79,6 @@ export function* registerSaga() {
 
 export function* loginSaga() {
   yield takeEvery(login, workLogin);
-}
-
-export function* getUserSaga() {
-  yield takeEvery(getUser, workGetUser);
 }
 
 export function* updateUserSaga() {

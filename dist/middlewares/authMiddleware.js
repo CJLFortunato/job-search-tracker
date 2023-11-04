@@ -12,7 +12,7 @@ import User from '../users/user.schema.js';
 const authMiddleware = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { cookies } = req;
-        const token = cookies.jwt_token;
+        const token = cookies.cleanup;
         if (token) {
             try {
                 const decoded = jwt.verify(token, process.env.JWT_SECRET);

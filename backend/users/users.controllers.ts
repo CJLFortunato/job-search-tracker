@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
 import bcrypt from 'bcrypt';
-import cookie from 'cookie';
+// import cookie from 'cookie';
 import jwt from 'jsonwebtoken';
 import { Types } from 'mongoose';
 
@@ -45,19 +45,15 @@ export default class UserControllers {
         password: hashedPassword,
       });
       if (user) {
-        const tokenCookie = cookie.serialize('cleanup', generateJWT(user.id), {
-          httpOnly: true, // il ne se transmet que via les requetes HTTP -> Impossible de le recupérer en JS avec document.cookie
-          secure: process.env.NODE_ENV === 'prod', // si true, le cookie ne sera transmis que si il y a un certificat SSL en place (imperatif sur un site en production)
-          maxAge: 21600, // durée de validité du token, en secondes
-          path: '/', // le chemin depuis l'URL racine de votre app qui indique où est valide le token
-          domain: 'localhost:3000',
+        res.cookie('cleanup', generateJWT(user.id), {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'prod',
+          path: '/',
         });
-
-        res.setHeader('Set-Cookie', tokenCookie);
-        res.status(201).json({
+        res.status(200).json({
           _id: user.id,
           email: user.email,
-        });
+        }).send();
       } else {
         res.status(400);
         throw new Error('Invalid user data');
@@ -91,7 +87,7 @@ export default class UserControllers {
       }
       const isPasswordCorrect = await bcrypt.compare(password, user.password);
       if (isPasswordCorrect) {
-        res.cookie('jwt_token', generateJWT(user.id), {
+        res.cookie('cleanup', generateJWT(user.id), {
           httpOnly: true,
           secure: process.env.NODE_ENV === 'prod',
           path: '/',
@@ -111,28 +107,40 @@ export default class UserControllers {
 
   static async modifyUser (req: Request, res: Response, next) {
     const { body, params } = req;
-    const {
-      email,
-      password,
-    } = body;
-
     const { id } = params;
 
     try {
-      if (!email || !password) {
-        res.status(400);
-        throw new Error('Please add all fields');
-      }
-
       const user = await User.findById(id);
 
       if (!user) {
         res.status(400);
         throw new Error('User not found');
       }
+      console.log(body);
+      let updatedUser: any = {};
 
-      const updatedUser = await User.findByIdAndUpdate(id, body);
-      res.status(200).json(updatedUser);
+      if (body.password) {
+        // Hash password
+        const salt = await bcrypt.genSalt(12);
+        const hashedPassword = await bcrypt.hash(body.password, salt);
+
+        updatedUser = await User.findByIdAndUpdate(id, {
+          ...body,
+          password: hashedPassword,
+        }, {
+          new: true,
+        });
+      } else {
+        updatedUser = await User.findByIdAndUpdate(id, body, {
+          new: true,
+        });
+      }
+      console.log(updatedUser);
+      const updatedUserWithoutPassword = {
+        _id: updatedUser._id,
+        email: updatedUser.email,
+      };
+      res.status(200).json(updatedUserWithoutPassword);
     } catch (error) {
       next(error);
     }
@@ -152,7 +160,11 @@ export default class UserControllers {
       }
 
       await User.findByIdAndDelete(id);
-      res.status(200);
+      res.clearCookie('cleanup', {
+        httpOnly: true,
+        secure: false,
+        path: '/',
+      }).send({});
     } catch (error) {
       next(error);
     }
@@ -179,7 +191,7 @@ export default class UserControllers {
 
   static async logout (req: Request, res: Response, next) {
     try {
-      res.clearCookie('jwt_token', {
+      res.clearCookie('cleanup', {
         httpOnly: true,
         secure: false,
         path: '/',

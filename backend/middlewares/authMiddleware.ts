@@ -5,7 +5,7 @@ import User from '../users/user.schema.js';
 const authMiddleware = async (req, res, next) => {
   try {
     const { cookies } = req;
-    const token = cookies.jwt_token;
+    const token = cookies.cleanup;
     if (token) {
       try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);

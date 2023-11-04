@@ -1,8 +1,8 @@
 // ================================== Data types
 export interface User {
-  id: string;
+  _id: string;
   email: string;
-  password: string;
+  password?: string;
 }
 
 export interface NewUser {

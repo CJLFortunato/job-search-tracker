@@ -7,8 +7,6 @@ import UsersControllers from './users.controllers.js';
 const router = express.Router();
 // GET logout current user by deleting cookie, protected
 router.route('/logout').get(authMiddleware, UsersControllers.logout);
-// GET current user, protected
-router.route('/:id').get(authMiddleware, UsersControllers.findUser);
 
 // POST register user
 router.route('/register').post(validatePayload, UsersControllers.registerUser);

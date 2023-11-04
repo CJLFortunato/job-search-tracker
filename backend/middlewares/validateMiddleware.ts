@@ -2,7 +2,12 @@ import { Request, Response } from 'express';
 
 import Joi from 'joi';
 
-import { userPayload, appPayload, tagPayload } from './payloadSchemas.js';
+import {
+  userPayload,
+  appPayload,
+  tagPayload,
+  userEditPayload,
+} from './payloadSchemas.js';
 
 const validatePayload = async (req: Request, res: Response, next) => {
   const {
@@ -10,13 +15,18 @@ const validatePayload = async (req: Request, res: Response, next) => {
   } = req;
 
   const route = req.originalUrl.split('/')[3];
+  const endpoint = req.originalUrl.split('/')[4];
   try {
     switch (route) {
       case ('apps'):
         Joi.assert(body, appPayload);
         break;
       case ('users'):
-        Joi.assert(body, userPayload);
+        if (!['login', 'logout', 'register'].includes(endpoint)) {
+          Joi.assert(body, userEditPayload);
+        } else {
+          Joi.assert(body, userPayload);
+        }
         break;
       case ('tags'):
         Joi.assert(body, tagPayload);
@@ -26,6 +36,7 @@ const validatePayload = async (req: Request, res: Response, next) => {
     }
     await next();
   } catch (e) {
+    console.log(e.details[0].message);
     next(e.details[0].message);
   }
 };

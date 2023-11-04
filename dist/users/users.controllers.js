@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import bcrypt from 'bcrypt';
-import cookie from 'cookie';
+// import cookie from 'cookie';
 import jwt from 'jsonwebtoken';
 import User from './user.schema.js';
 // Generate jwt token
@@ -42,18 +42,15 @@ export default class UserControllers {
                     password: hashedPassword,
                 });
                 if (user) {
-                    const tokenCookie = cookie.serialize('cleanup', generateJWT(user.id), {
+                    res.cookie('cleanup', generateJWT(user.id), {
                         httpOnly: true,
                         secure: process.env.NODE_ENV === 'prod',
-                        maxAge: 21600,
                         path: '/',
-                        domain: 'localhost:3000',
                     });
-                    res.setHeader('Set-Cookie', tokenCookie);
-                    res.status(201).json({
+                    res.status(200).json({
                         _id: user.id,
                         email: user.email,
-                    });
+                    }).send();
                 }
                 else {
                     res.status(400);
@@ -84,7 +81,7 @@ export default class UserControllers {
                 }
                 const isPasswordCorrect = yield bcrypt.compare(password, user.password);
                 if (isPasswordCorrect) {
-                    res.cookie('jwt_token', generateJWT(user.id), {
+                    res.cookie('cleanup', generateJWT(user.id), {
                         httpOnly: true,
                         secure: process.env.NODE_ENV === 'prod',
                         path: '/',
@@ -107,20 +104,34 @@ export default class UserControllers {
     static modifyUser(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             const { body, params } = req;
-            const { email, password, } = body;
             const { id } = params;
             try {
-                if (!email || !password) {
-                    res.status(400);
-                    throw new Error('Please add all fields');
-                }
                 const user = yield User.findById(id);
                 if (!user) {
                     res.status(400);
                     throw new Error('User not found');
                 }
-                const updatedUser = yield User.findByIdAndUpdate(id, body);
-                res.status(200).json(updatedUser);
+                console.log(body);
+                let updatedUser = {};
+                if (body.password) {
+                    // Hash password
+                    const salt = yield bcrypt.genSalt(12);
+                    const hashedPassword = yield bcrypt.hash(body.password, salt);
+                    updatedUser = yield User.findByIdAndUpdate(id, Object.assign(Object.assign({}, body), { password: hashedPassword }), {
+                        new: true,
+                    });
+                }
+                else {
+                    updatedUser = yield User.findByIdAndUpdate(id, body, {
+                        new: true,
+                    });
+                }
+                console.log(updatedUser);
+                const updatedUserWithoutPassword = {
+                    _id: updatedUser._id,
+                    email: updatedUser.email,
+                };
+                res.status(200).json(updatedUserWithoutPassword);
             }
             catch (error) {
                 next(error);
@@ -138,7 +149,11 @@ export default class UserControllers {
                     throw new Error('User not found');
                 }
                 yield User.findByIdAndDelete(id);
-                res.status(200);
+                res.clearCookie('cleanup', {
+                    httpOnly: true,
+                    secure: false,
+                    path: '/',
+                }).send({});
             }
             catch (error) {
                 next(error);
@@ -165,7 +180,7 @@ export default class UserControllers {
     static logout(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                res.clearCookie('jwt_token', {
+                res.clearCookie('cleanup', {
                     httpOnly: true,
                     secure: false,
                     path: '/',

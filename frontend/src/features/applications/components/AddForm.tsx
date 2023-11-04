@@ -182,7 +182,6 @@ function AddForm(props: AddFormProps) {
             <select
               name="tags"
               id="tags"
-              required
               onChange={handleChange}
               value={formData.tags}
               multiple

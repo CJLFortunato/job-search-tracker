@@ -39,17 +39,6 @@ export const userSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    getUser: (state, action) => {
-      state.isLoading = true;
-    },
-    getUserSuccess: (state, action) => {
-      state.isLoading = false;
-      state.user = action.payload;
-    },
-    getUserFailure: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
     updateUser: (state, action) => {
       state.isLoading = true;
     },
@@ -98,9 +87,6 @@ export const {
     login,
     loginSuccess,
     loginFailure,
-    getUser,
-    getUserSuccess,
-    getUserFailure,
     updateUser,
     updateUserSuccess,
     updateUserFailure,

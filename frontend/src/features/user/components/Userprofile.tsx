@@ -30,9 +30,10 @@ function UserProfile() {
       return;
     }
     updateUsers({
-      ...user,
+      _id: user._id,
       email: newEmail,
     });
+    setNewEmail('');
   };
 
   const handleSubmitpassword = (e: any) => {
@@ -43,8 +44,13 @@ function UserProfile() {
       return;
     }
     updateUsers({
-      ...user,
+      _id: user._id,
+      email: user.email,
       password: formData.password,
+    });
+    setFormData({
+      password: '',
+      password2: '',
     });
   };
 
@@ -101,7 +107,7 @@ function UserProfile() {
         Suppression de compte
         <hr />
       </div>
-      <DeleteButton id={user?.id || ''} />
+      <DeleteButton id={user?._id || ''} />
     </div>
   );
 }
