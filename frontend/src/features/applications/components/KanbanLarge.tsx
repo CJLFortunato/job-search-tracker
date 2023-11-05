@@ -1,23 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Column from './Column';
+import FilterBar from './FilterBar';
 import COLUMNS from '../CONSTANTS';
-import useApps from '../useApps';
+import useFilterApps from '../useFilterApps';
 
 function KanbanLarge() {
-  const { apps } = useApps();
+  const [formData, setFormData] = useState({
+    jobTitle: '',
+    companyName: '',
+    contractType: '',
+    location: '',
+    tags: [],
+  });
+  const apps = useFilterApps(formData);
+
   return (
     <div className="kanban-large">
-      {
-        COLUMNS.map((col) => (
-          <Column
-            columnData={col}
-            apps={apps.filter((app) => app.status === col.id)}
-            key={col.id}
-            isMobile={false}
-          />
-        ))
-      }
+      <FilterBar formData={formData} setFormData={setFormData} />
+      <div className="col-ctn">
+        {
+          COLUMNS.map((col) => (
+            <Column
+              columnData={col}
+              apps={apps.filter((app) => app.status === col.id)}
+              key={col.id}
+              isMobile={false}
+            />
+          ))
+        }
+      </div>
     </div>
   );
 }

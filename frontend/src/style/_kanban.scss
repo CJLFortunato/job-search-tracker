@@ -15,11 +15,19 @@
 }
 
 .kanban-large {
-  // border: 1px solid lightsalmon;
+  border: 1px solid lightsalmon;
   min-height: 80vh;
   display: none;
   width: 95%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  .col-ctn {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
 
   section {
     @include column;

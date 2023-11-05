@@ -41,8 +41,8 @@ export interface Application {
     answer?: Answer,
   },
   tags: Tag[],
-  createdAt?: string,
-  updateddAt?: string,
+  createdAt: string,
+  updateddAt: string,
 }
 
 export interface ApplicationCreate {
@@ -136,4 +136,15 @@ export interface AppDetailsProps {
 
 export interface EditAppProps {
   app: Application,
+}
+
+export interface FilterBarProps {
+  formData: {
+    jobTitle: string,
+    companyName: string,
+    contractType: string,
+    location: string,
+    tags: string[]
+  },
+  setFormData: Function
 }

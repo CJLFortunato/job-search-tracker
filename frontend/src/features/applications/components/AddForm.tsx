@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 import SelectTags from 'features/tags/components/SelectTags';
+import { Tag } from 'features/tags/types';
 import useTags from 'features/tags/useTags';
 
 import { AddFormProps, ApplicationCreate, ApplicationUpdate } from '../types';
 import useApps from '../useApps';
-import { Tag } from 'features/tags/types';
 
 function AddForm(props: AddFormProps) {
   const { setOpenForm, isUpdate, app } = props;
@@ -44,10 +44,6 @@ function AddForm(props: AddFormProps) {
     });
   };
 
-  React.useEffect(() => {
-    console.log(formData.tags);
-  }, [formData.tags]);
-
   const handleSelectTags = (tag: Tag) => {
     if (formData.tags.includes(tag._id)) {
       const newTags = formData.tags.filter((t) => t !== tag._id);
@@ -79,7 +75,7 @@ function AddForm(props: AddFormProps) {
       const updatedApp: ApplicationUpdate = {
         ...formData,
         _id: app?._id || '',
-        tags: formData.tags
+        tags: formData.tags,
       };
       updateApp(updatedApp);
       return;

@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import AddApplication from '../features/applications/components/AddApplication';
-import KanbanCarousel from '../features/applications/components/KanbanCarousel';
-import KanbanLarge from '../features/applications/components/KanbanLarge';
+import AddApplication from 'features/applications/components/AddApplication';
+import KanbanCarousel from 'features/applications/components/KanbanCarousel';
+import KanbanLarge from 'features/applications/components/KanbanLarge';
 import ManageTags from 'features/tags/components/ManageTags';
-import useUser from '../features/user/useUser';
+import useUser from 'features/user/useUser';
 
 function Dashboard() {
   const { user } = useUser();
