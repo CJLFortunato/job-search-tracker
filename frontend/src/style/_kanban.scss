@@ -1,17 +1,21 @@
 @use 'variables';
 
 @mixin column {
-  margin: 0 .5%;
   border-radius: 15px;
   background-color: variables.$background;
 }
 
 .btn-ctn {
   // border: 1px solid blue;
+  margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 0 1%;
   display: flex;
   justify-content: flex-end;
+
+  button {
+    margin-left: 1rem;
+  }
 }
 
 .kanban-large {
@@ -20,7 +24,6 @@
   display: none;
   width: 95%;
   margin: 0 auto;
-  display: flex;
   flex-direction: column;
 
   .col-ctn {
@@ -36,71 +39,67 @@
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    margin: 0 .5%;
 
-    h2 {
-      background: variables.$primary;
-      text-align: center;
-      margin-top: 0;
-      padding-top: .6rem;
-      height: 3rem;
-      width: 100%;
-      color: variables.$secondary;
-      border-radius: 15px 15px 0 0;
-      font-family: 'Montserrat', sans-serif;
-    }
   }
 }
 
+h2 {
+  background: variables.$primary;
+  text-align: center;
+  margin-top: 0;
+  padding-top: .6rem;
+  height: 3rem;
+  width: 100%;
+  color: variables.$secondary;
+  border-radius: 15px 15px 0 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .kanban-carousel {
-  border: 1px solid lightsalmon;
+  // border: 1px solid lightsalmon;
   min-height: 83vh;
   display: flex;
-  width: 95%;
+  width: 98%;
+  justify-content: space-between;
   margin: 0 auto;
 
+  button {
+    border-radius: 5px;
+    height: 4rem;
+  }
 
   .carousel {
     overflow: hidden;
-    border: 1px solid red;
+    // border: 1px solid red;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    width: 88%;
-    z-index: 20;
+    width: 80vw;
+    // z-index: 20;
 
     .inner {
       white-space: nowrap;
       transition: transform 0.3s;
-      border: 1px solid blue;
+      // border: 1px solid blue;
+      padding: 0;
       display: flex;
       align-items: flex-start;
       flex-direction: row;
-      z-index: 20;
+      // z-index: 20;
 
       section {
         @include column;
-        border: 1px solid green;
-        width: 81vw;
+        // border: 1px solid green;
+        width: 80vw;
         height: 93vh;
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
-
-        h2 {
-          background-color: rgb(255, 208, 189);
-          text-align: center;
-          margin-top: 0;
-          padding-top: .6rem;
-          height: 3rem;
-          width: 100%;
-        }
+        margin: 0;
       }
     }
-  }
-
-  button {
-    height: 3rem;
   }
 }
 
@@ -120,6 +119,7 @@
   height: 200px;
   margin: 1% auto;
   box-shadow: 1px 1px 2px 0px hsla(0, 30%, 18%, 0.4);
+  background-color: white;
 
   h3 {
     padding: 5%;
@@ -151,9 +151,9 @@
   article {
     background-color: white;
     position: absolute;
-    left: 20%;
-    top: 10%;
-    width: 60%;
+    left: 0%;
+    top: 0%;
+    width: 100%;
     height: 700px;
     padding: 2%;
     border-radius: 15px;
@@ -176,4 +176,179 @@
       list-style-type: none;
     }
   }
+}
+
+@media screen and (min-width: 1024px) {
+  .btn-ctn {
+    // border: 1px solid blue;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0 1%;
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      margin-left: 1rem;
+    }
+  }
+
+  .kanban-large {
+    border: 1px solid lightsalmon;
+    min-height: 80vh;
+    display: none;
+    width: 95%;
+    margin: 0 auto;
+    flex-direction: column;
+
+    .col-ctn {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+    }
+
+    section {
+      @include column;
+      // border: 1px solid lightsalmon;
+      width: 20%;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      margin: 0 .5%;
+    }
+  }
+
+  h2 {
+    background: variables.$primary;
+    text-align: center;
+    margin-top: 0;
+    padding-top: .6rem;
+    height: 3rem;
+    width: 100%;
+    color: variables.$secondary;
+    border-radius: 15px 15px 0 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .kanban-carousel {
+    // border: 1px solid lightsalmon;
+    min-height: 83vh;
+    display: flex;
+    width: 98%;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    button {
+      border-radius: 5px;
+      height: 4rem;
+    }
+
+    .carousel {
+      overflow: hidden;
+      // border: 1px solid red;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      width: 80vw;
+      // z-index: 20;
+
+      .inner {
+        white-space: nowrap;
+        transition: transform 0.3s;
+        // border: 1px solid blue;
+        padding: 0;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+        // z-index: 20;
+
+        section {
+          @include column;
+          // border: 1px solid green;
+          width: 80vw;
+          height: 93vh;
+          display: flex;
+          flex-flow: column nowrap;
+          align-items: center;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .column-ctn {
+    width: 100%;
+  }
+
+  .app-card-ctn {
+    width: 100%;
+    background-color: transparent;
+    // border: 1px solid coral;
+  }
+
+  .app-card {
+    width: 95%;
+    border-radius: 10px;
+    height: 200px;
+    margin: 1% auto;
+    box-shadow: 1px 1px 2px 0px hsla(0, 30%, 18%, 0.4);
+    background-color: white;
+
+    h3 {
+      padding: 5%;
+      padding-bottom: 1%;
+      // border: 1px solid coral;
+      font-size: 1.05rem;
+      margin: 0;
+      width: 90%;
+      color: variables.$text;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    h4 {
+      padding: 0 5%;
+      margin: 0;
+      color: hsl(0, 0%, 50%);
+    }
+  }
+
+  .app-details {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, 0.3);
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+
+    article {
+      background-color: white;
+      position: absolute;
+      left: 20%;
+      top: 10%;
+      width: 60%;
+      height: 700px;
+      padding: 2%;
+      border-radius: 15px;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+
+      h3 {
+        text-align: center;
+      }
+
+      button {
+        align-self: flex-end;
+      }
+
+      ul {
+        border: 1px solid seagreen;
+        width: 70%;
+        line-height: 2rem;
+        list-style-type: none;
+      }
+    }
+  }
+
 }

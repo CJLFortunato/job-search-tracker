@@ -26,10 +26,14 @@
 }
 
 .btn-ctn {
+  margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 0 1%;
   display: flex;
   justify-content: flex-end;
+}
+.btn-ctn button {
+  margin-left: 1rem;
 }
 
 .kanban-large {
@@ -38,7 +42,6 @@
   display: none;
   width: 95%;
   margin: 0 auto;
-  display: flex;
   flex-direction: column;
 }
 .kanban-large .col-ctn {
@@ -47,15 +50,16 @@
   flex-direction: row;
 }
 .kanban-large section {
-  margin: 0 0.5%;
   border-radius: 15px;
   background-color: #eceded;
   width: 20%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  margin: 0 0.5%;
 }
-.kanban-large section h2 {
+
+h2 {
   background: #f5b608;
   text-align: center;
   margin-top: 0;
@@ -68,52 +72,41 @@
 }
 
 .kanban-carousel {
-  border: 1px solid lightsalmon;
   min-height: 83vh;
   display: flex;
-  width: 95%;
+  width: 98%;
+  justify-content: space-between;
   margin: 0 auto;
+}
+.kanban-carousel button {
+  border-radius: 5px;
+  height: 4rem;
 }
 .kanban-carousel .carousel {
   overflow: hidden;
-  border: 1px solid red;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  width: 88%;
-  z-index: 20;
+  width: 80vw;
 }
 .kanban-carousel .carousel .inner {
   white-space: nowrap;
   transition: transform 0.3s;
-  border: 1px solid blue;
+  padding: 0;
   display: flex;
   align-items: flex-start;
   flex-direction: row;
-  z-index: 20;
 }
 .kanban-carousel .carousel .inner section {
-  margin: 0 0.5%;
   border-radius: 15px;
   background-color: #eceded;
-  border: 1px solid green;
-  width: 81vw;
+  width: 80vw;
   height: 93vh;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-}
-.kanban-carousel .carousel .inner section h2 {
-  background-color: rgb(255, 208, 189);
-  text-align: center;
-  margin-top: 0;
-  padding-top: 0.6rem;
-  height: 3rem;
-  width: 100%;
-}
-.kanban-carousel button {
-  height: 3rem;
+  margin: 0;
 }
 
 .column-ctn {
@@ -131,6 +124,7 @@
   height: 200px;
   margin: 1% auto;
   box-shadow: 1px 1px 2px 0px hsla(0, 30%, 18%, 0.4);
+  background-color: white;
 }
 .app-card h3 {
   padding: 5%;
@@ -159,9 +153,9 @@
 .app-details article {
   background-color: white;
   position: absolute;
-  left: 20%;
-  top: 10%;
-  width: 60%;
+  left: 0%;
+  top: 0%;
+  width: 100%;
   height: 700px;
   padding: 2%;
   border-radius: 15px;
@@ -182,21 +176,167 @@
   list-style-type: none;
 }
 
+@media screen and (min-width: 1024px) {
+  .btn-ctn {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0 1%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .btn-ctn button {
+    margin-left: 1rem;
+  }
+  .kanban-large {
+    border: 1px solid lightsalmon;
+    min-height: 80vh;
+    display: none;
+    width: 95%;
+    margin: 0 auto;
+    flex-direction: column;
+  }
+  .kanban-large .col-ctn {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .kanban-large section {
+    border-radius: 15px;
+    background-color: #eceded;
+    width: 20%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin: 0 0.5%;
+  }
+  h2 {
+    background: #f5b608;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 0.6rem;
+    height: 3rem;
+    width: 100%;
+    color: #10355f;
+    border-radius: 15px 15px 0 0;
+    font-family: "Montserrat", sans-serif;
+  }
+  .kanban-carousel {
+    min-height: 83vh;
+    display: flex;
+    width: 98%;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+  .kanban-carousel button {
+    border-radius: 5px;
+    height: 4rem;
+  }
+  .kanban-carousel .carousel {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 80vw;
+  }
+  .kanban-carousel .carousel .inner {
+    white-space: nowrap;
+    transition: transform 0.3s;
+    padding: 0;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+  .kanban-carousel .carousel .inner section {
+    border-radius: 15px;
+    background-color: #eceded;
+    width: 80vw;
+    height: 93vh;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin: 0;
+  }
+  .column-ctn {
+    width: 100%;
+  }
+  .app-card-ctn {
+    width: 100%;
+    background-color: transparent;
+  }
+  .app-card {
+    width: 95%;
+    border-radius: 10px;
+    height: 200px;
+    margin: 1% auto;
+    box-shadow: 1px 1px 2px 0px hsla(0, 30%, 18%, 0.4);
+    background-color: white;
+  }
+  .app-card h3 {
+    padding: 5%;
+    padding-bottom: 1%;
+    font-size: 1.05rem;
+    margin: 0;
+    width: 90%;
+    color: #050a1e;
+    font-family: "Montserrat", sans-serif;
+  }
+  .app-card h4 {
+    padding: 0 5%;
+    margin: 0;
+    color: hsl(0, 0%, 50%);
+  }
+  .app-details {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+  }
+  .app-details article {
+    background-color: white;
+    position: absolute;
+    left: 20%;
+    top: 10%;
+    width: 60%;
+    height: 700px;
+    padding: 2%;
+    border-radius: 15px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+  .app-details article h3 {
+    text-align: center;
+  }
+  .app-details article button {
+    align-self: flex-end;
+  }
+  .app-details article ul {
+    border: 1px solid seagreen;
+    width: 70%;
+    line-height: 2rem;
+    list-style-type: none;
+  }
+}
 .add-form {
   width: 100vw;
-  height: 100%;
+  min-height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   position: absolute;
+  border: none;
   left: 0;
   top: 0;
+  z-index: 100;
 }
 .add-form form {
   background-color: white;
-  position: absolute;
-  left: 20%;
-  top: 10%;
-  width: 60%;
-  height: 700px;
+  position: sticky;
+  left: 0;
+  top: 4rem;
+  width: 100%;
   padding: 2%;
   border-radius: 15px;
 }
@@ -206,9 +346,8 @@
   width: 90%;
 }
 .add-form form .grid-ctn {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 6rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-items: center;
 }
@@ -262,6 +401,87 @@
   width: 70%;
 }
 
+@media screen and (min-width: 1024px) {
+  .add-form {
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+  }
+  .add-form form {
+    background-color: white;
+    position: absolute;
+    left: 20%;
+    top: 10%;
+    width: 60%;
+    height: 700px;
+    padding: 2%;
+    border-radius: 15px;
+  }
+  .add-form form .tags-label {
+    margin: 0;
+    margin: 0 auto;
+    width: 90%;
+  }
+  .add-form form .grid-ctn {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 6rem;
+    align-items: center;
+    justify-items: center;
+  }
+  .add-form form .grid-ctn label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    width: 80%;
+  }
+  .add-form form .grid-ctn label input,
+  .add-form form .grid-ctn label select {
+    width: 90%;
+    align-self: center;
+  }
+  .add-form form .radio-ctn {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .add-form form .radio-ctn p {
+    margin: 0;
+  }
+  .add-form form .radio-ctn label {
+    display: flex;
+    margin-bottom: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 10%;
+  }
+  .modal {
+    background-color: white;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 700px;
+    padding: 2%;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px 10px hsla(0, 0%, 0%, 0.3);
+  }
+  .modal form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .modal form label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid blue;
+    width: 70%;
+  }
+}
 .tags-ctn {
   display: flex;
   flex-flow: row wrap;
@@ -373,23 +593,27 @@
 body {
   background-color: white;
   font-family: "Hind", sans-serif;
+  border: 1px solid dodgerblue;
 }
 
 header {
-  height: 3.5rem;
+  height: 4.5rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   background: #f5b608;
+  width: 100vw;
 }
 header .header-ctn {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  background-color: #e48b0e;
+  width: 100%;
 }
 header a {
   display: block;
-  margin: 0 1rem;
+  margin: 0 0.5rem;
   text-decoration: none;
   font-weight: bold;
   color: white;
@@ -399,9 +623,9 @@ header a:hover {
 }
 header .app-title {
   justify-self: flex-start;
-  font-size: 2rem;
-  margin-left: 4rem;
+  font-size: 1.5rem;
   color: white;
+  padding: 5px 0;
   font-family: "Montserrat", sans-serif;
 }
 header .logout-btn {
@@ -442,7 +666,7 @@ button {
   height: 2.5rem;
   background-color: #f5b608;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 0 10px;
   font-weight: bold;
   color: white;
@@ -493,6 +717,63 @@ footer a:hover {
   }
   .kanban-carousel {
     display: none;
+  }
+  header {
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f5b608;
+    width: 100vw;
+  }
+  header .header-ctn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  header a {
+    display: block;
+    margin: 0 1rem;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  header .app-title {
+    justify-self: flex-start;
+    font-size: 2rem;
+    margin-left: 4rem;
+  }
+  .page {
+    min-height: 84.3vh;
+  }
+  h1 {
+    margin: 1rem;
+  }
+  input,
+  select {
+    height: 2.7rem;
+  }
+  input[type=radio] {
+    height: 2rem;
+  }
+  button {
+    height: 2.5rem;
+    padding: 0 10px;
+  }
+  dialog {
+    display: block;
+    width: 50%;
+  }
+  footer {
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1%;
+    margin-top: 1rem;
+  }
+  footer a {
+    display: block;
+    margin-left: 0.7rem;
   }
 }
 

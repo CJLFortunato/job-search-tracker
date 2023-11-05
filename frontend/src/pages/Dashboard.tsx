@@ -15,11 +15,11 @@ function Dashboard() {
   }, [user]);
   return (
     <div className="page dashboard">
-      <h1>Vos candidatures</h1>
       <div className="btn-ctn">
         <AddApplication />
         <ManageTags />
       </div>
+      <h1>Vos candidatures</h1>
       <KanbanLarge />
       <KanbanCarousel />
     </div>

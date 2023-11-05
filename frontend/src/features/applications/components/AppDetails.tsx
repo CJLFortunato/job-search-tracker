@@ -7,6 +7,7 @@ import { AppDetailsProps } from '../types';
 
 function AppDetails(props: AppDetailsProps) {
   const { app, setOpen } = props;
+  console.log('open');
   return (
     <dialog className="app-details">
       <article>

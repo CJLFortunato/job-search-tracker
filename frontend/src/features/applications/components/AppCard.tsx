@@ -7,6 +7,9 @@ import { AppCardProps } from '../types';
 function Appcard(props: AppCardProps) {
   const { app, index, isMobile } = props;
   const [open, setOpen] = useState(false);
+  React.useEffect(() => {
+    console.log(open);
+  }, [open]);
   return (
     <div className="app-card-ctn">
       {
@@ -18,6 +21,7 @@ function Appcard(props: AppCardProps) {
               onKeyDown={() => setOpen(true)}
               role="button"
               tabIndex={0}
+              onTouchEnd={() => setOpen(true)}
             >
               <h3>
                 {app.jobTitle}
