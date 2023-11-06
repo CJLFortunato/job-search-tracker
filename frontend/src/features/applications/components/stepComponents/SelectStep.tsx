@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { StepsProps } from 'features/applications/types';
 
@@ -9,13 +9,19 @@ import InterviewStep from './InterviewStep';
 
 function SelectStep(props: StepsProps) {
   const { application } = props;
+  const [open, setOpen] = useState(false);
   return (
     <div>
-      <button type="button">A postuler</button>
-      <ApplyStep application={application} />
-      <FollowUpStep application={application} />
-      <InterviewStep application={application} />
-      <AnswerStep application={application} />
+      <button type="button" onClick={() => setOpen(true)}>Etapes</button>
+      {open && (
+        <>
+          <button type="button">A postuler</button>
+          <ApplyStep application={application} />
+          <FollowUpStep application={application} />
+          <InterviewStep application={application} />
+          <AnswerStep application={application} />
+        </>
+      )}
     </div>
   );
 }
