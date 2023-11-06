@@ -48,4 +48,7 @@ export const appPayload = Joi.object({
     },
   },
   tags: Joi.array().items(Joi.any()),
+  createdAt: Joi.string().optional(),
+  updatedAt: Joi.string().optional(),
+  __v: Joi.any().optional(),
 });
