@@ -5,7 +5,7 @@
     display: flex;
     // border: 1px solid blue;
     flex-direction: column;
-    width: 30%;
+    width: 90%;
     margin: 0 auto;
     justify-content: space-between;
     align-items: center;
@@ -27,6 +27,40 @@
         margin-bottom: 0.5rem;
         width: 90%;
         align-self: center;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .user-form {
+    form {
+      display: flex;
+      // border: 1px solid blue;
+      flex-direction: column;
+      width: 30%;
+      margin: 0 auto;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 15px;
+      padding: 3%;
+      background-color: white;
+
+      label {
+        display: flex;
+        // border: 1px solid blue;
+        flex-direction: column;
+        margin-bottom: 2rem;
+        width: 100%;
+        border-radius: 15px;
+        padding: 3%;
+
+        input {
+          margin-top: 1rem;
+          margin-bottom: 0.5rem;
+          width: 90%;
+          align-self: center;
+        }
       }
     }
   }

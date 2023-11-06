@@ -3,19 +3,19 @@
 .tags-ctn {
   display: flex;
   flex-flow: row wrap;
+}
 
-  p {
-    display: inline-block;
-    // border: 1px solid blue;
-    margin: .5rem;
-    background-color: darkorange;
-    border-radius: 10px;
+.tag-chip {
+  display: inline-block;
+  // border: 1px solid blue;
+  margin: .5rem;
+  background-color: variables.$accent;
+  border-radius: 10px;
 
-    button {
-      width: 2rem;
-      background-color: transparent;
-      box-shadow: none;
-    }
+  button {
+    width: 2rem;
+    background-color: transparent;
+    box-shadow: none;
   }
 }
 

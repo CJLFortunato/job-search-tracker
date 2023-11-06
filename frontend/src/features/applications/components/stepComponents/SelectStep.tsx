@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import COLUMNS from 'features/applications/CONSTANTS';
 import { StepsProps } from 'features/applications/types';
 
 import AnswerStep from './AnswerStep';
@@ -12,15 +13,23 @@ function SelectStep(props: StepsProps) {
   const [open, setOpen] = useState(false);
   return (
     <div>
-      <button type="button" onClick={() => setOpen(true)}>Etapes</button>
+      <button
+        type="button"
+        onClick={() => setOpen((prev) => !prev)}
+        className="select-step-btn"
+      >
+        {
+          COLUMNS.find((col) => col.id === application.status)?.label
+        }
+      </button>
       {open && (
-        <>
-          <button type="button">A postuler</button>
+        <div className="select-menu">
+          <button type="button" className="select-option">A postuler</button>
           <ApplyStep application={application} />
           <FollowUpStep application={application} />
           <InterviewStep application={application} />
           <AnswerStep application={application} />
-        </>
+        </div>
       )}
     </div>
   );

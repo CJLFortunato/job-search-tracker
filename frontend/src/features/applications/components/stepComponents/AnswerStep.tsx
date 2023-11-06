@@ -40,6 +40,7 @@ function AnswerStep(props: StepsProps) {
       <button
         onClick={() => setOpen(true)}
         type="button"
+        className="select-option"
       >
         Réponse de l&apos;entreprise
       </button>

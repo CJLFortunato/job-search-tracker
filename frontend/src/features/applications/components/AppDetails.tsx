@@ -1,5 +1,7 @@
 import React from 'react';
 
+import TagChip from 'features/tags/components/TagChip';
+
 import DeleteButton from './DeleteButton';
 import EditApp from './EditApp';
 import SelectStep from './stepComponents/SelectStep';
@@ -11,10 +13,12 @@ function AppDetails(props: AppDetailsProps) {
   return (
     <dialog className="app-details">
       <article>
-        <SelectStep application={app} />
-        <EditApp app={app} />
-        <DeleteButton id={app._id || ''} />
-        <button type="button" onClick={() => setOpen(false)}>X</button>
+        <div className="actions-ctn">
+          <SelectStep application={app} />
+          <EditApp app={app} />
+          <DeleteButton id={app._id || ''} />
+          <button type="button" onClick={() => setOpen(false)}>X</button>
+        </div>
         <h3>
           <a href={app.jobLink}>{app.jobTitle}</a>
           {' - '}
@@ -22,33 +26,33 @@ function AppDetails(props: AppDetailsProps) {
         </h3>
         <ul>
           <li>
-            Type de contrat:
+            {
+              app.tags.map((tag) => <TagChip key={tag._id} tag={tag} />)
+            }
+          </li>
+          <li>
+            <strong>Type de contrat: </strong>
             {app.contractType}
           </li>
           <li>
-            Localisation:
+            <strong>Localisation: </strong>
             {app.location}
           </li>
           <li>
-            Contact:
+            <strong>Contact: </strong>
             {app.contactName || 'Pas de contact'}
           </li>
           <li>
-            Type d&apos;application:
+            <strong>Type d&apos;application: </strong>
             {app.appType}
           </li>
           <li>
-            Lettre de motivation obligatoire:
+            <strong>Lettre de motivation obligatoire: </strong>
             {app.coverLetter ? 'Oui' : 'Non'}
           </li>
           <li>
-            Annonce sauvegardée le:
+            <strong>Annonce sauvegardée le: </strong>
             {new Date(app.createdAt || '').toLocaleDateString()}
-          </li>
-          <li>
-            {
-              app.tags.map((tag) => <p key={tag._id}>{tag.label}</p>)
-            }
           </li>
         </ul>
       </article>

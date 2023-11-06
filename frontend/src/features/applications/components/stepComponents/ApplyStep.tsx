@@ -37,7 +37,13 @@ function ApplyStep(props: StepsProps) {
 
   return (
     <>
-      <button type="button" onClick={() => setOpen(true)}>J&apos;ai postulé</button>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="select-option"
+      >
+        J&apos;ai postulé
+      </button>
       {open && (
         <div className="modal">
           <h2>Informations de candidature</h2>

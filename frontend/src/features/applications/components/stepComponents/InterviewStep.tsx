@@ -22,7 +22,7 @@ function InterviewStep(props: StepsProps) {
     });
   };
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     const updatedStep = application.steps?.followUp
       ? [...application.steps.followUp]
@@ -43,6 +43,7 @@ function InterviewStep(props: StepsProps) {
       <button
         onClick={() => setOpen(true)}
         type="button"
+        className="select-option"
       >
         J&apos;ai eu un entretien
       </button>

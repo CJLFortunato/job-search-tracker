@@ -43,6 +43,7 @@ function FollowUpStep(props: StepsProps) {
       <button
         onClick={() => setOpen(true)}
         type="button"
+        className="select-option"
       >
         J&apos;ai relancé
       </button>

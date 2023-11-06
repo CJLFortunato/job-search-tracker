@@ -151,10 +151,16 @@ footer {
   header {
     height: 3.5rem;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     background: variables.$primary;
     width: 100vw;
+
+    .header-ctn {
+      background-color: transparent;
+      width: 25%;
+    }
 
     .header-ctn {
       display: flex;
