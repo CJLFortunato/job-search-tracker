@@ -14,7 +14,7 @@ function AppDetails(props: AppDetailsProps) {
     <dialog className="app-details">
       <article>
         <div className="actions-ctn">
-          <SelectStep application={app} />
+          <SelectStep application={app} setOpenDialog={setOpen} />
           <EditApp app={app} />
           <DeleteButton id={app._id || ''} />
           <button type="button" onClick={() => setOpen(false)}>X</button>

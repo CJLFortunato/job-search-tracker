@@ -25,10 +25,10 @@ function SelectStep(props: StepsProps) {
       {open && (
         <div className="select-menu">
           <button type="button" className="select-option">A postuler</button>
-          <ApplyStep application={application} />
-          <FollowUpStep application={application} />
-          <InterviewStep application={application} />
-          <AnswerStep application={application} />
+          <ApplyStep application={application} setOpenDialog={setOpen} />
+          <FollowUpStep application={application} setOpenDialog={setOpen} />
+          <InterviewStep application={application} setOpenDialog={setOpen} />
+          <AnswerStep application={application} setOpenDialog={setOpen} />
         </div>
       )}
     </div>

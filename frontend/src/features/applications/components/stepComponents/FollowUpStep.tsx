@@ -5,7 +5,7 @@ import { updateApps } from 'features/applications/apps.slice';
 import { StepsProps } from 'features/applications/types';
 
 function FollowUpStep(props: StepsProps) {
-  const { application } = props;
+  const { application, setOpenDialog } = props;
   const initForm = {
     date: '',
     type: '',
@@ -36,6 +36,7 @@ function FollowUpStep(props: StepsProps) {
       },
     }));
     setOpen(false);
+    if (setOpenDialog) setOpenDialog(false);
   };
 
   return (

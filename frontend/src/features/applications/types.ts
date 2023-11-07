@@ -122,7 +122,8 @@ export interface AddFormProps {
 }
 
 export interface StepsProps {
-  application: Application
+  application: Application,
+  setOpenDialog?: Function,
 }
 
 export interface DeleteButtonProps {
