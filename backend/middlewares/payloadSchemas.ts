@@ -30,22 +30,22 @@ export const appPayload = Joi.object({
   coverLetter: Joi.boolean().required(),
   status: Joi.number().integer(),
   steps: {
-    apply: {
+    apply: Joi.object({
       date: Joi.string(),
       type: Joi.string(),
-    },
-    followUp: [{
+    }),
+    followUp: Joi.array().items(Joi.object({
       date: Joi.string(),
       type: Joi.string(),
-    }],
-    interview: [{
+    })),
+    interview: Joi.array().items(Joi.object({
       date: Joi.string(),
       type: Joi.string(),
-    }],
-    answer: {
+    })),
+    answer: Joi.object({
       date: Joi.string(),
       outcome: Joi.string(),
-    },
+    }),
   },
   tags: Joi.array().items(Joi.any()),
   createdAt: Joi.string().optional(),
