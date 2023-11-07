@@ -13,7 +13,10 @@ function DeleteButton(props: DeleteButtonProps) {
   };
   return (
     <>
-      <button type="button" onClick={() => setOpen(true)}>Supprimer</button>
+      <button type="button" onClick={() => setOpen(true)}>
+        <i className="fa-solid fa-xmark" />
+        Supprimer
+      </button>
       {open && (
         <div className="modal">
           <p>Êtes-vous sûr(e) de vouloir supprimer cette candidature ?</p>

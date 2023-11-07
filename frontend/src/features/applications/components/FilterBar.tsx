@@ -40,7 +40,10 @@ function FilterBar(props: FilterBarProps) {
   const { tags } = useTags();
   return (
     <div>
-      <button type="button" onClick={() => setOpen((prev) => !prev)}>Filtres</button>
+      <button type="button" onClick={() => setOpen((prev) => !prev)}>
+        <i className="fa-solid fa-filter" />
+        Filtres
+      </button>
       {
         open && (
           <form>

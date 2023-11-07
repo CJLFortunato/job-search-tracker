@@ -9,7 +9,9 @@ function TagChip(props: TagChipProps) {
   return (
     <p className="tag-chip">
       {tag.label}
-      <button type="button" onClick={() => deleteTag(tag._id)}>X</button>
+      <button type="button" onClick={() => deleteTag(tag._id)}>
+        <i className="fa-solid fa-xmark" />
+      </button>
     </p>
   );
 }

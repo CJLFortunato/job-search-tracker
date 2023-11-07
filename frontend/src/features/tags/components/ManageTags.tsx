@@ -10,6 +10,7 @@ function ManageTags() {
   return (
     <div>
       <button type="button" onClick={() => setOpen(true)}>
+        <i className="fa-solid fa-tags" />
         Gérer les tags
       </button>
       {

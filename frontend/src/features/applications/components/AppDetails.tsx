@@ -17,7 +17,9 @@ function AppDetails(props: AppDetailsProps) {
           <SelectStep application={app} setOpenDialog={setOpen} />
           <EditApp app={app} />
           <DeleteButton id={app._id || ''} />
-          <button type="button" onClick={() => setOpen(false)}>X</button>
+          <button type="button" onClick={() => setOpen(false)}>
+            <i className="fa-solid fa-xmark" />
+          </button>
         </div>
         <h3>
           <a href={app.jobLink}>{app.jobTitle}</a>

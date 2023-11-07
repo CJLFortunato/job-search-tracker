@@ -21,6 +21,7 @@ function SelectStep(props: StepsProps) {
         {
           COLUMNS.find((col) => col.id === application.status)?.label
         }
+        <i className="fa-solid fa-chevron-down" />
       </button>
       {open && (
         <div className="select-menu">
