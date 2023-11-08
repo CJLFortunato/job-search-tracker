@@ -1,5 +1,7 @@
+import { ApplicationCreate, ApplicationUpdate } from './types';
+
 class AppAPI {
-  static async createApp (payload: any) {
+  static async createApp (payload: ApplicationCreate) {
     const response = await fetch('http://localhost:5000/v1/api/apps', {
       method: 'POST',
       body: JSON.stringify(payload),
@@ -23,7 +25,7 @@ class AppAPI {
     return data;
   }
 
-  static async updateApp (payload: any) {
+  static async updateApp (payload: ApplicationUpdate) {
     const response = await fetch(`http://localhost:5000/v1/api/apps/${payload._id}`, {
       method: 'PUT',
       body: JSON.stringify(payload),

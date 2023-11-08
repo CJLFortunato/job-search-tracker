@@ -34,6 +34,7 @@ function FollowUpStep(props: StepsProps) {
         ...application.steps,
         followUp: updatedStep,
       },
+      tags: application.tags.map((t) => t._id),
     }));
     setOpen(false);
     if (setOpenDialog) setOpenDialog(false);

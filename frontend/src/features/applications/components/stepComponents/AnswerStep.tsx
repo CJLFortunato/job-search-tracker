@@ -8,7 +8,7 @@ function AnswerStep(props: StepsProps) {
   const { application, setOpenDialog } = props;
   const initForm = {
     date: '',
-    answer: '',
+    outcome: '',
   };
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState(initForm);
@@ -31,6 +31,7 @@ function AnswerStep(props: StepsProps) {
         ...application.steps,
         answer: formData,
       },
+      tags: application.tags.map((t) => t._id),
     }));
     setOpen(false);
     if (setOpenDialog) setOpenDialog(false);
@@ -61,7 +62,7 @@ function AnswerStep(props: StepsProps) {
             </label>
             <label htmlFor="answer">
               Réponse
-              <select name="answer" id="answer" value={formData.answer} onChange={handleChange}>
+              <select name="answer" id="answer" value={formData.outcome} onChange={handleChange}>
                 <option value="">Réponse</option>
                 <option value="yes">Candidature acceptée</option>
                 <option value="no">Candidature rejetée</option>

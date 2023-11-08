@@ -34,6 +34,7 @@ function InterviewStep(props: StepsProps) {
         ...application.steps,
         interview: updatedStep,
       },
+      tags: application.tags.map((t) => t._id),
     }));
     setOpen(false);
     if (setOpenDialog) setOpenDialog(false);

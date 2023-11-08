@@ -1,5 +1,7 @@
+import { NewTag } from './types';
+
 class TagsAPI {
-  static async createTags (payload: any[]) {
+  static async createTags (payload: NewTag[]) {
     const response = await fetch('http://localhost:5000/v1/api/tags', {
       method: 'POST',
       body: JSON.stringify(payload),

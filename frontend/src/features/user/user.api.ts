@@ -1,10 +1,12 @@
+import { NewUser } from './types';
+
 interface UpdateProps {
   _id: string,
   email: string,
 }
 
 class UserAPI {
-  static async register (payload: any) {
+  static async register (payload: NewUser) {
     const response = await fetch('http://localhost:5000/v1/api/users/register', {
       method: 'POST',
       body: JSON.stringify(payload),
@@ -19,7 +21,7 @@ class UserAPI {
     return data;
   }
 
-  static async login (payload: any) {
+  static async login (payload: NewUser) {
     const response = await fetch('http://localhost:5000/v1/api/users/login', {
       method: 'POST',
       body: JSON.stringify(payload),

@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   createSlice,
+  PayloadAction,
 } from '@reduxjs/toolkit';
 
-import { State } from './types';
+import { State, Tag, NewTag } from './types';
 
 const initialState: State = {
   tags: [],
@@ -23,34 +24,34 @@ export const tagsSlice = createSlice({
     getTags: (state) => {
       state.isLoading = true;
     },
-    getTagsSuccess: (state, action) => {
+    getTagsSuccess: (state, action: PayloadAction<Tag[]>) => {
       state.isLoading = false;
       state.tags = action.payload;
     },
-    getTagsFailure: (state, action) => {
+    getTagsFailure: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       console.log(action.payload);
       state.error = action.payload;
     },
-    createTags: (state, action) => {
+    createTags: (state, action: PayloadAction<NewTag[]>) => {
       state.isLoading = true;
     },
-    createTagsSuccess: (state, action) => {
+    createTagsSuccess: (state, action: PayloadAction<Tag[]>) => {
       state.isLoading = false;
       state.tags = [...state.tags, ...action.payload];
     },
-    createTagsFailure: (state, action) => {
+    createTagsFailure: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = action.payload;
     },
-    deleteTags: (state, action) => {
+    deleteTags: (state, action: PayloadAction<string>) => {
       state.isLoading = true;
     },
-    deleteTagsSuccess: (state, action) => {
+    deleteTagsSuccess: (state, action: PayloadAction<Tag>) => {
       state.isLoading = false;
       state.tags = state.tags.filter((tag) => tag._id !== action.payload._id);
     },
-    deleteTagsFailure: (state, action) => {
+    deleteTagsFailure: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = action.payload;
     },

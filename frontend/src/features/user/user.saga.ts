@@ -1,3 +1,4 @@
+import { PayloadAction } from '@reduxjs/toolkit';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 import { reset } from 'features/applications/apps.slice';
@@ -20,10 +21,11 @@ import {
   logoutSuccess,
   logoutFailure,
 } from './user.slice';
+import { NewUser, User } from './types';
 
-function* workRegister(action: any): any {
+function* workRegister(action: PayloadAction<NewUser>): any {
   try {
-    const response: any = yield call(UserAPI.register, action.payload);
+    const response: User = yield call(UserAPI.register, action.payload);
     sessionStorage.setItem('user', JSON.stringify(response));
     yield put(registerSuccess(response));
   } catch (err: any) {
@@ -31,9 +33,9 @@ function* workRegister(action: any): any {
   }
 }
 
-function* workLogin(action: any): any {
+function* workLogin(action: PayloadAction<NewUser>): any {
   try {
-    const response: any = yield call(UserAPI.login, action.payload);
+    const response: User = yield call(UserAPI.login, action.payload);
     sessionStorage.setItem('user', JSON.stringify(response));
     yield put(loginSuccess(response));
   } catch (err: any) {
@@ -41,9 +43,9 @@ function* workLogin(action: any): any {
   }
 }
 
-function* workUpdateUser(action: any): any {
+function* workUpdateUser(action: PayloadAction<User>): any {
   try {
-    const response: any = yield call(UserAPI.updateUser, action.payload);
+    const response: User = yield call(UserAPI.updateUser, action.payload);
     sessionStorage.setItem('user', JSON.stringify(response));
     yield put(updateUserSuccess(response));
   } catch (err: any) {
@@ -51,7 +53,7 @@ function* workUpdateUser(action: any): any {
   }
 }
 
-function* workDeleteUser(action: any): any {
+function* workDeleteUser(action: PayloadAction<string>): any {
   try {
     yield call(UserAPI.deleteUser, action.payload);
     sessionStorage.removeItem('user');

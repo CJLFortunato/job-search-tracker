@@ -31,6 +31,7 @@ function ApplyStep(props: StepsProps) {
         ...application.steps,
         apply: formData,
       },
+      tags: application.tags.map((t) => t._id),
     }));
     setOpen(false);
     if (setOpenDialog) setOpenDialog(false);

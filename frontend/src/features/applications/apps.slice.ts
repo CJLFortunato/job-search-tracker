@@ -1,9 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   createSlice,
+  PayloadAction,
 } from '@reduxjs/toolkit';
 
-import { Application, State } from './types';
+import {
+  Application,
+  State,
+  ApplicationCreate,
+  ApplicationUpdate,
+} from './types';
 
 const initialState: State = {
   apps: [],
@@ -23,45 +29,45 @@ export const appsSlice = createSlice({
     getApps: (state) => {
       state.isLoading = true;
     },
-    getAppsSuccess: (state, action) => {
+    getAppsSuccess: (state, action: PayloadAction<Application[]>) => {
       state.isLoading = false;
       state.apps = action.payload;
     },
-    getAppsFailure: (state, action) => {
+    getAppsFailure: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = action.payload;
     },
-    createApps: (state, action) => {
+    createApps: (state, action: PayloadAction<ApplicationCreate>) => {
       state.isLoading = true;
     },
-    createAppsSuccess: (state, action) => {
+    createAppsSuccess: (state, action: PayloadAction<Application>) => {
       state.isLoading = false;
       state.apps.push(action.payload);
     },
-    createAppsFailure: (state, action) => {
+    createAppsFailure: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = action.payload;
     },
-    updateApps: (state, action) => {
+    updateApps: (state, action: PayloadAction<ApplicationUpdate>) => {
       state.isLoading = true;
     },
-    updateAppsSuccess: (state, action) => {
+    updateAppsSuccess: (state, action: PayloadAction<Application>) => {
       state.isLoading = false;
       const remainingApps = state.apps.filter((app) => app._id !== action.payload._id);
       state.apps = [...remainingApps, action.payload];
     },
-    updateAppsFailure: (state, action) => {
+    updateAppsFailure: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = action.payload;
     },
-    deleteApps: (state, action) => {
+    deleteApps: (state, action: PayloadAction<string>) => {
       state.isLoading = true;
     },
-    deleteAppsSuccess: (state, action) => {
+    deleteAppsSuccess: (state, action: PayloadAction<Application>) => {
       state.isLoading = false;
       state.apps = state.apps.filter((app) => app._id !== action.payload._id);
     },
-    deleteAppsFailure: (state, action) => {
+    deleteAppsFailure: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = action.payload;
     },
