@@ -6,7 +6,7 @@ import { Tag as TagType } from './types.js';
 export default class TagsControllers {
   static async getTags(req: any, res: Response, next) {
     try {
-      const tags = await Tag.find({ user: req.user.id });
+      const tags: TagType[] = await Tag.find({ user: req.user.id });
 
       res.status(200).json(tags);
     } catch (error) {
@@ -30,7 +30,7 @@ export default class TagsControllers {
 
   static async deleteTag(req: any, res: Response, next) {
     try {
-      const tag = await Tag.findById(req.params.id);
+      const tag: TagType = await Tag.findById(req.params.id);
 
       if (!tag) {
         res.status(400);
@@ -42,7 +42,7 @@ export default class TagsControllers {
         throw new Error('User not authorized');
       }
 
-      const deletedTag = await Tag.findByIdAndDelete(req.params.id);
+      const deletedTag: TagType = await Tag.findByIdAndDelete(req.params.id);
 
       res.status(200).json(deletedTag);
     } catch (error) {

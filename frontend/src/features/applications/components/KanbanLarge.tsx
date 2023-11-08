@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Column from './Column';
 import FilterBar from './FilterBar';
-import COLUMNS from '../CONSTANTS';
+import { COLUMNS } from '../CONSTANTS';
 import useFilterApps from '../useFilterApps';
 
 function KanbanLarge() {

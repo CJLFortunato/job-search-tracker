@@ -1,12 +1,15 @@
 import { Response } from 'express';
 
+import { Types } from 'mongoose';
+
 import addTagToApp from '../tags/tag.crud.js';
 import Application from './apps.schema.js';
+import { Application as AppType } from './types.js';
 
 export default class ApplicationsControllers {
   static async getApps(req: any, res: Response, next) {
     try {
-      const apps = await Application.find({ user: req.user.id }).populate('tags').exec();
+      const apps: AppType[] = await Application.find({ user: req.user.id }).populate('tags').exec();
 
       res.status(200).json(apps);
     } catch (error) {
@@ -16,14 +19,14 @@ export default class ApplicationsControllers {
 
   static async createApp(req: any, res: Response, next) {
     try {
-      const newApp = await Application.create({
+      const newApp: AppType = await Application.create({
         ...req.body,
         user: req.user.id,
       });
 
-      const tags = await addTagToApp(req.body.tags, newApp, req.user.id);
+      const tags: Types.ObjectId[] = await addTagToApp(req.body.tags, newApp, req.user.id);
 
-      const newAppWithTags = await Application.findByIdAndUpdate(newApp._id, {
+      const newAppWithTags: AppType = await Application.findByIdAndUpdate(newApp._id, {
         ...newApp,
         tags,
       }, {
@@ -37,7 +40,7 @@ export default class ApplicationsControllers {
 
   static async updateApp(req: any, res: Response, next) {
     try {
-      const app = await Application.findById(req.params.id);
+      const app: AppType = await Application.findById(req.params.id);
       if (!app) {
         res.status(400);
         throw new Error('Application not found');
@@ -47,9 +50,9 @@ export default class ApplicationsControllers {
         res.status(401);
         throw new Error('User not authorized');
       }
-      const tags = await addTagToApp(req.body.tags, app, req.user.id);
+      const tags: Types.ObjectId[] = await addTagToApp(req.body.tags, app, req.user.id);
 
-      const updatedApp = await Application.findByIdAndUpdate(req.params.id, {
+      const updatedApp: AppType = await Application.findByIdAndUpdate(req.params.id, {
         ...req.body,
         tags,
       }, {
@@ -64,7 +67,7 @@ export default class ApplicationsControllers {
 
   static async deleteApp(req: any, res: Response, next) {
     try {
-      const app = await Application.findById(req.params.id);
+      const app: AppType = await Application.findById(req.params.id);
 
       if (!app) {
         res.status(400);
@@ -76,7 +79,7 @@ export default class ApplicationsControllers {
         throw new Error('User not authorized');
       }
 
-      const deletedApp = await Application.findByIdAndDelete(req.params.id);
+      const deletedApp: AppType = await Application.findByIdAndDelete(req.params.id);
       res.status(200).json(deletedApp);
     } catch (error) {
       next(error);

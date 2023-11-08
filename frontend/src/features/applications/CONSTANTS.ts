@@ -1,4 +1,4 @@
-const COLUMNS = [
+export const COLUMNS = [
   {
     id: 0,
     label: 'A postuler',
@@ -21,4 +21,11 @@ const COLUMNS = [
   },
 ];
 
-export default COLUMNS;
+export const CONTRACT_TYPE = {
+  cdi: 'CDI',
+  cdd: 'CDD',
+  stage: 'Stage',
+  alternance: 'Alternance',
+  interim: 'Intérim',
+  autre: 'Autre',
+};

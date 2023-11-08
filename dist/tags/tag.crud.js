@@ -7,7 +7,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-/* eslint-disable no-await-in-loop */
 import Tag from './tag.schema.js';
 const addTagToApp = (tags, app, userId) => __awaiter(void 0, void 0, void 0, function* () {
     const newTags = [];

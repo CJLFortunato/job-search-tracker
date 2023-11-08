@@ -5,6 +5,7 @@ import TagChip from 'features/tags/components/TagChip';
 import DeleteButton from './DeleteButton';
 import EditApp from './EditApp';
 import SelectStep from './stepComponents/SelectStep';
+import { CONTRACT_TYPE } from '../CONSTANTS';
 import { AppDetailsProps } from '../types';
 
 function AppDetails(props: AppDetailsProps) {
@@ -34,7 +35,7 @@ function AppDetails(props: AppDetailsProps) {
           </li>
           <li>
             <strong>Type de contrat: </strong>
-            {app.contractType}
+            {CONTRACT_TYPE[app.contractType as keyof typeof CONTRACT_TYPE]}
           </li>
           <li>
             <strong>Localisation: </strong>

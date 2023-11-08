@@ -34,9 +34,10 @@ export interface Application {
   status: number,
   steps: {
     apply: Apply,
-    followUp: FollowUp,
-    interview: Interview,
+    followUp: FollowUp[],
+    interview: Interview[],
     answer: Answer,
   },
   tags: Types.ObjectId[],
+  _id?: Types.ObjectId,
 }

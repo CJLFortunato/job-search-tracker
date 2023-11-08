@@ -18,14 +18,14 @@ function DeleteButton(props: DeleteButtonProps) {
         Supprimer
       </button>
       {open && (
-        <div className="modal">
+        <dialog className="modal-delete">
           <p>Êtes-vous sûr(e) de vouloir supprimer cette candidature ?</p>
           <p className="alert">Vous ne pourrez pas revenir en arrière!</p>
-          <div>
+          <div className="btn-ctn">
             <button type="button" onClick={handleDelete}>Supprimer</button>
             <button type="button" onClick={() => setOpen(false)}>Annuler</button>
           </div>
-        </div>
+        </dialog>
       )}
     </>
   );

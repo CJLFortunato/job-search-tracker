@@ -3,6 +3,7 @@ import { Draggable } from 'react-beautiful-dnd';
 
 import AppDetails from './AppDetails';
 import { AppCardProps } from '../types';
+import { CONTRACT_TYPE } from '../CONSTANTS';
 
 function Appcard(props: AppCardProps) {
   const { app, index, isMobile } = props;
@@ -28,7 +29,7 @@ function Appcard(props: AppCardProps) {
               </h3>
               <h4>{app.companyName}</h4>
               <ul>
-                <li>{app.contractType}</li>
+                <li>{CONTRACT_TYPE[app.contractType as keyof typeof CONTRACT_TYPE]}</li>
                 <li>{app.location}</li>
                 <li>{new Date(app.createdAt || '').toLocaleDateString()}</li>
               </ul>
@@ -58,7 +59,7 @@ function Appcard(props: AppCardProps) {
                   </h3>
                   <h4>{app.companyName}</h4>
                   <ul>
-                    <li>{app.contractType}</li>
+                    <li>{CONTRACT_TYPE[app.contractType as keyof typeof CONTRACT_TYPE]}</li>
                     <li>{app.location}</li>
                     <li>{new Date(app.createdAt || '').toLocaleDateString()}</li>
                   </ul>

@@ -42,13 +42,13 @@ export default class UserControllers {
                     password: hashedPassword,
                 });
                 if (user) {
-                    res.cookie('cleanup', generateJWT(user.id), {
+                    res.cookie('cleanup', generateJWT(user._id), {
                         httpOnly: true,
                         secure: process.env.NODE_ENV === 'prod',
                         path: '/',
                     });
                     res.status(200).json({
-                        _id: user.id,
+                        _id: user._id,
                         email: user.email,
                     }).send();
                 }
@@ -80,13 +80,13 @@ export default class UserControllers {
                 }
                 const isPasswordCorrect = yield bcrypt.compare(password, user.password);
                 if (isPasswordCorrect) {
-                    res.cookie('cleanup', generateJWT(user.id), {
+                    res.cookie('cleanup', generateJWT(user._id), {
                         httpOnly: true,
                         secure: process.env.NODE_ENV === 'prod',
                         path: '/',
                     });
                     res.status(200).json({
-                        _id: user.id,
+                        _id: user._id,
                         email: user.email,
                     }).send();
                 }
@@ -151,23 +151,6 @@ export default class UserControllers {
                     secure: false,
                     path: '/',
                 }).send({});
-            }
-            catch (error) {
-                next(error);
-            }
-        });
-    }
-    static findUser(req, res, next) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { params } = req;
-            const { id } = params;
-            try {
-                const user = yield User.findById(id);
-                if (!user) {
-                    res.status(400);
-                    throw new Error('User not found');
-                }
-                res.status(200).json(user);
             }
             catch (error) {
                 next(error);

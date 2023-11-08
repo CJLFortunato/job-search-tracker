@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { Types } from 'mongoose';
 
+import { User as UserType } from './types.js';
 import User from './user.schema.js';
 
 // Generate jwt token
@@ -27,7 +28,7 @@ export default class UserControllers {
       }
 
       // check if user exists
-      const userExists = await User.findOne({
+      const userExists: UserType = await User.findOne({
         email,
       });
       if (userExists) {
@@ -40,18 +41,18 @@ export default class UserControllers {
       const hashedPassword = await bcrypt.hash(password, salt);
 
       // Create user
-      const user = await User.create({
+      const user: UserType = await User.create({
         email,
         password: hashedPassword,
       });
       if (user) {
-        res.cookie('cleanup', generateJWT(user.id), {
+        res.cookie('cleanup', generateJWT(user._id), {
           httpOnly: true,
           secure: process.env.NODE_ENV === 'prod',
           path: '/',
         });
         res.status(200).json({
-          _id: user.id,
+          _id: user._id,
           email: user.email,
         }).send();
       } else {
@@ -76,7 +77,7 @@ export default class UserControllers {
         throw new Error('Please add all fields');
       }
 
-      const user = await User.findOne({
+      const user: UserType = await User.findOne({
         email,
       });
 
@@ -86,13 +87,13 @@ export default class UserControllers {
       }
       const isPasswordCorrect = await bcrypt.compare(password, user.password);
       if (isPasswordCorrect) {
-        res.cookie('cleanup', generateJWT(user.id), {
+        res.cookie('cleanup', generateJWT(user._id), {
           httpOnly: true,
           secure: process.env.NODE_ENV === 'prod',
           path: '/',
         });
         res.status(200).json({
-          _id: user.id,
+          _id: user._id,
           email: user.email,
         }).send();
       } else {
@@ -109,7 +110,7 @@ export default class UserControllers {
     const { id } = params;
 
     try {
-      const user = await User.findById(id);
+      const user: UserType = await User.findById(id);
 
       if (!user) {
         res.status(400);
@@ -151,7 +152,7 @@ export default class UserControllers {
     const { id } = params;
 
     try {
-      const user = await User.findById(id);
+      const user: UserType = await User.findById(id);
 
       if (!user) {
         res.status(400);
@@ -164,25 +165,6 @@ export default class UserControllers {
         secure: false,
         path: '/',
       }).send({});
-    } catch (error) {
-      next(error);
-    }
-  }
-
-  static async findUser (req: Request, res: Response, next) {
-    const { params } = req;
-
-    const { id } = params;
-
-    try {
-      const user = await User.findById(id);
-
-      if (!user) {
-        res.status(400);
-        throw new Error('User not found');
-      }
-
-      res.status(200).json(user);
     } catch (error) {
       next(error);
     }

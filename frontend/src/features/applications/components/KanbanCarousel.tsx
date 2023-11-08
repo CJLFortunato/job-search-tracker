@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Column from './Column';
-import COLUMNS from '../CONSTANTS';
+import { COLUMNS } from '../CONSTANTS';
 import useApps from '../useApps';
 
 function KanbanCarousel() {

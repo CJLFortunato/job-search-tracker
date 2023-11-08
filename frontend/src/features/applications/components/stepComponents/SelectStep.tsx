@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import COLUMNS from 'features/applications/CONSTANTS';
+import { COLUMNS } from 'features/applications/CONSTANTS';
 import { StepsProps } from 'features/applications/types';
 
 import AnswerStep from './AnswerStep';
