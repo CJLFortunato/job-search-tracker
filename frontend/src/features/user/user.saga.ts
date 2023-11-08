@@ -3,6 +3,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 
 import { reset } from 'features/applications/apps.slice';
 
+import { NewUser, User } from './types';
 import UserAPI from './user.api';
 import {
   register,
@@ -21,7 +22,6 @@ import {
   logoutSuccess,
   logoutFailure,
 } from './user.slice';
-import { NewUser, User } from './types';
 
 function* workRegister(action: PayloadAction<NewUser>): any {
   try {

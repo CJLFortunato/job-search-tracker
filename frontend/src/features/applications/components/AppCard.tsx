@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
 import AppDetails from './AppDetails';
-import { AppCardProps } from '../types';
 import { CONTRACT_TYPE } from '../CONSTANTS';
+import { AppCardProps } from '../types';
 
 function Appcard(props: AppCardProps) {
   const { app, index, isMobile } = props;
