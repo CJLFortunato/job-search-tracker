@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 
 import Column from './Column';
+import FilterBar from './FilterBar';
 import { COLUMNS } from '../CONSTANTS';
-import useApps from '../useApps';
+import useFilterApps from '../useFilterApps';
 
 function KanbanCarousel() {
-  const { apps } = useApps();
+  const [formData, setFormData] = useState({
+    jobTitle: '',
+    companyName: '',
+    contractType: '',
+    location: '',
+    tags: [],
+  });
+  const apps = useFilterApps(formData);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const updateIndex = (newIndex: number) => {
@@ -21,6 +29,7 @@ function KanbanCarousel() {
   };
   return (
     <div className="kanban-carousel">
+      <FilterBar formData={formData} setFormData={setFormData} />
       <button onClick={() => updateIndex(activeIndex - 1)} type="button">
         <i className="fa-solid fa-angle-left" />
         {'<'}

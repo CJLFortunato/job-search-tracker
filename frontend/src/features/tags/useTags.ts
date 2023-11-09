@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../common/hooks';
 
 function useTags() {
   const dispatch = useAppDispatch();
-  const tags = useAppSelector((state) => state.tagsReducer.tags);
+  const { tags, error } = useAppSelector((state) => state.tagsReducer);
 
   useEffect(() => {
     if (!tags.length) dispatch(getTags());
@@ -24,6 +24,7 @@ function useTags() {
     tags,
     createTagsFunction,
     deleteTag,
+    error,
   };
 }
 

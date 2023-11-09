@@ -23,6 +23,7 @@ export const tagsSlice = createSlice({
     },
     getTags: (state) => {
       state.isLoading = true;
+      state.error = '';
     },
     getTagsSuccess: (state, action: PayloadAction<Tag[]>) => {
       state.isLoading = false;
@@ -30,11 +31,11 @@ export const tagsSlice = createSlice({
     },
     getTagsFailure: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
-      console.log(action.payload);
       state.error = action.payload;
     },
     createTags: (state, action: PayloadAction<NewTag[]>) => {
       state.isLoading = true;
+      state.error = '';
     },
     createTagsSuccess: (state, action: PayloadAction<Tag[]>) => {
       state.isLoading = false;
@@ -46,6 +47,7 @@ export const tagsSlice = createSlice({
     },
     deleteTags: (state, action: PayloadAction<string>) => {
       state.isLoading = true;
+      state.error = '';
     },
     deleteTagsSuccess: (state, action: PayloadAction<Tag>) => {
       state.isLoading = false;

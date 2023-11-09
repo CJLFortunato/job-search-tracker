@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from '../../common/hooks';
 
 function useApps() {
   const dispatch = useAppDispatch();
-  const apps = useAppSelector((state) => state.appsReducer.apps);
+  const { apps, error } = useAppSelector((state) => state.appsReducer);
 
   useEffect(() => {
     if (!apps.length) dispatch(getApps());
@@ -31,6 +31,7 @@ function useApps() {
     createApp,
     updateApp,
     deleteApp,
+    error,
   };
 }
 

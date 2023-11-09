@@ -20,6 +20,7 @@ export const userSlice = createSlice({
   reducers: {
     register: (state, action: PayloadAction<NewUser>) => {
       state.isLoading = true;
+      state.error = '';
     },
     registerSuccess: (state, action: PayloadAction<User>) => {
       state.isLoading = false;
@@ -31,6 +32,7 @@ export const userSlice = createSlice({
     },
     login: (state, action: PayloadAction<NewUser>) => {
       state.isLoading = true;
+      state.error = '';
     },
     loginSuccess: (state, action: PayloadAction<User>) => {
       state.isLoading = false;
@@ -42,6 +44,7 @@ export const userSlice = createSlice({
     },
     updateUser: (state, action: PayloadAction<User>) => {
       state.isLoading = true;
+      state.error = '';
     },
     updateUserSuccess: (state, action: PayloadAction<User>) => {
       state.isLoading = false;
@@ -53,6 +56,7 @@ export const userSlice = createSlice({
     },
     deleteUser: (state, action: PayloadAction<string>) => {
       state.isLoading = true;
+      state.error = '';
     },
     deleteUserSuccess: (state) => {
       state.isLoading = false;
@@ -64,6 +68,7 @@ export const userSlice = createSlice({
     },
     logout: (state) => {
       state.isLoading = true;
+      state.error = '';
     },
     logoutSuccess: (state) => {
       state.isLoading = false;

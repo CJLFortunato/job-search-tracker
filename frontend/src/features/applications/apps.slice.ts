@@ -28,6 +28,7 @@ export const appsSlice = createSlice({
     },
     getApps: (state) => {
       state.isLoading = true;
+      state.error = '';
     },
     getAppsSuccess: (state, action: PayloadAction<Application[]>) => {
       state.isLoading = false;
@@ -39,6 +40,7 @@ export const appsSlice = createSlice({
     },
     createApps: (state, action: PayloadAction<ApplicationCreate>) => {
       state.isLoading = true;
+      state.error = '';
     },
     createAppsSuccess: (state, action: PayloadAction<Application>) => {
       state.isLoading = false;
@@ -50,6 +52,7 @@ export const appsSlice = createSlice({
     },
     updateApps: (state, action: PayloadAction<ApplicationUpdate>) => {
       state.isLoading = true;
+      state.error = '';
     },
     updateAppsSuccess: (state, action: PayloadAction<Application>) => {
       state.isLoading = false;
@@ -62,6 +65,7 @@ export const appsSlice = createSlice({
     },
     deleteApps: (state, action: PayloadAction<string>) => {
       state.isLoading = true;
+      state.error = '';
     },
     deleteAppsSuccess: (state, action: PayloadAction<Application>) => {
       state.isLoading = false;

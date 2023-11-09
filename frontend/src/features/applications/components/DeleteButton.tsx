@@ -7,7 +7,7 @@ function DeleteButton(props: DeleteButtonProps) {
   const { id } = props;
   const [open, setOpen] = useState(false);
   const { deleteApp } = useApps();
-  console.log(id);
+
   const handleDelete = () => {
     deleteApp(id);
   };
