@@ -1,10 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 
-import rootSaga from './rootSaga';
-import appsReducer from '../features/applications/apps.slice';
+import appsReducer from 'features/applications/apps.slice';
 import tagsReducer from 'features/tags/tags.slice';
-import userReducer from '../features/user/user.slice';
+import userReducer from 'features/user/user.slice';
+
+import rootSaga from './rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];

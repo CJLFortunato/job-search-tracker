@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { loginForm, registerForm } from '../schemas';
 import { UserFormProps } from '../types';
 import useUser from '../useUser';
 
@@ -11,6 +12,7 @@ function UserForm(props: UserFormProps) {
     password: '',
     password2: '',
   });
+  const [error, setError] = useState<any>('');
 
   const handleChange = (e: any) => {
     const { target: { name, value } } = e;
@@ -29,11 +31,26 @@ function UserForm(props: UserFormProps) {
       return;
     }
     if (isLogin) {
+      const { error: err } = loginForm.validate(formData);
+      console.log(loginForm.validate(formData));
+      if (err) {
+        setError(err);
+        return;
+      }
       loginUser({ email: formData.email, password: formData.password });
+      return;
+    }
+
+    const { error: err } = registerForm.validate(formData);
+    if (err) {
+      setError(err);
       return;
     }
     registerUser({ email: formData.email, password: formData.password });
   };
+
+  console.log(error);
+  console.log(typeof error);
 
   return (
     <div className="user-form">
@@ -77,6 +94,9 @@ function UserForm(props: UserFormProps) {
         }
         <button type="submit">Valider</button>
       </form>
+      <div className="error-ctn">
+        {error.details?.map((e: any) => e.message)}
+      </div>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import {
   createAppSaga,
   updateAppsSaga,
   deleteAppsSaga,
-} from '../features/applications/apps.saga';
+} from 'features/applications/apps.saga';
 import { getTagsSaga, createTagSaga, deleteTagsSaga } from 'features/tags/tags.saga';
 import {
   loginSaga,
@@ -13,7 +13,7 @@ import {
   updateUserSaga,
   deleteUserSaga,
   logoutSaga,
-} from '../features/user/user.saga';
+} from 'features/user/user.saga';
 
 export default function* rootSaga() {
   yield fork(loginSaga);
