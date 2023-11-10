@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import useDocumentTitle from 'common/useDocumentTitle';
 import AddApplication from 'features/applications/components/AddApplication';
 import KanbanCarousel from 'features/applications/components/KanbanCarousel';
 import KanbanLarge from 'features/applications/components/KanbanLarge';
@@ -10,10 +11,14 @@ import ManageTags from 'features/tags/components/ManageTags';
 import useTags from 'features/tags/useTags';
 import useUser from 'features/user/useUser';
 
+import PAGE_TITLE from './CONSTANTS';
+
 function Dashboard() {
   const { user, error: userError } = useUser();
   const { error: appError } = useApps();
   const { error: tagError } = useTags();
+
+  useDocumentTitle(`${PAGE_TITLE}Vos candidatures`);
 
   const navigate = useNavigate();
   useEffect(() => {

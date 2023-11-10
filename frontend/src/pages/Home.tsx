@@ -1,9 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import img from '../assets/campaign-creators-e6n7uoEnYbA-unsplash.jpg';
+import img from 'assets/campaign-creators-e6n7uoEnYbA-unsplash.jpg';
+
+import useDocumentTitle from 'common/useDocumentTitle';
+
+import PAGE_TITLE from './CONSTANTS';
 
 function Home() {
+  useDocumentTitle(`${PAGE_TITLE}L'outil de suivi de candidature`);
+
   return (
     <div className="page home">
       <img src={img} alt="" />
