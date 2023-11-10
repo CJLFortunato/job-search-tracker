@@ -23,7 +23,6 @@ function* workGetApps(): any {
     const response: Application[] = yield call(AppsAPI.getApps);
     yield put(getAppsSuccess(response));
   } catch (err: any) {
-    console.log(err);
     yield put(getAppsFailure(err.message));
   }
 }

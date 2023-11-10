@@ -8,9 +8,7 @@ import { AppCardProps } from '../types';
 function Appcard(props: AppCardProps) {
   const { app, index, isMobile } = props;
   const [open, setOpen] = useState(false);
-  React.useEffect(() => {
-    console.log(open);
-  }, [open]);
+
   return (
     <div className="app-card-ctn">
       {

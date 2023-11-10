@@ -88,6 +88,10 @@ select {
   background-color: variables.$background;
 }
 
+.error-input {
+  border: 2px solid variables.$error;
+}
+
 input[type="radio"] {
   height: 2rem;
 }
@@ -146,6 +150,16 @@ footer {
   background-color: variables.$error;
 }
 
+.error-ctn {
+  border: 1px solid variables.$error;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: variables.$error;
+  background-color: hsl(350, 60%, 90%);
+  border-radius: 7px;
+  padding: 2%;
+}
+
 @media screen and (min-width: 1024px) {
   .kanban-large {
     display: flex;
@@ -198,15 +212,15 @@ footer {
     align-items: center;
     justify-content: center;
 
-      a {
-        text-decoration: none;
-        font-weight: bold;
-        color: variables.$secondary;
-      }
+    a {
+      text-decoration: none;
+      font-weight: bold;
+      color: variables.$secondary;
+    }
 
-      a:hover {
-        color: variables.$accent;
-      }
+    a:hover {
+      color: variables.$accent;
+    }
   }
 
   img {

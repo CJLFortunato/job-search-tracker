@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { addAppForm } from 'features/applications/apps.schemas';
 import SelectTags from 'features/tags/components/SelectTags';
 import { Tag } from 'features/tags/types';
 import useTags from 'features/tags/useTags';
@@ -12,7 +13,6 @@ function AddForm(props: AddFormProps) {
   const { createApp, updateApp } = useApps();
 
   const cleanForm = {
-    user: app?.user || '',
     jobTitle: app?.jobTitle || '',
     companyName: app?.companyName || '',
     contractType: app?.contractType || '',
@@ -28,9 +28,11 @@ function AddForm(props: AddFormProps) {
 
   const { tags } = useTags();
   const [formData, setFormData] = useState<ApplicationCreate>(cleanForm);
+  const [error, setError] = useState<any>('');
 
   const handleChange = (e: any) => {
     const { target: { name, value } } = e;
+    setError('');
     if (name === 'coverLetter') {
       setFormData({
         ...formData,
@@ -62,12 +64,9 @@ function AddForm(props: AddFormProps) {
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
-    if (
-      !formData.jobTitle
-      || !formData.companyName
-      || !formData.location
-      || !formData.contractType
-    ) {
+    const { error: err } = addAppForm.validate(formData);
+    if (err) {
+      setError(err);
       return;
     }
 
@@ -76,6 +75,7 @@ function AddForm(props: AddFormProps) {
         ...formData,
         _id: app?._id || '',
         tags: formData.tags,
+        user: app?.user || '',
       };
       updateApp(updatedApp);
       return;
@@ -102,9 +102,13 @@ function AddForm(props: AddFormProps) {
               type="text"
               id="jobTitle"
               name="jobTitle"
-              required
               onChange={handleChange}
               value={formData.jobTitle}
+              className={
+                error.details?.find((err: any) => err.path?.find((el: any) => el === 'jobTitle'))
+                  ? 'error-input'
+                  : ''
+              }
             />
           </label>
           <label htmlFor="companyName">
@@ -113,9 +117,13 @@ function AddForm(props: AddFormProps) {
               type="text"
               id="companyName"
               name="companyName"
-              required
               onChange={handleChange}
               value={formData.companyName}
+              className={
+                error.details?.find((err: any) => err.path?.find((el: any) => el === 'companyName'))
+                  ? 'error-input'
+                  : ''
+              }
             />
           </label>
           <label htmlFor="contractType">
@@ -123,9 +131,15 @@ function AddForm(props: AddFormProps) {
             <select
               name="contractType"
               id="contractType"
-              required
               onChange={handleChange}
               value={formData.contractType}
+              className={
+                error.details?.find(
+                  (err: any) => err.path?.find((el: any) => el === 'contractType'),
+                )
+                  ? 'error-input'
+                  : ''
+              }
             >
               <option value="" disabled>Sélectionnez un type de contrat</option>
               <option value="cdi">CDI</option>
@@ -144,6 +158,11 @@ function AddForm(props: AddFormProps) {
               name="jobLink"
               onChange={handleChange}
               value={formData.jobLink}
+              className={
+                error.details?.find((err: any) => err.path?.find((el: any) => el === 'jobLink'))
+                  ? 'error-input'
+                  : ''
+              }
             />
           </label>
           <label htmlFor="companyLink">
@@ -154,6 +173,11 @@ function AddForm(props: AddFormProps) {
               name="companyLink"
               onChange={handleChange}
               value={formData.companyLink}
+              className={
+                error.details?.find((err: any) => err.path?.find((el: any) => el === 'companyLink'))
+                  ? 'error-input'
+                  : ''
+              }
             />
           </label>
           <label htmlFor="appType">
@@ -164,6 +188,11 @@ function AddForm(props: AddFormProps) {
               name="appType"
               onChange={handleChange}
               value={formData.appType}
+              className={
+                error.details?.find((err: any) => err.path?.find((el: any) => el === 'appType'))
+                  ? 'error-input'
+                  : ''
+              }
             />
           </label>
           <label htmlFor="location">
@@ -172,9 +201,13 @@ function AddForm(props: AddFormProps) {
               type="text"
               id="location"
               name="location"
-              required
               onChange={handleChange}
               value={formData.location}
+              className={
+                error.details?.find((err: any) => err.path?.find((el: any) => el === 'location'))
+                  ? 'error-input'
+                  : ''
+              }
             />
           </label>
           <label htmlFor="contactName">
@@ -185,6 +218,11 @@ function AddForm(props: AddFormProps) {
               name="contactName"
               onChange={handleChange}
               value={formData.contactName || ''}
+              className={
+                error.details?.find((err: any) => err.path?.find((el: any) => el === 'contactName'))
+                  ? 'error-input'
+                  : ''
+              }
             />
           </label>
         </div>
@@ -213,6 +251,13 @@ function AddForm(props: AddFormProps) {
             />
           </label>
         </div>
+        {
+          error && (
+            <div className="error-ctn">
+              {error.details?.map((e: any) => e.message)}
+            </div>
+          )
+        }
         <button type="submit">{isUpdate ? 'Modifier' : 'Ajouter'}</button>
         <button type="button" onClick={handleCancel}>Annuler</button>
       </form>

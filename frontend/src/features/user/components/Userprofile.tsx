@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import DeleteButton from './DeleteButton';
+import { emailChangeForm, passwordChangeForm } from '../user.schemas';
 import useUser from '../useUser';
 
 function UserProfile() {
@@ -9,11 +10,17 @@ function UserProfile() {
     password: '',
     password2: '',
   });
+  const [error, setError] = useState<any>('');
+  const [error2, setError2] = useState<any>('');
 
   const handleChange = (e: any) => {
     const { target: { name, value } } = e;
-    if (name === 'email') setNewEmail(value);
+    if (name === 'email') {
+      setError('');
+      setNewEmail(value);
+    }
     if (name !== 'email') {
+      setError2('');
       setFormData({
         ...formData,
         [name]: value,
@@ -25,12 +32,13 @@ function UserProfile() {
 
   const handleSubmitEmail = (e: any) => {
     e.preventDefault();
-    if (!user) return;
-    if (!newEmail) {
+    const { error: err } = emailChangeForm.validate(newEmail);
+    if (err) {
+      setError(err);
       return;
     }
     updateUsers({
-      _id: user._id,
+      _id: user?._id || '',
       email: newEmail,
     });
     setNewEmail('');
@@ -38,9 +46,22 @@ function UserProfile() {
 
   const handleSubmitpassword = (e: any) => {
     e.preventDefault();
+    const { error: err } = passwordChangeForm.validate(formData);
+    if (err) {
+      setError2(err);
+      return;
+    }
     if (!user) return;
     if (formData.password2 && (formData.password !== formData.password2)) {
-      console.log('mismatched passwords');
+      const errObj = {
+        details: [
+          {
+            message: 'Vous avez tapé 2 mots de passe différents',
+            path: ['password2'],
+          },
+        ],
+      };
+      setError2(errObj);
       return;
     }
     updateUsers({
@@ -70,8 +91,20 @@ function UserProfile() {
             placeholder="Tapez votre nouvelle adresse email"
             value={newEmail}
             onChange={handleChange}
+            className={
+              error
+                ? 'error-input'
+                : ''
+            }
           />
         </label>
+        {
+          error && (
+            <div className="error-ctn">
+              {error.details?.map((e: any) => e.message)}
+            </div>
+          )
+        }
         <button type="submit">Enregister les modifications</button>
       </form>
       <div className="divider">
@@ -88,6 +121,11 @@ function UserProfile() {
             placeholder="Tapez votre nouveau mot de passe"
             value={formData.password}
             onChange={handleChange}
+            className={
+              error2.details?.find((err: any) => err.path?.find((el: any) => el === 'password'))
+                ? 'error-input'
+                : ''
+            }
           />
         </label>
         <label htmlFor="password">
@@ -99,8 +137,20 @@ function UserProfile() {
             placeholder="Confirmez votre nouveau mot de passe"
             value={formData.password2}
             onChange={handleChange}
+            className={
+              error2.details?.find((err: any) => err.path?.find((el: any) => el === 'password2'))
+                ? 'error-input'
+                : ''
+            }
           />
         </label>
+        {
+          error2 && (
+            <div className="error-ctn">
+              {error2.details?.map((e: any) => e.message)}
+            </div>
+          )
+        }
         <button type="submit">Enregistrer les modifications</button>
       </form>
       <div className="divider">

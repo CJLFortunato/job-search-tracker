@@ -11,9 +11,7 @@ export const registerForm = Joi.object({
   password2: Joi.string().min(8).required(),
 });
 
-export const emailChangeForm = Joi.object({
-  email: Joi.string().email({ tlds: { allow: false } }).required(),
-});
+export const emailChangeForm = Joi.string().email({ tlds: { allow: false } }).required();
 
 export const passwordChangeForm = Joi.object({
   password: Joi.string().min(8).required(),

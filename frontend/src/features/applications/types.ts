@@ -46,7 +46,7 @@ export interface Application {
 }
 
 export interface ApplicationCreate {
-  user: string,
+  user?: string,
   jobTitle: string,
   companyName: string,
   contractType: string,

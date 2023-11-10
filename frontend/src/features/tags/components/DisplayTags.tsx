@@ -5,7 +5,7 @@ import { DisplayTagsProps } from '../types';
 
 function DisplayTags(props: DisplayTagsProps) {
   const { tags } = props;
-  console.log(tags);
+
   return (
     <div className="tags-ctn">
       {

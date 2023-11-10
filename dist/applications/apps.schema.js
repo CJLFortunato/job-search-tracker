@@ -19,10 +19,11 @@ const appSchema = new mongoose.Schema({
     },
     jobLink: {
         type: String,
-        required: [true, 'Please make sure all fields are filled'],
+        required: false,
     },
     companyLink: {
         type: String,
+        required: false,
     },
     appType: {
         type: String,

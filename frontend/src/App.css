@@ -750,6 +750,10 @@ select {
   background-color: #eceded;
 }
 
+.error-input {
+  border: 2px solid #dd1234;
+}
+
 input[type=radio] {
   height: 2rem;
 }
@@ -802,6 +806,16 @@ footer a:hover {
 
 .delete-btn {
   background-color: #dd1234;
+}
+
+.error-ctn {
+  border: 1px solid #dd1234;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #dd1234;
+  background-color: hsl(350, 60%, 90%);
+  border-radius: 7px;
+  padding: 2%;
 }
 
 @media screen and (min-width: 1024px) {

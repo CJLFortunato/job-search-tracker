@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { useAppDispatch } from 'common/hooks';
+import { answerStepForm } from 'features/applications/apps.schemas';
 import { updateApps } from 'features/applications/apps.slice';
 import { StepsProps } from 'features/applications/types';
 
@@ -13,9 +14,11 @@ function AnswerStep(props: StepsProps) {
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState(initForm);
   const [open, setOpen] = useState(false);
+  const [error, setError] = useState<any>('');
 
   const handleChange = (e: any) => {
     const { target: { name, value } } = e;
+    setError('');
     setFormData({
       ...formData,
       [name]: value,
@@ -24,6 +27,11 @@ function AnswerStep(props: StepsProps) {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    const { error: err } = answerStepForm.validate(formData);
+    if (err) {
+      setError(err);
+      return;
+    }
     dispatch(updateApps({
       ...application,
       status: 4,
@@ -58,17 +66,39 @@ function AnswerStep(props: StepsProps) {
                 id="date"
                 value={formData.date}
                 onChange={handleChange}
+                className={
+                  error.details?.find((err: any) => err.path?.find((el: any) => el === 'email'))
+                    ? 'error-input'
+                    : ''
+                }
               />
             </label>
             <label htmlFor="answer">
               Réponse
-              <select name="answer" id="answer" value={formData.outcome} onChange={handleChange}>
+              <select
+                name="outcome"
+                id="outcome"
+                value={formData.outcome}
+                onChange={handleChange}
+                className={
+                  error.details?.find((err: any) => err.path?.find((el: any) => el === 'outcome'))
+                    ? 'error-input'
+                    : ''
+                }
+              >
                 <option value="">Réponse</option>
                 <option value="yes">Candidature acceptée</option>
                 <option value="no">Candidature rejetée</option>
                 <option value="noanswer">Aucune réponse</option>
               </select>
             </label>
+            {
+              error && (
+                <div className="error-ctn">
+                  {error.details?.map((e: any) => e.message)}
+                </div>
+              )
+            }
             <button type="submit">Valider</button>
             <button type="button" onClick={() => setOpen(false)}>Annuler</button>
           </form>

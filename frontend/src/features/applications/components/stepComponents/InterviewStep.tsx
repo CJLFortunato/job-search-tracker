@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { useAppDispatch } from 'common/hooks';
+import { commonStepForm } from 'features/applications/apps.schemas';
 import { updateApps } from 'features/applications/apps.slice';
 import { StepsProps } from 'features/applications/types';
 
@@ -13,9 +14,11 @@ function InterviewStep(props: StepsProps) {
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState(initForm);
   const [open, setOpen] = useState(false);
+  const [error, setError] = useState<any>('');
 
   const handleChange = (e: any) => {
     const { target: { name, value } } = e;
+    setError('');
     setFormData({
       ...formData,
       [name]: value,
@@ -24,6 +27,11 @@ function InterviewStep(props: StepsProps) {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    const { error: err } = commonStepForm.validate(formData);
+    if (err) {
+      setError(err);
+      return;
+    }
     const updatedStep = application.steps?.followUp
       ? [...application.steps.followUp]
       : [formData];
@@ -61,17 +69,39 @@ function InterviewStep(props: StepsProps) {
                 id="date"
                 value={formData.date}
                 onChange={handleChange}
+                className={
+                  error.details?.find((err: any) => err.path?.find((el: any) => el === 'email'))
+                    ? 'error-input'
+                    : ''
+                }
               />
             </label>
             <label htmlFor="type">
               Type d&apos;entretien
-              <select name="type" id="type" value={formData.type} onChange={handleChange}>
+              <select
+                name="type"
+                id="type"
+                value={formData.type}
+                onChange={handleChange}
+                className={
+                  error.details?.find((err: any) => err.path?.find((el: any) => el === 'type'))
+                    ? 'error-input'
+                    : ''
+                }
+              >
                 <option value="">type d&apos;entretien ?</option>
                 <option value="form">Visioconférence</option>
                 <option value="phone">Téléphone</option>
                 <option value="in person">En personne</option>
               </select>
             </label>
+            {
+              error && (
+                <div className="error-ctn">
+                  {error.details?.map((e: any) => e.message)}
+                </div>
+              )
+            }
             <button type="submit">Valider</button>
             <button type="button" onClick={() => setOpen(false)}>Annuler</button>
           </form>

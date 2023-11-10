@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import { loginForm, registerForm } from '../schemas';
 import { UserFormProps } from '../types';
+import { loginForm, registerForm } from '../user.schemas';
 import useUser from '../useUser';
 
 function UserForm(props: UserFormProps) {
@@ -16,6 +16,7 @@ function UserForm(props: UserFormProps) {
 
   const handleChange = (e: any) => {
     const { target: { name, value } } = e;
+    setError('');
     setFormData({
       ...formData,
       [name]: value,
@@ -27,12 +28,24 @@ function UserForm(props: UserFormProps) {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (formData.password2 && (formData.password !== formData.password2)) {
-      console.log('mismatched passwords');
+      const errObj = {
+        details: [
+          {
+            message: 'Vous avez tapé 2 mots de passe différents',
+            path: ['password2'],
+          },
+        ],
+      };
+      setError(errObj);
       return;
     }
     if (isLogin) {
-      const { error: err } = loginForm.validate(formData);
-      console.log(loginForm.validate(formData));
+      const newData = {
+        email: formData.email,
+        password: formData.password,
+      };
+      const { error: err } = loginForm.validate(newData);
+
       if (err) {
         setError(err);
         return;
@@ -49,9 +62,6 @@ function UserForm(props: UserFormProps) {
     registerUser({ email: formData.email, password: formData.password });
   };
 
-  console.log(error);
-  console.log(typeof error);
-
   return (
     <div className="user-form">
       <form onSubmit={handleSubmit}>
@@ -64,6 +74,11 @@ function UserForm(props: UserFormProps) {
             placeholder="Tapez votre adresse Email"
             value={formData.email}
             onChange={handleChange}
+            className={
+              error.details?.find((err: any) => err.path?.find((el: any) => el === 'email'))
+                ? 'error-input'
+                : ''
+            }
           />
         </label>
         <label htmlFor="password">
@@ -75,6 +90,11 @@ function UserForm(props: UserFormProps) {
             placeholder="Tapez votre mot de passe"
             value={formData.password}
             onChange={handleChange}
+            className={
+              error.details?.find((err: any) => err.path.find((el: any) => el === 'password'))
+                ? 'error-input'
+                : ''
+            }
           />
         </label>
         {
@@ -88,15 +108,24 @@ function UserForm(props: UserFormProps) {
                 placeholder="Confirmez votre mot de passe"
                 value={formData.password2}
                 onChange={handleChange}
+                className={
+                  error.details?.find((err: any) => err.path.find((el: any) => el === 'password2'))
+                    ? 'error-input'
+                    : ''
+                }
               />
             </label>
           )
         }
+        {
+          error && (
+            <div className="error-ctn">
+              {error.details?.map((e: any) => e.message)}
+            </div>
+          )
+        }
         <button type="submit">Valider</button>
       </form>
-      <div className="error-ctn">
-        {error.details?.map((e: any) => e.message)}
-      </div>
     </div>
   );
 }
