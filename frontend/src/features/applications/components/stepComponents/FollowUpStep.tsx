@@ -33,7 +33,7 @@ function FollowUpStep(props: StepsProps) {
       return;
     }
     const updatedStep = application.steps?.followUp
-      ? [...application.steps.followUp]
+      ? [...application.steps.followUp, formData]
       : [formData];
     dispatch(updateApps({
       ...application,
@@ -63,7 +63,7 @@ function FollowUpStep(props: StepsProps) {
         J&apos;ai relancé
       </button>
       {open && (
-        <div className="modal">
+        <div className="modal step">
           <h2>Informations de relance</h2>
           <form onSubmit={handleSubmit}>
             <label htmlFor="date">

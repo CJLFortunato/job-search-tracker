@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Divider from 'components/Divider';
 import TagChip from 'features/tags/components/TagChip';
 
 import DeleteButton from './DeleteButton';
@@ -58,6 +59,66 @@ function AppDetails(props: AppDetailsProps) {
             {new Date(app.createdAt || '').toLocaleDateString()}
           </li>
         </ul>
+        <Divider text="Envoi de la candidature" />
+        {
+          app.steps?.apply && (
+            <ul>
+              <li>
+                <strong>Candidature envoyée le: </strong>
+                {new Date(app.steps?.apply?.date || '').toLocaleDateString()}
+              </li>
+              <li>
+                <strong>Candidature envoyée par: </strong>
+                {app.steps?.apply?.type}
+              </li>
+            </ul>
+          )
+        }
+        <Divider text="Relances" />
+        {
+          app.steps?.followUp?.map((fl) => (
+            <ul>
+              <li>
+                <strong>Relance envoyée le: </strong>
+                {new Date(fl.date || '').toLocaleDateString()}
+              </li>
+              <li>
+                <strong>Relance envoyée par: </strong>
+                {fl.type}
+              </li>
+            </ul>
+          ))
+        }
+        <Divider text="Entretiens" />
+        {
+          app.steps?.interview?.map((int) => (
+            <ul>
+              <li>
+                <strong>Entretien réalisé le: </strong>
+                {new Date(int.date || '').toLocaleDateString()}
+              </li>
+              <li>
+                <strong>Entretien réalisé par: </strong>
+                {int.type}
+              </li>
+            </ul>
+          ))
+        }
+        <Divider text="Réponse de l&apos;entreprise" />
+        {
+          app.steps?.answer && (
+            <ul>
+              <li>
+                <strong>Réponse reçue le: </strong>
+                {new Date(app.steps?.answer?.date || '').toLocaleDateString()}
+              </li>
+              <li>
+                <strong>Réponse: </strong>
+                {app.steps?.answer?.outcome}
+              </li>
+            </ul>
+          )
+        }
       </article>
     </dialog>
   );

@@ -60,7 +60,7 @@ function ApplyStep(props: StepsProps) {
         J&apos;ai postulé
       </button>
       {open && (
-        <div className="modal">
+        <div className="modal step">
           <h2>Informations de candidature</h2>
           <form onSubmit={handleSubmit}>
             <label htmlFor="date">

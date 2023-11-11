@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import Divider from 'components/Divider';
+
 import DeleteButton from './DeleteButton';
 import { emailChangeForm, passwordChangeForm } from '../user.schemas';
 import useUser from '../useUser';
@@ -77,10 +79,7 @@ function UserProfile() {
 
   return (
     <div className="profile-form">
-      <div className="divider">
-        Changer l&apos;adresse email
-        <hr />
-      </div>
+      <Divider text="Changer l'adresse email" />
       <form onSubmit={handleSubmitEmail}>
         <label htmlFor="email">
           Nouvelle adresse email
@@ -107,10 +106,7 @@ function UserProfile() {
         }
         <button type="submit">Enregister les modifications</button>
       </form>
-      <div className="divider">
-        Changer le mot de passe
-        <hr />
-      </div>
+      <Divider text="Changer le mot de passe" />
       <form onSubmit={handleSubmitpassword}>
         <label htmlFor="password">
           Nouveau mot de passe
@@ -153,10 +149,7 @@ function UserProfile() {
         }
         <button type="submit">Enregistrer les modifications</button>
       </form>
-      <div className="divider">
-        Suppression de compte
-        <hr />
-      </div>
+      <Divider text="Suppression de compte" />
       <DeleteButton id={user?._id || ''} />
     </div>
   );

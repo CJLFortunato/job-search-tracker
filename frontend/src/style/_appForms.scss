@@ -180,6 +180,7 @@
     padding: 2%;
     border-radius: 15px;
     box-shadow: 5px 5px 20px 10px hsla(0, 0%, 0%, 0.3);
+    z-index: 20;
 
     form {
       display: flex;
@@ -199,6 +200,12 @@
         }
       }
     }
+  }
+
+  .step {
+    top: -20%;
+    left: -140%;
+    height: 300px;
   }
 
   .modal-delete {

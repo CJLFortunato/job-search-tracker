@@ -60,7 +60,7 @@ function AnswerStep(props: StepsProps) {
         Réponse de l&apos;entreprise
       </button>
       {open && (
-        <div className="modal">
+        <div className="modal step">
           <h2>Réponse de l&apos;entreprise</h2>
           <form onSubmit={handleSubmit}>
             <label htmlFor="date">

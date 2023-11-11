@@ -32,8 +32,8 @@ function InterviewStep(props: StepsProps) {
       setError(err);
       return;
     }
-    const updatedStep = application.steps?.followUp
-      ? [...application.steps.followUp]
+    const updatedStep = application.steps?.interview
+      ? [...application.steps.interview, formData]
       : [formData];
     dispatch(updateApps({
       ...application,
@@ -63,7 +63,7 @@ function InterviewStep(props: StepsProps) {
         J&apos;ai eu un entretien
       </button>
       {open && (
-        <div className="modal">
+        <div className="modal step">
           <h2>Informations sur l&apos;entretien</h2>
           <form onSubmit={handleSubmit}>
             <label htmlFor="date">

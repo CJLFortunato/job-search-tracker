@@ -123,6 +123,23 @@ dialog {
 
 }
 
+.divider {
+  width: 100%;
+  // border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+  color: variables.$accent;
+
+  hr {
+    border: none;
+    border-top: 1px solid variables.$accent;
+    margin: 0;
+    width: 100%;
+  }
+}
+
 footer {
   height: 3.5rem;
   display: flex;
