@@ -371,6 +371,7 @@ h2 {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    animation: 0.1s ease-in-out 0s 1 running popin forwards;
   }
   .app-details article h3 {
     text-align: center;
@@ -493,6 +494,7 @@ h2 {
     height: 700px;
     padding: 2%;
     border-radius: 15px;
+    animation: 0.1s ease-in-out 0s 1 running popin forwards;
   }
   .add-form form .tags-label {
     margin: 0;
@@ -541,7 +543,7 @@ h2 {
     padding: 2%;
     border-radius: 15px;
     box-shadow: 5px 5px 20px 10px hsla(0, 0%, 0%, 0.3);
-    z-index: 20;
+    animation: 0.1s ease-in-out 0s 1 running popin forwards;
   }
   .modal form {
     display: flex;
@@ -584,6 +586,14 @@ h2 {
     font-weight: bold;
   }
 }
+@keyframes popin {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
 .tags-ctn {
   display: flex;
   flex-flow: row wrap;
@@ -611,6 +621,7 @@ h2 {
   border-radius: 10px;
   padding: 1%;
   margin-bottom: 0.5rem;
+  animation: 0.1s ease-in-out 0s 1 running popin forwards;
 }
 .select-tags p {
   margin: 0;
@@ -640,6 +651,12 @@ h2 {
 
 .select-tags::-webkit-scrollbar-corner {
   background-color: transparent;
+}
+
+.manage-tags {
+  animation: 0.1s ease-in-out 0s 1 running popin forwards;
+  box-shadow: 5px 5px 20px 10px hsla(0, 0%, 0%, 0.3);
+  border-radius: 7px;
 }
 
 .profile-form {

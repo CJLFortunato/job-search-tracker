@@ -379,6 +379,7 @@ h2 {
       display: flex;
       flex-flow: column nowrap;
       align-items: center;
+      animation: .1s ease-in-out 0s 1 running popin forwards;
 
       h3 {
         text-align: center;

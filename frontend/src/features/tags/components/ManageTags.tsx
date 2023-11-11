@@ -16,7 +16,7 @@ function ManageTags() {
       {
         open
         && (
-          <dialog>
+          <dialog className="manage-tags">
             <CreateTag />
             <DisplayTags tags={tags} />
             <button type="button" onClick={() => setOpen(false)}>Fermer</button>

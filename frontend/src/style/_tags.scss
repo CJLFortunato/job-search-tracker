@@ -30,6 +30,7 @@
   border-radius: 10px;
   padding: 1%;
   margin-bottom: .5rem;
+  animation: .1s ease-in-out 0s 1 running popin forwards;
 
   p {
     margin: 0;
@@ -62,4 +63,10 @@
 
 .select-tags::-webkit-scrollbar-corner {
   background-color: transparent;
+}
+
+.manage-tags {
+  animation: .1s ease-in-out 0s 1 running popin forwards;
+  box-shadow: 5px 5px 20px 10px hsla(0, 0%, 0%, 0.3);
+  border-radius: 7px;
 }
