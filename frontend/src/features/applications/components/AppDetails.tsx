@@ -31,7 +31,7 @@ function AppDetails(props: AppDetailsProps) {
         <ul>
           <li>
             {
-              app.tags.map((tag) => <TagChip key={tag._id} tag={tag} />)
+              app.tags.map((tag) => <TagChip key={tag._id} tag={tag} canDelete={false} />)
             }
           </li>
           <li>

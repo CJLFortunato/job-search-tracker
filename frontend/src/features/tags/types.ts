@@ -23,7 +23,8 @@ export interface DisplayTagsProps {
 }
 
 export interface TagChipProps {
-  tag: Tag
+  tag: Tag,
+  canDelete?: boolean,
 }
 
 export interface SelectTagsProps {

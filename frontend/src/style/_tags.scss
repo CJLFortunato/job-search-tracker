@@ -3,19 +3,28 @@
 .tags-ctn {
   display: flex;
   flex-flow: row wrap;
+  margin: 1.5rem 0;
+  border-top: 1px solid variables.$accent;
+  border-bottom: 1px solid variables.$accent;
 }
 
 .tag-chip {
-  display: inline-block;
+  display: flex;
   // border: 1px solid blue;
+  justify-content: flex-end;
+  align-items: center;
   margin: .5rem;
   background-color: variables.$accent;
   border-radius: 10px;
+  padding-left: 2%;
 
   button {
     width: 2rem;
+    margin: 0;
     background-color: transparent;
     box-shadow: none;
+    height: 1.6rem;
+    // border: 1px solid red;
   }
 }
 

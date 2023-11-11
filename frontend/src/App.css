@@ -597,18 +597,26 @@ h2 {
 .tags-ctn {
   display: flex;
   flex-flow: row wrap;
+  margin: 1.5rem 0;
+  border-top: 1px solid #7fb0d8;
+  border-bottom: 1px solid #7fb0d8;
 }
 
 .tag-chip {
-  display: inline-block;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   margin: 0.5rem;
   background-color: #7fb0d8;
   border-radius: 10px;
+  padding-left: 2%;
 }
 .tag-chip button {
   width: 2rem;
+  margin: 0;
   background-color: transparent;
   box-shadow: none;
+  height: 1.6rem;
 }
 
 .select-tags {
