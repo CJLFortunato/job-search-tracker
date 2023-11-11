@@ -45,6 +45,11 @@ function AnswerStep(props: StepsProps) {
     if (setOpenDialog) setOpenDialog(false);
   };
 
+  const handleCancel = () => {
+    if (setOpenDialog) setOpenDialog(false);
+    setOpen(false);
+  };
+
   return (
     <>
       <button
@@ -100,7 +105,7 @@ function AnswerStep(props: StepsProps) {
               )
             }
             <button type="submit">Valider</button>
-            <button type="button" onClick={() => setOpen(false)}>Annuler</button>
+            <button type="button" onClick={handleCancel}>Annuler</button>
           </form>
         </div>
       )}

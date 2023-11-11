@@ -11,6 +11,7 @@ import InterviewStep from './InterviewStep';
 function SelectStep(props: StepsProps) {
   const { application } = props;
   const [open, setOpen] = useState(false);
+
   return (
     <div>
       <button
