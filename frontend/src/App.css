@@ -64,7 +64,6 @@
 }
 
 .kanban-large {
-  border: 1px solid lightsalmon;
   min-height: 80vh;
   display: none;
   width: 95%;
@@ -114,7 +113,7 @@ h2 {
   height: 4rem;
 }
 .kanban-carousel .carousel {
-  overflow: hidden;
+  overflow-x: hidden;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -133,7 +132,7 @@ h2 {
   border-radius: 15px;
   background-color: #eceded;
   width: 80vw;
-  height: 93vh;
+  min-height: 93vh;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -172,17 +171,16 @@ h2 {
   color: hsl(0, 0%, 50%);
 }
 
+.close-btn {
+  display: none;
+}
+
 .app-details {
-  border: 1px solid red;
-  position: relative;
+  width: 100%;
 }
 .app-details article {
   border: 1px solid red;
   background-color: white;
-  position: absolute;
-  left: -100px;
-  top: -700px;
-  width: 80vw;
   max-height: 90vh;
   padding: 2%;
   border-radius: 15px;
@@ -190,16 +188,27 @@ h2 {
   flex-flow: column nowrap;
   align-items: center;
   z-index: 15;
+  width: 100%;
 }
 .app-details article h3 {
   text-align: center;
+  border: 1px solid red;
+  width: 100%;
 }
 .app-details article h3 a {
   text-decoration: none;
   color: #10355f;
+  font-size: 1rem;
+  display: inline;
 }
 .app-details article button {
   align-self: flex-end;
+}
+.app-details article button span {
+  display: none;
+}
+.app-details article button i {
+  margin-left: 5px;
 }
 .app-details article ul {
   width: 70%;
@@ -287,6 +296,9 @@ h2 {
     border-radius: 15px 15px 0 0;
     font-family: "Montserrat", sans-serif;
   }
+  .kanban-carousel-ctn {
+    display: block;
+  }
   .kanban-carousel {
     min-height: 83vh;
     display: flex;
@@ -352,6 +364,11 @@ h2 {
     padding: 0 5%;
     margin: 0;
     color: hsl(0, 0%, 50%);
+  }
+  .close-btn {
+    background-color: transparent;
+    color: #7fb0d8;
+    display: block;
   }
   .app-details {
     width: 100vw;
@@ -773,13 +790,22 @@ header .logout-btn:hover {
 }
 
 .page {
-  min-height: 84.3vh;
+  height: fit-content;
 }
 
 .error {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.application a {
+  display: block;
+  margin-top: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: #10355f;
+  font-size: 0.875rem;
 }
 
 h1 {
@@ -887,7 +913,7 @@ footer a:hover {
   .kanban-large {
     display: flex;
   }
-  .kanban-carousel {
+  .kanban-carousel-ctn {
     display: none;
   }
   header {

@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 
 import App from '../App';
+import Application from '../pages/Application';
 import Dashboard from '../pages/Dashboard';
 import Error from '../pages/Error';
 import Home from '../pages/Home';
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         element: <Profile />,
+      },
+      {
+        path: '/application/:appId',
+        element: <Application />,
       },
     ],
   },

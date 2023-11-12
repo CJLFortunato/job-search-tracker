@@ -70,13 +70,26 @@ header {
 
 .page {
   // border: 1px solid deeppink;
-  min-height: 84.3vh;
+  // min-height: 84.3vh;
+  // max-height: fit-content;
+  height: fit-content;
 }
 
 .error {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.application {
+  a {
+    display: block;
+    margin-top: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    color: variables.$secondary;
+    font-size: 0.875rem;
+  }
 }
 
 h1 {
@@ -191,7 +204,7 @@ footer {
     display: flex;
   }
 
-  .kanban-carousel {
+  .kanban-carousel-ctn {
     display: none;
   }
 

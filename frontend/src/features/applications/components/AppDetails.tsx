@@ -11,7 +11,8 @@ import { AppDetailsProps } from '../types';
 
 function AppDetails(props: AppDetailsProps) {
   const { app, setOpen } = props;
-
+  console.log(app.jobLink);
+  console.log(app.companyLink);
   return (
     <dialog className="app-details">
       <article>
@@ -19,14 +20,30 @@ function AppDetails(props: AppDetailsProps) {
           <SelectStep application={app} setOpenDialog={setOpen} />
           <EditApp app={app} />
           <DeleteButton id={app._id || ''} />
-          <button type="button" onClick={() => setOpen(false)}>
+          <button type="button" onClick={() => setOpen(false)} className="close-btn">
             <i className="fa-solid fa-xmark" />
           </button>
         </div>
         <h3>
-          <a href={app.jobLink}>{app.jobTitle}</a>
+          {
+            app.jobLink
+              ? (
+                <a href={app.jobLink} target="_blank" rel="noreferrer">{app.jobTitle}</a>
+              )
+              : (
+                app.jobTitle
+              )
+          }
           {' - '}
-          <a href={app.companyLink}>{app.companyName}</a>
+          {
+            app.companyLink
+              ? (
+                <a href={app.companyLink} target="_blank" rel="noreferrer">{app.companyName}</a>
+              )
+              : (
+                app.companyName
+              )
+          }
         </h3>
         <ul>
           <li className="tag-ctn">
@@ -77,7 +94,7 @@ function AppDetails(props: AppDetailsProps) {
         <Divider text="Relances" />
         {
           app.steps?.followUp?.map((fl) => (
-            <ul>
+            <ul key={`${fl.date}-${fl.type}-${Math.random() * 100}`}>
               <li>
                 <strong>Relance envoyée le: </strong>
                 {new Date(fl.date || '').toLocaleDateString()}
@@ -92,7 +109,7 @@ function AppDetails(props: AppDetailsProps) {
         <Divider text="Entretiens" />
         {
           app.steps?.interview?.map((int) => (
-            <ul>
+            <ul key={`${int.date}-${int.type}-${Math.random() * 100}`}>
               <li>
                 <strong>Entretien réalisé le: </strong>
                 {new Date(int.date || '').toLocaleDateString()}

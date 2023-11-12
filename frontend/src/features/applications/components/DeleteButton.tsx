@@ -15,7 +15,7 @@ function DeleteButton(props: DeleteButtonProps) {
     <>
       <button type="button" onClick={() => setOpen(true)}>
         <i className="fa-solid fa-xmark" />
-        Supprimer
+        <span>Supprimer</span>
       </button>
       {open && (
         <dialog className="modal-delete">

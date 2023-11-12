@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
+import { useNavigate } from 'react-router-dom';
 
 import AppDetails from './AppDetails';
 import { CONTRACT_TYPE } from '../CONSTANTS';
@@ -8,6 +9,7 @@ import { AppCardProps } from '../types';
 function Appcard(props: AppCardProps) {
   const { app, index, isMobile } = props;
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="app-card-ctn">
@@ -16,11 +18,11 @@ function Appcard(props: AppCardProps) {
           ? (
             <div
               className="app-card"
-              onClick={() => setOpen(true)}
-              onKeyDown={() => setOpen(true)}
+              onClick={() => navigate(`/application/${app._id}`)}
+              onKeyDown={() => navigate(`/application/${app._id}`)}
               role="button"
               tabIndex={0}
-              onTouchEnd={() => setOpen(true)}
+              onTouchEnd={() => navigate(`/application/${app._id}`)}
             >
               <h3>
                 {app.jobTitle}

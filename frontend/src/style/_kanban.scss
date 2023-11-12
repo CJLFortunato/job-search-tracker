@@ -19,7 +19,6 @@
 }
 
 .kanban-large {
-  border: 1px solid lightsalmon;
   min-height: 80vh;
   display: none;
   width: 95%;
@@ -34,7 +33,6 @@
 
   section {
     @include column;
-    // border: 1px solid lightsalmon;
     width: 20%;
     display: flex;
     flex-flow: column nowrap;
@@ -74,7 +72,7 @@ h2 {
   }
 
   .carousel {
-    overflow: hidden;
+    overflow-x: hidden;
     // border: 1px solid red;
     display: flex;
     flex-direction: row;
@@ -97,7 +95,7 @@ h2 {
         @include column;
         // border: 1px solid green;
         width: 80vw;
-        height: 93vh;
+        min-height: 93vh;
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
@@ -143,17 +141,16 @@ h2 {
   }
 }
 
+.close-btn {
+  display: none;
+}
+
 .app-details {
-  border: 1px solid red;
-  position: relative;
+  width: 100%;
 
   article {
     border: 1px solid red;
     background-color: white;
-    position: absolute;
-    left: -100px;
-    top: -700px;
-    width: 80vw;
     max-height: 90vh;
     padding: 2%;
     border-radius: 15px;
@@ -161,18 +158,34 @@ h2 {
     flex-flow: column nowrap;
     align-items: center;
     z-index: 15;
+    width: 100%;
 
     h3 {
       text-align: center;
+      border: 1px solid red;
+      width: 100%;
+      // display: flex;
+      // flex-flow: row wrap;
+      // align-items: center;
 
       a {
         text-decoration: none;
         color: variables.$secondary;
+        font-size: 1rem;
+        display: inline;
       }
     }
 
     button {
       align-self: flex-end;
+
+      span {
+        display: none;
+      }
+
+      i {
+        margin-left: 5px;
+      }
     }
 
     ul {
@@ -278,6 +291,10 @@ h2 {
     font-family: 'Montserrat', sans-serif;
   }
 
+  .kanban-carousel-ctn {
+    display: block;
+  }
+
   .kanban-carousel {
     // border: 1px solid lightsalmon;
     min-height: 83vh;
@@ -359,6 +376,12 @@ h2 {
       margin: 0;
       color: hsl(0, 0%, 50%);
     }
+  }
+
+  .close-btn {
+    background-color: transparent;
+    color: variables.$accent;
+    display: block;
   }
 
   .app-details {

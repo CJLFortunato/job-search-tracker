@@ -29,7 +29,7 @@ function KanbanCarousel() {
   };
 
   return (
-    <>
+    <div className="kanban-carousel-ctn">
       <FilterBar formData={formData} setFormData={setFormData} />
       <div className="kanban-carousel">
         <button onClick={() => updateIndex(activeIndex - 1)} type="button">
@@ -53,7 +53,7 @@ function KanbanCarousel() {
           <i className="fa-solid fa-angle-right" />
         </button>
       </div>
-    </>
+    </div>
   );
 }
 

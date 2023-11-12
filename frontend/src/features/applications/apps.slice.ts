@@ -1,8 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
+  createSelector,
   createSlice,
   PayloadAction,
 } from '@reduxjs/toolkit';
+
+import { RootState } from 'common/store';
 
 import {
   Application,
@@ -77,6 +80,12 @@ export const appsSlice = createSlice({
     },
   },
 });
+
+export const selectAppById = createSelector(
+  (state: RootState) => state.appsReducer.apps,
+  (_: any, id: string) => id,
+  (apps: Application[], id: string) => apps.filter((app: Application) => app._id === id)[0],
+);
 
 export const {
   actions: {

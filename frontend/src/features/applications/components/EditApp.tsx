@@ -10,7 +10,7 @@ function EditApp(props: EditAppProps) {
     <div className="add-application">
       <button type="button" onClick={() => setOpenForm(true)}>
         <i className="fa-solid fa-pen" />
-        Modifier
+        <span>Modifier</span>
       </button>
       {openForm && <AddForm setOpenForm={setOpenForm} isUpdate app={app} />}
     </div>
