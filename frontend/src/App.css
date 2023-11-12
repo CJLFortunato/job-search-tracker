@@ -884,7 +884,6 @@ footer {
   justify-content: flex-start;
   background: #f5b608;
   padding: 1%;
-  margin-top: 1rem;
   border-bottom: 3px solid #f5b608;
 }
 footer a {
@@ -940,6 +939,7 @@ footer a:hover {
     margin: 0 1rem;
     text-decoration: none;
     font-weight: bold;
+    font-size: 1rem;
   }
   header .app-title {
     justify-self: flex-start;
@@ -947,7 +947,13 @@ footer a:hover {
     margin-left: 4rem;
   }
   .page {
-    min-height: 84.3vh;
+    min-height: 87.8vh;
+  }
+  .home {
+    height: 87.8vh;
+  }
+  .dashboard {
+    margin-bottom: 1rem;
   }
   .error {
     display: flex;
@@ -964,12 +970,17 @@ footer a:hover {
     color: #7fb0d8;
   }
   img {
-    width: 99vw;
+    height: 87.8vh;
+    width: 100vw;
+    object-fit: cover;
+    margin-bottom: 0;
+    z-index: 0;
   }
   .statement {
     position: absolute;
-    top: 25vh;
-    width: 99vw;
+    top: 20vh;
+    width: 100vw;
+    background-color: hsla(216, 39%, 10%, 0.6);
   }
   .statement h1 {
     font-size: 5rem;
@@ -977,16 +988,14 @@ footer a:hover {
     text-shadow: 2px 2px 2px hsla(0, 30%, 18%, 0.4);
   }
   .statement p {
-    background-color: white;
-    width: 40%;
+    width: 50%;
     margin: 0 auto;
     margin-top: 1rem;
     padding: 2%;
     font-size: 1.5rem;
     line-height: 3rem;
     border-radius: 10px;
-    box-shadow: 2px 2px 2px hsla(0, 30%, 18%, 0.4);
-    color: #050a1e;
+    color: white;
   }
   .statement .links-ctn {
     margin-top: 3rem;
@@ -1027,7 +1036,7 @@ footer a:hover {
     align-items: center;
     justify-content: flex-start;
     padding: 1%;
-    margin-top: 1rem;
+    z-index: 5;
   }
   footer a {
     display: block;
