@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import useDocumentTitle from 'common/useDocumentTitle';
-import AddApplication from 'features/applications/components/AddApplication';
+import Modal from 'components/Modal';
+import AddForm from 'features/applications/components/AddForm';
 import KanbanCarousel from 'features/applications/components/KanbanCarousel';
 import KanbanLarge from 'features/applications/components/KanbanLarge';
 import StepDragDispatch from 'features/applications/components/stepComponents/StepDragDispatch';
@@ -49,12 +50,30 @@ function Dashboard() {
 
   return (
     <div className="page dashboard">
-      { openDispatch && (
+      {openDispatch && (
         <StepDragDispatch destinationId={destinationId} appId={appId} setOpen={setOpenDispatch} />
       )}
       <div className="btn-ctn">
-        <AddApplication />
-        <ManageTags />
+        <Modal
+          buttonLabel={(
+            <>
+              <i className="fa-regular fa-square-plus" />
+              Ajouter
+            </>
+          )}
+        >
+          <AddForm />
+        </Modal>
+        <Modal
+          buttonLabel={(
+            <>
+              <i className="fa-solid fa-tags" />
+              Gérer les tags
+            </>
+          )}
+        >
+          <ManageTags />
+        </Modal>
       </div>
       <h1>Vos candidatures</h1>
       <DragDropContext onDragEnd={onDragEnd}>

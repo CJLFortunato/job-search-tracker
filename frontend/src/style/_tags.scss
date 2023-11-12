@@ -84,4 +84,38 @@
   animation: .1s ease-in-out 0s 1 running popin forwards;
   box-shadow: 5px 5px 20px 10px hsla(0, 0%, 0%, 0.3);
   border-radius: 7px;
+  position: fixed;
+  top: 20%;
+  min-height: 430px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      // border: 1px solid purple;
+
+      .ctn {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        // border: 1px solid purple;
+
+        input {
+          width: 85%;
+        }
+
+        button {
+          width: 3rem;
+
+          i {
+            margin-top: 5px;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
 }

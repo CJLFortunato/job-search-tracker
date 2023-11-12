@@ -34,20 +34,24 @@ function CreateTag() {
     <form onSubmit={handleSubmit}>
       <label htmlFor="tag">
         Saisissez vos tags ici, en les séparant par un espace
-        <input
-          type="text"
-          name="tags"
-          id="tag"
-          value={tags}
-          onChange={handleChange}
-          className={
-            error
-              ? 'error-input'
-              : ''
-          }
-        />
+        <div className="ctn">
+          <input
+            type="text"
+            name="tags"
+            id="tag"
+            value={tags}
+            onChange={handleChange}
+            className={
+              error
+                ? 'error-input'
+                : ''
+            }
+          />
+          <button type="submit">
+            <i className="fa-solid fa-plus" />
+          </button>
+        </div>
       </label>
-      <button type="submit">+</button>
       {
         error && (
           <div className="error-ctn">

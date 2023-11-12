@@ -116,7 +116,7 @@ export interface AppCardProps {
 }
 
 export interface AddFormProps {
-  setOpenForm: Function,
+  setOpen?: Function,
   isUpdate?: boolean,
   app?: Application
 }
@@ -124,7 +124,7 @@ export interface AddFormProps {
 export interface StepsProps {
   application: Application,
   setOpenDialog?: Function,
-  openOverride?: boolean,
+  setOpen?: Function,
 }
 
 export interface DeleteButtonProps {

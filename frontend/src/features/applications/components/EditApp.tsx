@@ -12,7 +12,7 @@ function EditApp(props: EditAppProps) {
         <i className="fa-solid fa-pen" />
         <span>Modifier</span>
       </button>
-      {openForm && <AddForm setOpenForm={setOpenForm} isUpdate app={app} />}
+      {openForm && <AddForm setOpen={setOpenForm} isUpdate app={app} />}
     </div>
   );
 }

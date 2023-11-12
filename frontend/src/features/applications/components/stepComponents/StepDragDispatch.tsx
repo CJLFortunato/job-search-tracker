@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useAppSelector } from 'common/hooks';
+import Modal from 'components/Modal';
 import { selectAppById } from 'features/applications/apps.slice';
 import AnswerStep from 'features/applications/components/stepComponents/AnswerStep';
 import ApplyStep from 'features/applications/components/stepComponents/ApplyStep';
@@ -15,16 +16,24 @@ function StepDragDispatch(props: StepDragDispatchProps) {
   return (
     <div className="step-drag-dispatch">
       {destinationId === COLUMNS[1].id.toString() && (
-        <ApplyStep application={currentApp} openOverride setOpenDialog={setOpen} />
+        <Modal buttonLabel="" openOverride>
+          <ApplyStep application={currentApp} setOpenDialog={setOpen} />
+        </Modal>
       )}
       {destinationId === COLUMNS[2].id.toString() && (
-        <FollowUpStep application={currentApp} openOverride setOpenDialog={setOpen} />
+        <Modal buttonLabel="" openOverride>
+          <FollowUpStep application={currentApp} setOpenDialog={setOpen} />
+        </Modal>
       )}
       {destinationId === COLUMNS[3].id.toString() && (
-        <InterviewStep application={currentApp} openOverride setOpenDialog={setOpen} />
+        <Modal buttonLabel="" openOverride>
+          <InterviewStep application={currentApp} setOpenDialog={setOpen} />
+        </Modal>
       )}
       {destinationId === COLUMNS[4].id.toString() && (
-        <AnswerStep application={currentApp} openOverride setOpenDialog={setOpen} />
+        <Modal buttonLabel="" openOverride>
+          <AnswerStep application={currentApp} setOpenDialog={setOpen} />
+        </Modal>
       )}
     </div>
   );

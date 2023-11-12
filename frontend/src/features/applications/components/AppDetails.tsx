@@ -1,10 +1,11 @@
 import React from 'react';
 
 import Divider from 'components/Divider';
+import Modal from 'components/Modal';
 import TagChip from 'features/tags/components/TagChip';
 
+import AddForm from './AddForm';
 import DeleteButton from './DeleteButton';
-import EditApp from './EditApp';
 import SelectStep from './stepComponents/SelectStep';
 import { CONTRACT_TYPE, CONTACT_TYPE, ANSWERS } from '../CONSTANTS';
 import { AppDetailsProps } from '../types';
@@ -14,11 +15,20 @@ function AppDetails(props: AppDetailsProps) {
   console.log(app.jobLink);
   console.log(app.companyLink);
   return (
-    <dialog className="app-details">
-      <article>
+    <div className="app-details">
+      <dialog className="app-dialog">
         <div className="actions-ctn">
           <SelectStep application={app} setOpenDialog={setOpen} />
-          <EditApp app={app} />
+          <Modal
+            buttonLabel={(
+              <>
+                <i className="fa-solid fa-pen" />
+                <span>Modifier</span>
+              </>
+            )}
+          >
+            <AddForm isUpdate app={app} />
+          </Modal>
           <DeleteButton id={app._id || ''} />
           <button type="button" onClick={() => setOpen(false)} className="close-btn">
             <i className="fa-solid fa-xmark" />
@@ -136,8 +146,8 @@ function AppDetails(props: AppDetailsProps) {
             </ul>
           )
         }
-      </article>
-    </dialog>
+      </dialog>
+    </div>
   );
 }
 

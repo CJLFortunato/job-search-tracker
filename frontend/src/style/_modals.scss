@@ -77,7 +77,7 @@
   left: 2.5%;
   top: 10%;
   width: 95%;
-  height: fit-content;
+  height: 700px;
   padding: 2%;
   border-radius: 15px;
   box-shadow: 5px 5px 20px 10px hsla(0, 0%, 0%, 0.3);
@@ -99,18 +99,14 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .add-form {
-    width: 100vw;
-    height: 100%;
-    background-color: rgb(0, 0, 0, 0.3);
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 100;
 
-    form {
+  .add-dialog,
+  .update-dialog {
+
+    .add-form,
+    .update-form {
       background-color: white;
-      position: absolute;
+      position: fixed;
       left: 20%;
       top: 10%;
       width: 60%;
@@ -155,6 +151,11 @@
         width: 90%;
         margin: 0 auto;
 
+        .label-ctn {
+          display: flex;
+          // border: 1px solid blue;
+        }
+
         p {
           margin: 0;
         }
@@ -163,12 +164,34 @@
           display: flex;
           // border: 1px solid blue;
           margin-bottom: .5rem;
+          margin-right: 2rem;
           justify-content: space-between;
           align-items: center;
-          width: 10%;
+          width: 8%;
         }
       }
     }
+  }
+
+  .update-dialog {
+    top: -10%;
+    left: 0;
+    width: 100%;
+
+    .update-form {
+      left: 0%;
+      top: 0%;
+      width: 100%;
+    }
+  }
+
+  .backdrop {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.3);
+    position: fixed;
+    left: 0;
+    top: 0;
   }
 
   .modal {
@@ -213,9 +236,10 @@
   }
 
   .step {
-    // top: -20%;
-    // left: -140%;
+    top: -20%;
+    left: -140%;
     height: 350px;
+    width: 640px;
   }
 
   .modal-delete {

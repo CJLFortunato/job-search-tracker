@@ -32,3 +32,7 @@ export interface SelectTagsProps {
   selectedTags: string[],
   handleSelect: Function,
 }
+
+export interface ManageTagsProps {
+  setOpen?: Function
+}

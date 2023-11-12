@@ -6,14 +6,13 @@ import { updateApps } from 'features/applications/apps.slice';
 import { StepsProps } from 'features/applications/types';
 
 function AnswerStep(props: StepsProps) {
-  const { application, setOpenDialog, openOverride = false } = props;
+  const { application, setOpenDialog, setOpen } = props;
   const initForm = {
     date: '',
     outcome: '',
   };
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState(initForm);
-  const [open, setOpen] = useState(openOverride);
   const [error, setError] = useState<any>('');
 
   const handleChange = (e: any) => {
@@ -41,81 +40,66 @@ function AnswerStep(props: StepsProps) {
       },
       tags: application.tags.map((t) => t._id),
     }));
-    setOpen(false);
+    if (setOpen) setOpen(false);
     if (setOpenDialog) setOpenDialog(false);
   };
 
   const handleCancel = () => {
     if (setOpenDialog) setOpenDialog(false);
-    setOpen(false);
+    if (setOpen) setOpen(false);
   };
 
   return (
-    <>
-      {
-        !openOverride && (
-          <button
-            onClick={() => setOpen(true)}
-            type="button"
-            className="select-option"
-          >
-            Réponse de l&apos;entreprise
-          </button>
-        )
-      }
-      {open && (
-        <div className="modal step">
-          <h2>Réponse de l&apos;entreprise</h2>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="date">
-              Date de la réponse
-              <input
-                type="date"
-                name="date"
-                id="date"
-                value={formData.date}
-                onChange={handleChange}
-                className={
-                  error.details?.find((err: any) => err.path?.find((el: any) => el === 'email'))
-                    ? 'error-input'
-                    : ''
-                }
-              />
-            </label>
-            <label htmlFor="answer">
-              Réponse
-              <select
-                name="outcome"
-                id="outcome"
-                value={formData.outcome}
-                onChange={handleChange}
-                className={
-                  error.details?.find((err: any) => err.path?.find((el: any) => el === 'outcome'))
-                    ? 'error-input'
-                    : ''
-                }
-              >
-                <option value="">Réponse</option>
-                <option value="yes">Candidature acceptée</option>
-                <option value="no">Candidature rejetée</option>
-                <option value="noanswer">Aucune réponse</option>
-              </select>
-            </label>
-            {
-              error && (
-                <div className="error-ctn">
-                  {error.details?.map((e: any) => e.message)}
-                </div>
-              )
+    <div className="modal step" style={{ left: '5%', top: '10%' }}>
+      <h2>Réponse de l&apos;entreprise</h2>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="date">
+          Date de la réponse
+          <input
+            type="date"
+            name="date"
+            id="date"
+            value={formData.date}
+            onChange={handleChange}
+            className={
+              error.details?.find((err: any) => err.path?.find((el: any) => el === 'email'))
+                ? 'error-input'
+                : ''
             }
-            <div className="btn-ctn">
-              <button type="submit">Valider</button>
-              <button type="button" onClick={handleCancel}>Annuler</button>
+          />
+        </label>
+        <label htmlFor="answer">
+          Réponse
+          <select
+            name="outcome"
+            id="outcome"
+            value={formData.outcome}
+            onChange={handleChange}
+            className={
+              error.details?.find((err: any) => err.path?.find((el: any) => el === 'outcome'))
+                ? 'error-input'
+                : ''
+            }
+          >
+            <option value="">Réponse</option>
+            <option value="yes">Candidature acceptée</option>
+            <option value="no">Candidature rejetée</option>
+            <option value="noanswer">Aucune réponse</option>
+          </select>
+        </label>
+        {
+          error && (
+            <div className="error-ctn">
+              {error.details?.map((e: any) => e.message)}
             </div>
-          </form>
+          )
+        }
+        <div className="btn-ctn">
+          <button type="submit">Valider</button>
+          <button type="button" onClick={handleCancel}>Annuler</button>
         </div>
-      )}
-    </>
+      </form>
+    </div>
   );
 }
 

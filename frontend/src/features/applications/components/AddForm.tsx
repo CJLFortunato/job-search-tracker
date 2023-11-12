@@ -9,7 +9,7 @@ import { AddFormProps, ApplicationCreate, ApplicationUpdate } from '../types';
 import useApps from '../useApps';
 
 function AddForm(props: AddFormProps) {
-  const { setOpenForm, isUpdate, app } = props;
+  const { setOpen, isUpdate, app } = props;
   const { createApp, updateApp } = useApps();
 
   const cleanForm = {
@@ -82,17 +82,17 @@ function AddForm(props: AddFormProps) {
     }
 
     createApp(formData);
-    setOpenForm(false);
+    if (setOpen) setOpen(false);
     setFormData(cleanForm);
   };
 
   const handleCancel = () => {
-    setOpenForm(false);
+    if (setOpen) setOpen(false);
     setFormData(cleanForm);
   };
   return (
-    <dialog className="add-form">
-      <form onSubmit={handleSubmit}>
+    <dialog className={isUpdate ? 'update-dialog' : 'add-dialog'}>
+      <form onSubmit={handleSubmit} className={isUpdate ? 'update-form' : 'add-form'}>
         <p className="tags-label">Tags</p>
         <SelectTags tags={tags} selectedTags={formData.tags} handleSelect={handleSelectTags} />
         <div className="grid-ctn">
@@ -228,28 +228,30 @@ function AddForm(props: AddFormProps) {
         </div>
         <div className="radio-ctn">
           <p>Lettre de motivation obligatoire</p>
-          <label htmlFor="coverLetterTrue">
-            Oui
-            <input
-              checked={formData.coverLetter}
-              type="radio"
-              id="coverLetterTrue"
-              name="coverLetter"
-              onChange={handleChange}
-              value="true"
-            />
-          </label>
-          <label htmlFor="coverLetterFalse">
-            Non
-            <input
-              checked={!formData.coverLetter}
-              type="radio"
-              id="coverLetterFalse"
-              name="coverLetter"
-              onChange={handleChange}
-              value=""
-            />
-          </label>
+          <div className="label-ctn">
+            <label htmlFor="coverLetterTrue">
+              Oui
+              <input
+                checked={formData.coverLetter}
+                type="radio"
+                id="coverLetterTrue"
+                name="coverLetter"
+                onChange={handleChange}
+                value="true"
+              />
+            </label>
+            <label htmlFor="coverLetterFalse">
+              Non
+              <input
+                checked={!formData.coverLetter}
+                type="radio"
+                id="coverLetterFalse"
+                name="coverLetter"
+                onChange={handleChange}
+                value=""
+              />
+            </label>
+          </div>
         </div>
         {
           error && (
@@ -258,8 +260,10 @@ function AddForm(props: AddFormProps) {
             </div>
           )
         }
-        <button type="submit">{isUpdate ? 'Modifier' : 'Ajouter'}</button>
-        <button type="button" onClick={handleCancel}>Annuler</button>
+        <div className="btn-ctn">
+          <button type="submit">{isUpdate ? 'Modifier' : 'Ajouter'}</button>
+          <button type="button" onClick={handleCancel}>Annuler</button>
+        </div>
       </form>
     </dialog>
   );

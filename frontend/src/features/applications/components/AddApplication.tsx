@@ -10,7 +10,7 @@ function AddApplication() {
         <i className="fa-regular fa-square-plus" />
         Ajouter
       </button>
-      {openForm && <AddForm setOpenForm={setOpenForm} />}
+      {openForm && <AddForm setOpen={setOpenForm} />}
     </div>
   );
 }

@@ -1,9 +1,9 @@
 @use 'variables';
 @use 'loginsignup';
 @use 'kanban';
-@use 'appForms';
 @use 'tags';
 @use 'userPage';
+@use 'modals';
 
 body {
   background-color: white;
@@ -237,6 +237,10 @@ footer {
       justify-self: flex-start;
       font-size: 2rem;
       margin-left: 4rem;
+    }
+
+    .logout-btn {
+      font-size: 1rem;
     }
   }
 
