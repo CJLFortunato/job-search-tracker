@@ -35,8 +35,9 @@ const validatePayload = (req, res, next) => __awaiter(void 0, void 0, void 0, fu
         yield next();
     }
     catch (e) {
-        // console.log(e.details[0].message);
-        throw new Error(e.details[0].message);
+        res.status(400).json({
+            message: `Payload validation error: ${e.details[0].message}`,
+        });
     }
 });
 export default validatePayload;

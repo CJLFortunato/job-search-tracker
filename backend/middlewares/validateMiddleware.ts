@@ -36,8 +36,9 @@ const validatePayload = async (req: Request, res: Response, next) => {
     }
     await next();
   } catch (e) {
-    // console.log(e.details[0].message);
-    throw new Error(e.details[0].message);
+    res.status(400).json({
+      message: `Payload validation error: ${e.details[0].message}`,
+    });
   }
 };
 
