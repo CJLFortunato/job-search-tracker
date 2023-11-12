@@ -6,14 +6,14 @@ import { updateApps } from 'features/applications/apps.slice';
 import { StepsProps } from 'features/applications/types';
 
 function ApplyStep(props: StepsProps) {
-  const { application, setOpenDialog } = props;
+  const { application, setOpenDialog, openOverride = false } = props;
   const initForm = {
     date: '',
     type: '',
   };
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState(initForm);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(openOverride);
   const [error, setError] = useState<any>('');
 
   const handleChange = (e: any) => {
@@ -24,7 +24,7 @@ function ApplyStep(props: StepsProps) {
       [name]: value,
     });
   };
-
+  console.log(application);
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const { error: err } = commonStepForm.validate(formData);
@@ -52,13 +52,17 @@ function ApplyStep(props: StepsProps) {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className="select-option"
-      >
-        J&apos;ai postulé
-      </button>
+      {
+        !openOverride && (
+          <button
+            onClick={() => setOpen(true)}
+            type="button"
+            className="select-option"
+          >
+            J&apos;ai postulé
+          </button>
+        )
+      }
       {open && (
         <div className="modal step">
           <h2>Informations de candidature</h2>
@@ -105,8 +109,10 @@ function ApplyStep(props: StepsProps) {
                 </div>
               )
             }
-            <button type="submit">Valider</button>
-            <button type="button" onClick={handleCancel}>Annuler</button>
+            <div className="btn-ctn">
+              <button type="submit">Valider</button>
+              <button type="button" onClick={handleCancel}>Annuler</button>
+            </div>
           </form>
         </div>
       )}

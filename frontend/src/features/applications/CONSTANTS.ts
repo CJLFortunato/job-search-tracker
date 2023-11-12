@@ -29,3 +29,22 @@ export const CONTRACT_TYPE = {
   interim: 'Intérim',
   autre: 'Autre',
 };
+
+export const EMPTY_APP = {
+  user: '',
+  jobTitle: '',
+  companyName: '',
+  contractType: '',
+  jobLink: '',
+  companyLink: '',
+  appType: '',
+  location: '',
+  contactName: '',
+  coverLetter: false,
+  status: 0,
+  steps: {},
+  tags: [],
+  _id: '',
+  createdAt: '',
+  updatedAt: '',
+};

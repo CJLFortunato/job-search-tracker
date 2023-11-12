@@ -6,14 +6,14 @@ import { updateApps } from 'features/applications/apps.slice';
 import { StepsProps } from 'features/applications/types';
 
 function AnswerStep(props: StepsProps) {
-  const { application, setOpenDialog } = props;
+  const { application, setOpenDialog, openOverride = false } = props;
   const initForm = {
     date: '',
     outcome: '',
   };
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState(initForm);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(openOverride);
   const [error, setError] = useState<any>('');
 
   const handleChange = (e: any) => {
@@ -52,13 +52,17 @@ function AnswerStep(props: StepsProps) {
 
   return (
     <>
-      <button
-        onClick={() => setOpen(true)}
-        type="button"
-        className="select-option"
-      >
-        Réponse de l&apos;entreprise
-      </button>
+      {
+        !openOverride && (
+          <button
+            onClick={() => setOpen(true)}
+            type="button"
+            className="select-option"
+          >
+            Réponse de l&apos;entreprise
+          </button>
+        )
+      }
       {open && (
         <div className="modal step">
           <h2>Réponse de l&apos;entreprise</h2>
@@ -104,8 +108,10 @@ function AnswerStep(props: StepsProps) {
                 </div>
               )
             }
-            <button type="submit">Valider</button>
-            <button type="button" onClick={handleCancel}>Annuler</button>
+            <div className="btn-ctn">
+              <button type="submit">Valider</button>
+              <button type="button" onClick={handleCancel}>Annuler</button>
+            </div>
           </form>
         </div>
       )}

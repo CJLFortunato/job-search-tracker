@@ -1,5 +1,6 @@
 import React from 'react';
-import { Droppable } from 'react-beautiful-dnd';
+
+import StrictModeDroppable from 'components/StrictModeDroppable';
 
 import Appcard from './AppCard';
 import { ColumnProps } from '../types';
@@ -25,7 +26,7 @@ function Column(props: ColumnProps) {
           </div>
         )
         : (
-          <Droppable droppableId={columnData.id.toString()}>
+          <StrictModeDroppable droppableId={columnData.id.toString()}>
             {
               (provided, snapshot) => (
                 <div
@@ -53,7 +54,7 @@ function Column(props: ColumnProps) {
                 </div>
               )
             }
-          </Droppable>
+          </StrictModeDroppable>
         )}
     </section>
   );

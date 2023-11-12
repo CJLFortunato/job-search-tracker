@@ -6,14 +6,14 @@ import { updateApps } from 'features/applications/apps.slice';
 import { StepsProps } from 'features/applications/types';
 
 function FollowUpStep(props: StepsProps) {
-  const { application, setOpenDialog } = props;
+  const { application, setOpenDialog, openOverride = false } = props;
   const initForm = {
     date: '',
     type: '',
   };
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState(initForm);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(openOverride);
   const [error, setError] = useState<any>('');
 
   const handleChange = (e: any) => {
@@ -55,13 +55,17 @@ function FollowUpStep(props: StepsProps) {
 
   return (
     <>
-      <button
-        onClick={() => setOpen(true)}
-        type="button"
-        className="select-option"
-      >
-        J&apos;ai relancé
-      </button>
+      {
+        !openOverride && (
+          <button
+            onClick={() => setOpen(true)}
+            type="button"
+            className="select-option"
+          >
+            J&apos;ai relancé
+          </button>
+        )
+      }
       {open && (
         <div className="modal step">
           <h2>Informations de relance</h2>
@@ -109,8 +113,10 @@ function FollowUpStep(props: StepsProps) {
                 </div>
               )
             }
-            <button type="submit">Valider</button>
-            <button type="button" onClick={handleCancel}>Annuler</button>
+            <div className="btn-ctn">
+              <button type="submit">Valider</button>
+              <button type="button" onClick={handleCancel}>Annuler</button>
+            </div>
           </form>
         </div>
       )}

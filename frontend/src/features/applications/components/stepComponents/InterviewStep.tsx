@@ -6,15 +6,19 @@ import { updateApps } from 'features/applications/apps.slice';
 import { StepsProps } from 'features/applications/types';
 
 function InterviewStep(props: StepsProps) {
-  const { application, setOpenDialog } = props;
+  const { application, setOpenDialog, openOverride } = props;
   const initForm = {
     date: '',
     type: '',
   };
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState(initForm);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(openOverride);
   const [error, setError] = useState<any>('');
+
+  React.useEffect(() => {
+    console.log(open);
+  }, [open]);
 
   const handleChange = (e: any) => {
     const { target: { name, value } } = e;
@@ -55,13 +59,17 @@ function InterviewStep(props: StepsProps) {
 
   return (
     <>
-      <button
-        onClick={() => setOpen(true)}
-        type="button"
-        className="select-option"
-      >
-        J&apos;ai eu un entretien
-      </button>
+      {
+        !openOverride && (
+          <button
+            onClick={() => setOpen(true)}
+            type="button"
+            className="select-option"
+          >
+            J&apos;ai eu un entretien
+          </button>
+        )
+      }
       {open && (
         <div className="modal step">
           <h2>Informations sur l&apos;entretien</h2>
@@ -95,7 +103,7 @@ function InterviewStep(props: StepsProps) {
                 }
               >
                 <option value="">type d&apos;entretien ?</option>
-                <option value="form">Visioconférence</option>
+                <option value="video">Visioconférence</option>
                 <option value="phone">Téléphone</option>
                 <option value="in person">En personne</option>
               </select>
@@ -107,8 +115,10 @@ function InterviewStep(props: StepsProps) {
                 </div>
               )
             }
-            <button type="submit">Valider</button>
-            <button type="button" onClick={handleCancel}>Annuler</button>
+            <div className="btn-ctn">
+              <button type="submit">Valider</button>
+              <button type="button" onClick={handleCancel}>Annuler</button>
+            </div>
           </form>
         </div>
       )}

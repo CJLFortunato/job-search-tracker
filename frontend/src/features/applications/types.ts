@@ -42,7 +42,7 @@ export interface Application {
   },
   tags: Tag[],
   createdAt: string,
-  updateddAt: string,
+  updatedAt: string,
 }
 
 export interface ApplicationCreate {
@@ -124,6 +124,7 @@ export interface AddFormProps {
 export interface StepsProps {
   application: Application,
   setOpenDialog?: Function,
+  openOverride?: boolean,
 }
 
 export interface DeleteButtonProps {
@@ -148,4 +149,10 @@ export interface FilterBarProps {
     tags: string[]
   },
   setFormData: Function
+}
+
+export interface StepDragDispatchProps {
+  destinationId: string,
+  appId: string,
+  setOpen: Function,
 }
