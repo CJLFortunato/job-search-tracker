@@ -98,6 +98,10 @@ h2 {
   font-family: "Montserrat", sans-serif;
 }
 
+.filter-bar {
+  margin-bottom: 1rem;
+}
+
 .kanban-carousel {
   min-height: 83vh;
   display: flex;
@@ -381,9 +385,15 @@ h2 {
     align-self: flex-end;
   }
   .app-details article ul {
+    margin-top: 0;
     width: 70%;
     line-height: 2rem;
     list-style-type: none;
+  }
+  .app-details article .tag-ctn {
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 1rem;
   }
   article::-webkit-scrollbar {
     width: 0.5rem;
@@ -610,6 +620,11 @@ h2 {
   background-color: #7fb0d8;
   border-radius: 10px;
   padding-left: 2%;
+  width: fit-content;
+}
+.tag-chip span {
+  display: block;
+  padding-right: 0.6rem;
 }
 .tag-chip button {
   width: 2rem;
@@ -730,6 +745,7 @@ header a {
   text-decoration: none;
   font-weight: bold;
   color: white;
+  font-size: 0.825rem;
 }
 header a:hover {
   color: #7fb0d8;
@@ -746,6 +762,10 @@ header .logout-btn {
   background-color: transparent;
   box-shadow: none;
   font-weight: bold;
+  font-size: 0.825rem;
+}
+header i {
+  margin-right: 5px;
 }
 header .logout-btn:hover {
   color: #7fb0d8;
@@ -793,6 +813,9 @@ button {
   padding: 0 10px;
   font-weight: bold;
   color: white;
+}
+button i {
+  margin-right: 5px;
 }
 
 button:hover {

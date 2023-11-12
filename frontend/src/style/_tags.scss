@@ -17,6 +17,12 @@
   background-color: variables.$accent;
   border-radius: 10px;
   padding-left: 2%;
+  width: fit-content;
+
+  span {
+    display: block;
+    padding-right: .6rem;
+  }
 
   button {
     width: 2rem;

@@ -33,6 +33,7 @@ header {
     text-decoration: none;
     font-weight: bold;
     color: white;
+    font-size: .825rem;
   }
 
   a:hover {
@@ -54,6 +55,11 @@ header {
     background-color: transparent;
     box-shadow: none;
     font-weight: bold;
+    font-size: 0.825rem;
+  }
+
+  i {
+    margin-right: 5px;
   }
 
   .logout-btn:hover {
@@ -101,10 +107,13 @@ button {
   background-color: variables.$primary;
   border: none;
   border-radius: 10px;
-  // width: 10vw;
   padding: 0 10px;
   font-weight: bold;
   color: white;
+
+  i {
+    margin-right: 5px;
+  }
 }
 
 button:hover {

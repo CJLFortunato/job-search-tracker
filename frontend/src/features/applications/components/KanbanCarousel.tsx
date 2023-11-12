@@ -27,32 +27,33 @@ function KanbanCarousel() {
 
     setActiveIndex(updatedIndex);
   };
+
   return (
-    <div className="kanban-carousel">
+    <>
       <FilterBar formData={formData} setFormData={setFormData} />
-      <button onClick={() => updateIndex(activeIndex - 1)} type="button">
-        <i className="fa-solid fa-angle-left" />
-        {'<'}
-      </button>
-      <div className="carousel">
-        <div className="inner" style={{ transform: `translateX(-${activeIndex * 20}%)` }}>
-          {
-            COLUMNS.map((col) => (
-              <Column
-                columnData={col}
-                apps={apps.filter((app) => app.status === col.id)}
-                key={col.id}
-                isMobile
-              />
-            ))
-          }
+      <div className="kanban-carousel">
+        <button onClick={() => updateIndex(activeIndex - 1)} type="button">
+          <i className="fa-solid fa-angle-left" />
+        </button>
+        <div className="carousel">
+          <div className="inner" style={{ transform: `translateX(-${activeIndex * 20}%)` }}>
+            {
+              COLUMNS.map((col) => (
+                <Column
+                  columnData={col}
+                  apps={apps.filter((app) => app.status === col.id)}
+                  key={col.id}
+                  isMobile
+                />
+              ))
+            }
+          </div>
         </div>
+        <button onClick={() => updateIndex(activeIndex + 1)} type="button">
+          <i className="fa-solid fa-angle-right" />
+        </button>
       </div>
-      <button onClick={() => updateIndex(activeIndex + 1)} type="button">
-        <i className="fa-solid fa-angle-right" />
-        {'>'}
-      </button>
-    </div>
+    </>
   );
 }
 

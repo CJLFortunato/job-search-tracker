@@ -56,6 +56,10 @@ h2 {
   font-family: 'Montserrat', sans-serif;
 }
 
+.filter-bar {
+  margin-bottom: 1rem;
+}
+
 .kanban-carousel {
   // border: 1px solid lightsalmon;
   min-height: 83vh;
@@ -392,9 +396,16 @@ h2 {
 
       ul {
         // border: 1px solid seagreen;
+        margin-top: 0;
         width: 70%;
         line-height: 2rem;
         list-style-type: none;
+      }
+
+      .tag-ctn {
+        display: flex;
+        flex-flow: row wrap;
+        margin-bottom: 1rem;
       }
     }
   }

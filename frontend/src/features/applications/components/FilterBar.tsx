@@ -39,7 +39,7 @@ function FilterBar(props: FilterBarProps) {
 
   const { tags } = useTags();
   return (
-    <div>
+    <div className="filter-bar">
       <button type="button" onClick={() => setOpen((prev) => !prev)}>
         <i className="fa-solid fa-filter" />
         Filtres

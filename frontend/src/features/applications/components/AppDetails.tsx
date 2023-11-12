@@ -29,7 +29,7 @@ function AppDetails(props: AppDetailsProps) {
           <a href={app.companyLink}>{app.companyName}</a>
         </h3>
         <ul>
-          <li>
+          <li className="tag-ctn">
             {
               app.tags.map((tag) => <TagChip key={tag._id} tag={tag} canDelete={false} />)
             }
