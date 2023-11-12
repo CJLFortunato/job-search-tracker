@@ -48,3 +48,18 @@ export const EMPTY_APP = {
   createdAt: '',
   updatedAt: '',
 };
+
+export const CONTACT_TYPE = {
+  video: 'Visioconférence',
+  phone: 'Téléphone',
+  'in person': 'En personne',
+  form: 'Formulaire',
+  email: 'Email',
+  social: 'Réseaux sociaux',
+};
+
+export const ANSWERS = {
+  yes: 'Réponse positive',
+  no: 'Réponse négative',
+  noanswer: 'Pas de réponse',
+};

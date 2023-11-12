@@ -6,7 +6,7 @@ import TagChip from 'features/tags/components/TagChip';
 import DeleteButton from './DeleteButton';
 import EditApp from './EditApp';
 import SelectStep from './stepComponents/SelectStep';
-import { CONTRACT_TYPE } from '../CONSTANTS';
+import { CONTRACT_TYPE, CONTACT_TYPE, ANSWERS } from '../CONSTANTS';
 import { AppDetailsProps } from '../types';
 
 function AppDetails(props: AppDetailsProps) {
@@ -86,7 +86,7 @@ function AppDetails(props: AppDetailsProps) {
               </li>
               <li>
                 <strong>Candidature envoyée par: </strong>
-                {app.steps?.apply?.type}
+                {CONTACT_TYPE[app.steps?.apply?.type as keyof typeof CONTACT_TYPE]}
               </li>
             </ul>
           )
@@ -101,7 +101,7 @@ function AppDetails(props: AppDetailsProps) {
               </li>
               <li>
                 <strong>Relance envoyée par: </strong>
-                {fl.type}
+                {CONTACT_TYPE[fl.type as keyof typeof CONTACT_TYPE]}
               </li>
             </ul>
           ))
@@ -116,7 +116,7 @@ function AppDetails(props: AppDetailsProps) {
               </li>
               <li>
                 <strong>Entretien réalisé par: </strong>
-                {int.type}
+                {CONTACT_TYPE[int.type as keyof typeof CONTACT_TYPE]}
               </li>
             </ul>
           ))
@@ -131,7 +131,7 @@ function AppDetails(props: AppDetailsProps) {
               </li>
               <li>
                 <strong>Réponse: </strong>
-                {app.steps?.answer?.outcome}
+                {ANSWERS[app.steps?.answer?.outcome as keyof typeof ANSWERS]}
               </li>
             </ul>
           )
