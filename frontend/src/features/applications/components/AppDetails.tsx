@@ -29,7 +29,16 @@ function AppDetails(props: AppDetailsProps) {
           >
             <AddForm isUpdate app={app} />
           </Modal>
-          <DeleteButton id={app._id || ''} />
+          <Modal
+            buttonLabel={(
+              <>
+                <i className="fa-solid fa-xmark" />
+                <span>Supprimer</span>
+              </>
+            )}
+          >
+            <DeleteButton id={app._id || ''} />
+          </Modal>
           <button type="button" onClick={() => setOpen(false)} className="close-btn">
             <i className="fa-solid fa-xmark" />
           </button>
@@ -45,7 +54,6 @@ function AppDetails(props: AppDetailsProps) {
               )
           }
           <span>
-            {' - '}
             {
               app.companyLink
                 ? (

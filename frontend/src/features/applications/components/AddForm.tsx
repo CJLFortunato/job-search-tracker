@@ -93,6 +93,7 @@ function AddForm(props: AddFormProps) {
   return (
     <dialog className={isUpdate ? 'update-dialog' : 'add-dialog'}>
       <form onSubmit={handleSubmit} className={isUpdate ? 'update-form' : 'add-form'}>
+        <h2>{isUpdate ? 'Modifier votre candidature' : 'Ajouter une candidature'}</h2>
         <p className="tags-label">Tags</p>
         <SelectTags tags={tags} selectedTags={formData.tags} handleSelect={handleSelectTags} />
         <div className="grid-ctn">

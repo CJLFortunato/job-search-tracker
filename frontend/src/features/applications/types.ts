@@ -128,7 +128,8 @@ export interface StepsProps {
 }
 
 export interface DeleteButtonProps {
-  id: string
+  id: string,
+  setOpen?: Function,
 }
 
 export interface AppDetailsProps {

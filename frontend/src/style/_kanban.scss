@@ -173,7 +173,6 @@ h2 {
   .app-dialog {
     // border: 1px solid red;
     background-color: white;
-    max-height: 90vh;
     padding: 2%;
     border-radius: 15px;
     display: flex;
@@ -202,6 +201,8 @@ h2 {
       margin-bottom: 0;
       background-color: variables.$background;
       width: 100%;
+      display: flex;
+      flex-direction: column;
 
       a {
         font-size: 1.5rem;
@@ -211,11 +212,11 @@ h2 {
       span {
 
         display: inline-block;
-        margin-left: 1rem;
+        margin: 0;
 
         a {
           display: inline-block;
-          margin-left: 1rem;
+          margin: 0;
           text-decoration: none;
           color: variables.$accent;
           font-size: 1.3rem;
