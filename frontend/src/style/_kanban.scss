@@ -56,6 +56,28 @@ h2 {
 
 .filter-bar {
   margin-bottom: 1rem;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: .5rem;
+      width: 100%;
+
+      input {
+        width: 60%;
+      }
+    }
+
+    .select-tags {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
 }
 
 .kanban-carousel {

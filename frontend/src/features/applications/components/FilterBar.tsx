@@ -63,6 +63,7 @@ function FilterBar(props: FilterBarProps) {
               Localisation
               <input type="text" name="location" id="location" onChange={handleChange} />
             </label>
+            Tags
             <SelectTags tags={tags} selectedTags={formData.tags} handleSelect={handleSelectTags} />
           </form>
         )

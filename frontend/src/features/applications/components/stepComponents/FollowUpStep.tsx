@@ -53,7 +53,7 @@ function FollowUpStep(props: StepsProps) {
   };
 
   return (
-    <div className="modal step" style={{ left: '5%', top: '10%' }}>
+    <div className="modal step">
       <h2>Informations de relance</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="date">

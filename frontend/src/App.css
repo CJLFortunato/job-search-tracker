@@ -101,6 +101,24 @@ h2 {
 .filter-bar {
   margin-bottom: 1rem;
 }
+.filter-bar form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.filter-bar form label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+.filter-bar form label input {
+  width: 60%;
+}
+.filter-bar form .select-tags {
+  margin-left: 0;
+  width: 100%;
+}
 
 .kanban-carousel {
   min-height: 83vh;
@@ -570,9 +588,10 @@ dialog::-webkit-scrollbar-corner {
   animation: 0.1s ease-in-out 0s 1 running popin forwards;
   box-shadow: 5px 5px 20px 10px hsla(0, 0%, 0%, 0.3);
   border-radius: 7px;
-  position: fixed;
-  top: 20%;
+  position: absolute;
+  top: 10%;
   min-height: 430px;
+  width: 95%;
 }
 .manage-tags form {
   display: flex;
@@ -598,6 +617,89 @@ dialog::-webkit-scrollbar-corner {
   margin-left: 5px;
 }
 
+@media screen and (min-width: 1024px) {
+  .tags-ctn {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 1.5rem 0;
+  }
+  .tag-chip {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0.5rem;
+    border-radius: 10px;
+    padding-left: 2%;
+    width: fit-content;
+  }
+  .tag-chip span {
+    display: block;
+    padding-right: 0.6rem;
+  }
+  .tag-chip button {
+    width: 2rem;
+    margin: 0;
+    box-shadow: none;
+    height: 1.6rem;
+  }
+  .select-tags {
+    height: 6.5rem;
+    overflow: scroll;
+    margin: 0 auto;
+    width: 90%;
+    scrollbar-width: thin;
+    border-radius: 10px;
+    padding: 1%;
+    margin-bottom: 0.5rem;
+    animation: 0.1s ease-in-out 0s 1 running popin forwards;
+  }
+  .select-tags p {
+    margin: 0;
+  }
+  .select-tags .tag-btn {
+    border-radius: 5px;
+    padding: 0 5px;
+    height: 1.6rem;
+    margin: 5px;
+  }
+  .select-tags .tag-btn-active {
+    border-radius: 5px;
+    padding: 0 5px;
+    height: 1.6rem;
+    margin: 5px;
+  }
+  .manage-tags {
+    animation: 0.1s ease-in-out 0s 1 running popin forwards;
+    box-shadow: 5px 5px 20px 10px hsla(0, 0%, 0%, 0.3);
+    border-radius: 7px;
+    position: fixed;
+    top: 20%;
+    min-height: 430px;
+  }
+  .manage-tags form {
+    display: flex;
+    flex-direction: column;
+  }
+  .manage-tags form label {
+    display: flex;
+    flex-direction: column;
+  }
+  .manage-tags form label .ctn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  .manage-tags form label .ctn input {
+    width: 85%;
+  }
+  .manage-tags form label .ctn button {
+    width: 3rem;
+  }
+  .manage-tags form label .ctn button i {
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+}
 .profile-form {
   display: flex;
   flex-direction: column;
@@ -670,72 +772,126 @@ dialog::-webkit-scrollbar-corner {
     align-self: flex-start;
   }
 }
-.add-form {
-  width: 100vw;
-  min-height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+.add-dialog,
+.update-dialog {
+  width: 100%;
+  background-color: transparent;
+}
+.add-dialog .add-form,
+.add-dialog .update-form,
+.update-dialog .add-form,
+.update-dialog .update-form {
+  background-color: white;
   position: absolute;
-  border: none;
   left: 0;
   top: 0;
-  z-index: 100;
-}
-.add-form form {
-  background-color: white;
-  position: sticky;
-  left: 0;
-  top: 4rem;
   width: 100%;
+  height: fit-content;
   padding: 2%;
-  border-radius: 15px;
+  overflow-y: scroll;
+  animation: 0.1s ease-in-out 0s 1 running popin forwards;
 }
-.add-form form .tags-label {
+.add-dialog .add-form .tags-label,
+.add-dialog .update-form .tags-label,
+.update-dialog .add-form .tags-label,
+.update-dialog .update-form .tags-label {
   margin: 0;
   margin: 0 auto;
   width: 90%;
 }
-.add-form form .grid-ctn {
+.add-dialog .add-form .grid-ctn,
+.add-dialog .update-form .grid-ctn,
+.update-dialog .add-form .grid-ctn,
+.update-dialog .update-form .grid-ctn {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-.add-form form .grid-ctn label {
+.add-dialog .add-form .grid-ctn label,
+.add-dialog .update-form .grid-ctn label,
+.update-dialog .add-form .grid-ctn label,
+.update-dialog .update-form .grid-ctn label {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
   width: 80%;
 }
-.add-form form .grid-ctn label input,
-.add-form form .grid-ctn label select {
+.add-dialog .add-form .grid-ctn label input,
+.add-dialog .add-form .grid-ctn label select,
+.add-dialog .update-form .grid-ctn label input,
+.add-dialog .update-form .grid-ctn label select,
+.update-dialog .add-form .grid-ctn label input,
+.update-dialog .add-form .grid-ctn label select,
+.update-dialog .update-form .grid-ctn label input,
+.update-dialog .update-form .grid-ctn label select {
   width: 90%;
   align-self: center;
 }
-.add-form form .radio-ctn {
+.add-dialog .add-form .radio-ctn,
+.add-dialog .update-form .radio-ctn,
+.update-dialog .add-form .radio-ctn,
+.update-dialog .update-form .radio-ctn {
   width: 90%;
   margin: 0 auto;
 }
-.add-form form .radio-ctn p {
+.add-dialog .add-form .radio-ctn .label-ctn,
+.add-dialog .update-form .radio-ctn .label-ctn,
+.update-dialog .add-form .radio-ctn .label-ctn,
+.update-dialog .update-form .radio-ctn .label-ctn {
+  display: flex;
+}
+.add-dialog .add-form .radio-ctn p,
+.add-dialog .update-form .radio-ctn p,
+.update-dialog .add-form .radio-ctn p,
+.update-dialog .update-form .radio-ctn p {
   margin: 0;
 }
-.add-form form .radio-ctn label {
+.add-dialog .add-form .radio-ctn label,
+.add-dialog .update-form .radio-ctn label,
+.update-dialog .add-form .radio-ctn label,
+.update-dialog .update-form .radio-ctn label {
   display: flex;
   margin-bottom: 0.5rem;
+  margin-right: 2rem;
   justify-content: space-between;
   align-items: center;
-  width: 10%;
+  width: 15%;
+}
+
+.update-dialog {
+  top: 0%;
+  left: 0;
+  width: 100%;
+}
+.update-dialog .update-form {
+  left: 0%;
+  top: 0%;
+  width: 100%;
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  overflow-y: scroll;
 }
 
 .modal {
   background-color: white;
   position: fixed;
-  left: 2.5%;
-  top: 10%;
-  width: 95%;
+  left: 30%;
+  top: 30%;
+  width: 95vw;
   height: 700px;
   padding: 2%;
   border-radius: 15px;
   box-shadow: 5px 5px 20px 10px hsla(0, 0%, 0%, 0.3);
+  animation: 0.1s ease-in-out 0s 1 running popin forwards;
 }
 .modal form {
   display: flex;
@@ -746,7 +902,45 @@ dialog::-webkit-scrollbar-corner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 70%;
+  width: 90%;
+  margin-bottom: 2rem;
+}
+.modal form label input,
+.modal form label select {
+  width: 90%;
+}
+.modal form .btn-ctn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 38%;
+}
+
+.step {
+  top: 10%;
+  left: 2.5%;
+  height: 350px;
+  width: 95vw;
+}
+
+.modal-delete {
+  background-color: white;
+  position: absolute;
+  width: 95vw;
+  height: 200px;
+  padding: 2%;
+  border-radius: 15px;
+  box-shadow: 5px 5px 20px 10px hsla(0, 0%, 0%, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal-delete p {
+  margin: 0.5rem;
+}
+.modal-delete .alert {
+  color: #dd1234;
+  font-weight: bold;
 }
 
 @media screen and (min-width: 1024px) {
@@ -763,6 +957,7 @@ dialog::-webkit-scrollbar-corner {
     padding: 2%;
     border-radius: 15px;
     animation: 0.1s ease-in-out 0s 1 running popin forwards;
+    overflow-y: scroll;
   }
   .add-dialog .add-form .tags-label,
   .add-dialog .update-form .tags-label,
