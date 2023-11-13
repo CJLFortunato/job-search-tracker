@@ -17,7 +17,7 @@ function Profile() {
   }, [user]);
 
   return (
-    <div className="page">
+    <div className="page profile">
       <h1>Votre profil</h1>
       <UserProfile />
     </div>

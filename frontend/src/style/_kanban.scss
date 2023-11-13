@@ -149,7 +149,7 @@ h2 {
   width: 100%;
 
   .app-dialog {
-    border: 1px solid red;
+    // border: 1px solid red;
     background-color: white;
     max-height: 90vh;
     padding: 2%;
@@ -158,21 +158,47 @@ h2 {
     flex-flow: column nowrap;
     align-items: center;
     z-index: 15;
-    width: 40%;
+    width: 100%;
+    position: relative;
+
+    .actions-ctn {
+
+      button:nth-child(2),
+      button:nth-child(3) {
+        background-color: variables.$secondary;
+      }
+
+      button:nth-child(2):hover,
+      button:nth-child(3):hover {
+        background-color: variables.$accent;
+      }
+    }
 
     h3 {
-      text-align: center;
-      border: 1px solid red;
+      // text-align: center;
+      padding: 1%;
+      margin-bottom: 0;
+      background-color: variables.$background;
       width: 100%;
-      // display: flex;
-      // flex-flow: row wrap;
-      // align-items: center;
 
       a {
-        text-decoration: none;
+        font-size: 1.5rem;
         color: variables.$secondary;
-        font-size: 1rem;
-        display: inline;
+      }
+
+      span {
+
+        display: inline-block;
+        margin-left: 1rem;
+
+        a {
+          display: inline-block;
+          margin-left: 1rem;
+          text-decoration: none;
+          color: variables.$accent;
+          font-size: 1.3rem;
+          font-style: italic;
+        }
       }
     }
 
@@ -190,7 +216,8 @@ h2 {
 
     ul {
       // border: 1px solid seagreen;
-      width: 70%;
+      padding-left: 1%;
+      width: 90%;
       line-height: 2rem;
       list-style-type: none;
     }
@@ -238,6 +265,10 @@ h2 {
       margin-left: 5px;
     }
   }
+}
+
+.tag-ctn {
+  width: 100%;
 }
 
 dialog::-webkit-scrollbar {
@@ -417,14 +448,52 @@ dialog::-webkit-scrollbar-corner {
       border-radius: 15px;
       display: flex;
       flex-flow: column nowrap;
-      align-items: center;
+      align-items: flex-start;
       margin: 0;
       animation: .1s ease-in-out 0s 1 running popin forwards;
 
-      h3 {
-        text-align: center;
-        margin-bottom: 0;
+      .actions-ctn {
+        border: 1px solid seagreen;
+
+        button:nth-child(2),
+        button:nth-child(3) {
+          background-color: variables.$secondary;
+        }
+
+        button:nth-child(2):hover,
+        button:nth-child(3):hover {
+          background-color: variables.$accent;
+        }
       }
+
+      h3 {
+        // text-align: center;
+        padding: 1%;
+        margin-bottom: 0;
+        background-color: variables.$background;
+
+        a {
+          font-size: 1.5rem;
+          color: variables.$secondary;
+        }
+
+        span {
+
+          display: inline-block;
+          margin-left: 1rem;
+
+          a {
+            display: inline-block;
+            margin-left: 1rem;
+            text-decoration: none;
+            color: variables.$accent;
+            font-size: 1.3rem;
+            font-style: italic;
+          }
+        }
+      }
+
+
 
       button {
         align-self: flex-end;
@@ -439,13 +508,19 @@ dialog::-webkit-scrollbar-corner {
         margin-top: 0;
         width: 70%;
         line-height: 2rem;
-        list-style-type: none;
+        list-style-type: '\279C';
+        // border: 1px solid seagreen;
+      }
+
+      strong {
+        margin-left: .5rem;
       }
 
       .tag-ctn {
         display: flex;
         flex-flow: row wrap;
         margin-bottom: 1rem;
+        // border: 1px solid seagreen;
       }
     }
   }

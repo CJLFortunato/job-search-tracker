@@ -44,23 +44,25 @@ function AppDetails(props: AppDetailsProps) {
                 app.jobTitle
               )
           }
-          {' - '}
-          {
-            app.companyLink
-              ? (
-                <a href={app.companyLink} target="_blank" rel="noreferrer">{app.companyName}</a>
-              )
-              : (
-                app.companyName
-              )
-          }
-        </h3>
-        <ul>
-          <li className="tag-ctn">
+          <span>
+            {' - '}
             {
-              app.tags.map((tag) => <TagChip key={tag._id} tag={tag} canDelete={false} />)
+              app.companyLink
+                ? (
+                  <a href={app.companyLink} target="_blank" rel="noreferrer">{app.companyName}</a>
+                )
+                : (
+                  app.companyName
+                )
             }
-          </li>
+          </span>
+        </h3>
+        <div className="tag-ctn">
+          {
+            app.tags.map((tag) => <TagChip key={tag._id} tag={tag} canDelete={false} />)
+          }
+        </div>
+        <ul>
           <li>
             <strong>Type de contrat: </strong>
             {CONTRACT_TYPE[app.contractType as keyof typeof CONTRACT_TYPE]}

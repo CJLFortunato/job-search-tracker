@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*colors*/
 .user-form form {
   display: flex;
@@ -179,7 +180,6 @@ h2 {
   width: 100%;
 }
 .app-details .app-dialog {
-  border: 1px solid red;
   background-color: white;
   max-height: 90vh;
   padding: 2%;
@@ -188,18 +188,38 @@ h2 {
   flex-flow: column nowrap;
   align-items: center;
   z-index: 15;
-  width: 40%;
+  width: 100%;
+  position: relative;
+}
+.app-details .app-dialog .actions-ctn button:nth-child(2),
+.app-details .app-dialog .actions-ctn button:nth-child(3) {
+  background-color: #10355f;
+}
+.app-details .app-dialog .actions-ctn button:nth-child(2):hover,
+.app-details .app-dialog .actions-ctn button:nth-child(3):hover {
+  background-color: #7fb0d8;
 }
 .app-details .app-dialog h3 {
-  text-align: center;
-  border: 1px solid red;
+  padding: 1%;
+  margin-bottom: 0;
+  background-color: #eceded;
   width: 100%;
 }
 .app-details .app-dialog h3 a {
-  text-decoration: none;
+  font-size: 1.5rem;
   color: #10355f;
-  font-size: 1rem;
-  display: inline;
+}
+.app-details .app-dialog h3 span {
+  display: inline-block;
+  margin-left: 1rem;
+}
+.app-details .app-dialog h3 span a {
+  display: inline-block;
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #7fb0d8;
+  font-size: 1.3rem;
+  font-style: italic;
 }
 .app-details .app-dialog button {
   align-self: flex-end;
@@ -211,7 +231,8 @@ h2 {
   margin-left: 5px;
 }
 .app-details .app-dialog ul {
-  width: 70%;
+  padding-left: 1%;
+  width: 90%;
   line-height: 2rem;
   list-style-type: none;
 }
@@ -251,6 +272,10 @@ h2 {
 .select-menu .select-option i {
   margin-right: 0;
   margin-left: 5px;
+}
+
+.tag-ctn {
+  width: 100%;
 }
 
 dialog::-webkit-scrollbar {
@@ -403,13 +428,41 @@ dialog::-webkit-scrollbar-corner {
     border-radius: 15px;
     display: flex;
     flex-flow: column nowrap;
-    align-items: center;
+    align-items: flex-start;
     margin: 0;
     animation: 0.1s ease-in-out 0s 1 running popin forwards;
   }
+  .app-details .app-dialog .actions-ctn {
+    border: 1px solid seagreen;
+  }
+  .app-details .app-dialog .actions-ctn button:nth-child(2),
+  .app-details .app-dialog .actions-ctn button:nth-child(3) {
+    background-color: #10355f;
+  }
+  .app-details .app-dialog .actions-ctn button:nth-child(2):hover,
+  .app-details .app-dialog .actions-ctn button:nth-child(3):hover {
+    background-color: #7fb0d8;
+  }
   .app-details .app-dialog h3 {
-    text-align: center;
+    padding: 1%;
     margin-bottom: 0;
+    background-color: #eceded;
+  }
+  .app-details .app-dialog h3 a {
+    font-size: 1.5rem;
+    color: #10355f;
+  }
+  .app-details .app-dialog h3 span {
+    display: inline-block;
+    margin-left: 1rem;
+  }
+  .app-details .app-dialog h3 span a {
+    display: inline-block;
+    margin-left: 1rem;
+    text-decoration: none;
+    color: #7fb0d8;
+    font-size: 1.3rem;
+    font-style: italic;
   }
   .app-details .app-dialog button {
     align-self: flex-end;
@@ -421,7 +474,10 @@ dialog::-webkit-scrollbar-corner {
     margin-top: 0;
     width: 70%;
     line-height: 2rem;
-    list-style-type: none;
+    list-style-type: "➜";
+  }
+  .app-details .app-dialog strong {
+    margin-left: 0.5rem;
   }
   .app-details .app-dialog .tag-ctn {
     display: flex;
@@ -546,7 +602,7 @@ dialog::-webkit-scrollbar-corner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  width: 95%;
   margin: 0 auto;
 }
 .profile-form form {
@@ -559,12 +615,15 @@ dialog::-webkit-scrollbar-corner {
 .profile-form form label {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-bottom: 1rem;
-  width: 60%;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  width: 90%;
 }
 .profile-form form label input {
   width: 100%;
+}
+.profile-form form label button {
+  width: fit-content;
 }
 .profile-form form button {
   margin-bottom: 1rem;
@@ -579,6 +638,38 @@ dialog::-webkit-scrollbar-corner {
   background-color: hsla(350, 100%, 50%, 0.2);
 }
 
+@media screen and (min-width: 1024px) {
+  .profile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .profile-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  .profile-form form label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 60%;
+  }
+  .profile-form form label input {
+    width: 100%;
+  }
+  .profile-form form button {
+    margin-bottom: 1rem;
+  }
+  .profile-form .delete-account-btn {
+    align-self: flex-start;
+  }
+}
 .add-form {
   width: 100vw;
   min-height: 100%;
@@ -884,6 +975,10 @@ header .logout-btn:hover {
   height: fit-content;
 }
 
+.dashboard, .profile {
+  margin-bottom: 1rem;
+}
+
 .error {
   display: flex;
   flex-direction: column;
@@ -1042,9 +1137,6 @@ footer a:hover {
   }
   .home {
     height: 87.8vh;
-  }
-  .dashboard {
-    margin-bottom: 1rem;
   }
   .error {
     display: flex;

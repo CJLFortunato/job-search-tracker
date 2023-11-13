@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   // border: 1px solid red;
-  width: 80%;
+  width: 95%;
   margin: 0 auto;
 
   form {
@@ -18,12 +18,16 @@
     label {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      margin-bottom: 1rem;
-      width: 60%;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+      width: 90%;
 
       input {
         width: 100%;
+      }
+
+      button {
+        width: fit-content;
       }
     }
 
@@ -42,5 +46,45 @@
 
   .delete-account-btn:hover {
     background-color: hsla(350, 100%, 50%, 0.2);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .profile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // border: 1px solid red;
+    width: 80%;
+    margin: 0 auto;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1rem;
+      width: 100%;
+
+      label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1rem;
+        width: 60%;
+
+        input {
+          width: 100%;
+        }
+      }
+
+      button {
+        margin-bottom: 1rem;
+      }
+    }
+
+    .delete-account-btn {
+      align-self: flex-start;
+    }
+
   }
 }

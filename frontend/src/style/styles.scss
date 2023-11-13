@@ -75,6 +75,10 @@ header {
   height: fit-content;
 }
 
+.dashboard, .profile {
+  margin-bottom: 1rem;
+}
+
 .error {
   display: flex;
   flex-direction: column;
@@ -252,10 +256,6 @@ footer {
 
   .home {
     height: 87.8vh;
-  }
-
-  .dashboard {
-    margin-bottom: 1rem;
   }
 
   .error {
