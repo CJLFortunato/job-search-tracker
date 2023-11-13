@@ -1,9 +1,5 @@
 @use 'variables';
-
-@mixin column {
-  border-radius: 15px;
-  background-color: variables.$background;
-}
+@use 'mixins';
 
 .btn-ctn {
   // border: 1px solid blue;
@@ -32,7 +28,7 @@
   }
 
   section {
-    @include column;
+    @include mixins.column;
     width: 20%;
     display: flex;
     flex-flow: column nowrap;
@@ -114,7 +110,7 @@ h2 {
       // z-index: 20;
 
       section {
-        @include column;
+        @include mixins.column;
         // border: 1px solid green;
         width: 80vw;
         min-height: 93vh;
@@ -184,29 +180,31 @@ h2 {
 
     .actions-ctn {
 
-      button:nth-child(2),
-      button:nth-child(3) {
-        background-color: variables.$secondary;
+      .details-btn {
+        @include mixins.btn-outline(variables.$secondary);
       }
 
-      button:nth-child(2):hover,
-      button:nth-child(3):hover {
-        background-color: variables.$accent;
+      .details-btn:hover,
+      .details-btn:active {
+        @include mixins.btn-outline(variables.$secondary, hsla(210, 50%, 50%, 0.4));
       }
     }
 
     h3 {
       // text-align: center;
+      // border: 1px solid red;
       padding: 1%;
       margin-bottom: 0;
-      background-color: variables.$background;
+      border-bottom: 2px solid variables.$primary;
       width: 100%;
       display: flex;
       flex-direction: column;
+      // border-radius: 15px 15px 0 0;
 
       a {
         font-size: 1.5rem;
-        color: variables.$secondary;
+        color: variables.$primary;
+        text-decoration: none;
       }
 
       span {
@@ -218,7 +216,7 @@ h2 {
           display: inline-block;
           margin: 0;
           text-decoration: none;
-          color: variables.$accent;
+          color: variables.$secondary;
           font-size: 1.3rem;
           font-style: italic;
         }
@@ -335,13 +333,13 @@ dialog::-webkit-scrollbar-corner {
     }
 
     section {
-      @include column;
-      // border: 1px solid lightsalmon;
-      width: 20%;
-      display: flex;
-      flex-flow: column nowrap;
-      align-items: center;
-      margin: 0 .5%;
+      // @include column;
+      // // border: 1px solid lightsalmon;
+      // width: 20%;
+      // display: flex;
+      // flex-flow: column nowrap;
+      // align-items: center;
+      // margin: 0 .5%;
     }
   }
 
@@ -395,14 +393,14 @@ dialog::-webkit-scrollbar-corner {
         // z-index: 20;
 
         section {
-          @include column;
-          // border: 1px solid green;
-          width: 80vw;
-          height: 93vh;
-          display: flex;
-          flex-flow: column nowrap;
-          align-items: center;
-          margin: 0;
+          // @include column;
+          // // border: 1px solid green;
+          // width: 80vw;
+          // height: 93vh;
+          // display: flex;
+          // flex-flow: column nowrap;
+          // align-items: center;
+          // margin: 0;
         }
       }
     }
@@ -465,9 +463,9 @@ dialog::-webkit-scrollbar-corner {
       left: 25%;
       top: 10%;
       max-height: 800px;
-      overflow: scroll;
+      overflow-y: scroll;
       width: 50%;
-      padding: 2%;
+      padding: 1%;
       border-radius: 15px;
       display: flex;
       flex-flow: column nowrap;
@@ -475,29 +473,13 @@ dialog::-webkit-scrollbar-corner {
       margin: 0;
       animation: .1s ease-in-out 0s 1 running popin forwards;
 
-      .actions-ctn {
-        border: 1px solid seagreen;
-
-        button:nth-child(2),
-        button:nth-child(3) {
-          background-color: variables.$secondary;
-        }
-
-        button:nth-child(2):hover,
-        button:nth-child(3):hover {
-          background-color: variables.$accent;
-        }
-      }
-
       h3 {
         // text-align: center;
         padding: 1%;
         margin-bottom: 0;
-        background-color: variables.$background;
 
         a {
           font-size: 1.5rem;
-          color: variables.$secondary;
         }
 
         span {
@@ -508,8 +490,6 @@ dialog::-webkit-scrollbar-corner {
           a {
             display: inline-block;
             margin-left: 1rem;
-            text-decoration: none;
-            color: variables.$accent;
             font-size: 1.3rem;
             font-style: italic;
           }
@@ -529,6 +509,7 @@ dialog::-webkit-scrollbar-corner {
       ul {
         // border: 1px solid seagreen;
         margin-top: 0;
+        margin-left: 3%;
         width: 70%;
         line-height: 2rem;
         list-style-type: '\279C';
@@ -544,6 +525,51 @@ dialog::-webkit-scrollbar-corner {
         flex-flow: row wrap;
         margin-bottom: 1rem;
         // border: 1px solid seagreen;
+      }
+    }
+  }
+
+  .filter-bar {
+    margin-bottom: 1rem;
+
+    button {
+      i:nth-last-child(1) {
+        margin-left: 10px;
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: .5rem;
+      border-left: 2px solid variables.$primary;
+
+      .inputs-ctn {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+      }
+
+      label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: .5rem;
+        font-size: 0.875rem;
+        border-left: 2px solid variables.$accent;
+        padding-left: 5px;
+
+        input,
+        select {
+          width: 60%;
+        }
+      }
+
+      .select-tags {
+        margin-left: 0;
+        width: 100%;
       }
     }
   }

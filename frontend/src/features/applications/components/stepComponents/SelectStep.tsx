@@ -28,16 +28,16 @@ function SelectStep(props: StepsProps) {
       {open && (
         <div className="select-menu">
           <button type="button" className="select-option">A postuler</button>
-          <Modal buttonLabel="J'ai postulé" isOption>
+          <Modal buttonLabel="J'ai postulé" btnStyle="select-option">
             <ApplyStep application={application} setOpenDialog={setOpen} />
           </Modal>
-          <Modal buttonLabel="J'ai relancé" isOption>
+          <Modal buttonLabel="J'ai relancé" btnStyle="select-option">
             <FollowUpStep application={application} setOpenDialog={setOpen} />
           </Modal>
-          <Modal buttonLabel="J'ai eu un entretien" isOption>
+          <Modal buttonLabel="J'ai eu un entretien" btnStyle="select-option">
             <InterviewStep application={application} setOpenDialog={setOpen} />
           </Modal>
-          <Modal buttonLabel="J'ai eu une réponse" isOption>
+          <Modal buttonLabel="J'ai eu une réponse" btnStyle="select-option">
             <AnswerStep application={application} setOpenDialog={setOpen} />
           </Modal>
         </div>

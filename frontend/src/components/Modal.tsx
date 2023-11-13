@@ -7,7 +7,7 @@ function Modal(props: ModalProps) {
     children,
     openOverride = false,
     buttonLabel,
-    isOption = false
+    btnStyle = '',
   } = props;
   const [open, setOpen] = useState(openOverride);
   return (
@@ -17,7 +17,7 @@ function Modal(props: ModalProps) {
           <button
             onClick={() => setOpen(true)}
             type="button"
-            className={isOption ? 'select-option' : ''}
+            className={btnStyle}
           >
             {buttonLabel}
           </button>

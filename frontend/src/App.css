@@ -208,25 +208,29 @@ h2 {
   width: 100%;
   position: relative;
 }
-.app-details .app-dialog .actions-ctn button:nth-child(2),
-.app-details .app-dialog .actions-ctn button:nth-child(3) {
-  background-color: #10355f;
+.app-details .app-dialog .actions-ctn .details-btn {
+  color: #10355f;
+  border: 1px solid #10355f;
+  background-color: transparent;
 }
-.app-details .app-dialog .actions-ctn button:nth-child(2):hover,
-.app-details .app-dialog .actions-ctn button:nth-child(3):hover {
-  background-color: #7fb0d8;
+.app-details .app-dialog .actions-ctn .details-btn:hover,
+.app-details .app-dialog .actions-ctn .details-btn:active {
+  color: #10355f;
+  border: 1px solid #10355f;
+  background-color: hsla(210, 50%, 50%, 0.4);
 }
 .app-details .app-dialog h3 {
   padding: 1%;
   margin-bottom: 0;
-  background-color: #eceded;
+  border-bottom: 2px solid #f5b608;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 .app-details .app-dialog h3 a {
   font-size: 1.5rem;
-  color: #10355f;
+  color: #f5b608;
+  text-decoration: none;
 }
 .app-details .app-dialog h3 span {
   display: inline-block;
@@ -236,7 +240,7 @@ h2 {
   display: inline-block;
   margin: 0;
   text-decoration: none;
-  color: #7fb0d8;
+  color: #10355f;
   font-size: 1.3rem;
   font-style: italic;
 }
@@ -332,15 +336,6 @@ dialog::-webkit-scrollbar-corner {
     display: flex;
     flex-direction: row;
   }
-  .kanban-large section {
-    border-radius: 15px;
-    background-color: #eceded;
-    width: 20%;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    margin: 0 0.5%;
-  }
   h2 {
     background: #f5b608;
     text-align: center;
@@ -381,16 +376,6 @@ dialog::-webkit-scrollbar-corner {
     display: flex;
     align-items: flex-start;
     flex-direction: row;
-  }
-  .kanban-carousel .carousel .inner section {
-    border-radius: 15px;
-    background-color: #eceded;
-    width: 80vw;
-    height: 93vh;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    margin: 0;
   }
   .column-ctn {
     width: 100%;
@@ -441,9 +426,9 @@ dialog::-webkit-scrollbar-corner {
     left: 25%;
     top: 10%;
     max-height: 800px;
-    overflow: scroll;
+    overflow-y: scroll;
     width: 50%;
-    padding: 2%;
+    padding: 1%;
     border-radius: 15px;
     display: flex;
     flex-flow: column nowrap;
@@ -451,25 +436,12 @@ dialog::-webkit-scrollbar-corner {
     margin: 0;
     animation: 0.1s ease-in-out 0s 1 running popin forwards;
   }
-  .app-details .app-dialog .actions-ctn {
-    border: 1px solid seagreen;
-  }
-  .app-details .app-dialog .actions-ctn button:nth-child(2),
-  .app-details .app-dialog .actions-ctn button:nth-child(3) {
-    background-color: #10355f;
-  }
-  .app-details .app-dialog .actions-ctn button:nth-child(2):hover,
-  .app-details .app-dialog .actions-ctn button:nth-child(3):hover {
-    background-color: #7fb0d8;
-  }
   .app-details .app-dialog h3 {
     padding: 1%;
     margin-bottom: 0;
-    background-color: #eceded;
   }
   .app-details .app-dialog h3 a {
     font-size: 1.5rem;
-    color: #10355f;
   }
   .app-details .app-dialog h3 span {
     display: inline-block;
@@ -478,8 +450,6 @@ dialog::-webkit-scrollbar-corner {
   .app-details .app-dialog h3 span a {
     display: inline-block;
     margin-left: 1rem;
-    text-decoration: none;
-    color: #7fb0d8;
     font-size: 1.3rem;
     font-style: italic;
   }
@@ -491,6 +461,7 @@ dialog::-webkit-scrollbar-corner {
   }
   .app-details .app-dialog ul {
     margin-top: 0;
+    margin-left: 3%;
     width: 70%;
     line-height: 2rem;
     list-style-type: "➜";
@@ -502,6 +473,42 @@ dialog::-webkit-scrollbar-corner {
     display: flex;
     flex-flow: row wrap;
     margin-bottom: 1rem;
+  }
+  .filter-bar {
+    margin-bottom: 1rem;
+  }
+  .filter-bar button i:nth-last-child(1) {
+    margin-left: 10px;
+  }
+  .filter-bar form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem;
+    border-left: 2px solid #f5b608;
+  }
+  .filter-bar form .inputs-ctn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
+  .filter-bar form label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 0.5rem;
+    font-size: 0.875rem;
+    border-left: 2px solid #7fb0d8;
+    padding-left: 5px;
+  }
+  .filter-bar form label input,
+  .filter-bar form label select {
+    width: 60%;
+  }
+  .filter-bar form .select-tags {
+    margin-left: 0;
+    width: 100%;
   }
   dialog::-webkit-scrollbar {
     width: 0.5rem;
@@ -553,7 +560,6 @@ dialog::-webkit-scrollbar-corner {
   border-radius: 10px;
   padding: 1%;
   margin-bottom: 0.5rem;
-  animation: 0.1s ease-in-out 0s 1 running popin forwards;
 }
 .select-tags p {
   margin: 0;
@@ -652,7 +658,6 @@ dialog::-webkit-scrollbar-corner {
     border-radius: 10px;
     padding: 1%;
     margin-bottom: 0.5rem;
-    animation: 0.1s ease-in-out 0s 1 running popin forwards;
   }
   .select-tags p {
     margin: 0;
@@ -864,11 +869,25 @@ dialog::-webkit-scrollbar-corner {
   top: 0%;
   left: 0;
   width: 100%;
+  height: 100%;
 }
 .update-dialog .update-form {
   left: 0%;
   top: 0%;
   width: 100%;
+  height: 100%;
+}
+
+.update-form::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.update-form::-webkit-scrollbar-thumb {
+  background-color: #7fb0d8;
+}
+
+.update-form::-webkit-scrollbar-corner {
+  background-color: transparent;
 }
 
 .backdrop {
@@ -879,7 +898,6 @@ dialog::-webkit-scrollbar-corner {
   left: 0;
   top: 0;
   z-index: 5;
-  overflow-y: scroll;
 }
 
 .modal {
@@ -946,6 +964,10 @@ dialog::-webkit-scrollbar-corner {
 }
 
 @media screen and (min-width: 1024px) {
+  .add-dialog,
+  .update-dialog {
+    overflow-x: hidden;
+  }
   .add-dialog .add-form,
   .add-dialog .update-form,
   .update-dialog .add-form,
@@ -960,6 +982,7 @@ dialog::-webkit-scrollbar-corner {
     border-radius: 15px;
     animation: 0.1s ease-in-out 0s 1 running popin forwards;
     overflow-y: scroll;
+    overflow-x: hidden;
   }
   .add-dialog .add-form .tags-label,
   .add-dialog .update-form .tags-label,
@@ -1033,19 +1056,23 @@ dialog::-webkit-scrollbar-corner {
     top: -10%;
     left: 0;
     width: 100%;
+    height: 100%;
   }
   .update-dialog .update-form {
     left: 0%;
     top: 0%;
     width: 100%;
+    height: 100%;
+    overflow-x: hidden;
   }
   .backdrop {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.3);
     position: fixed;
     left: 0;
     top: 0;
+    overflow-x: hidden;
   }
   .modal {
     background-color: white;
@@ -1172,7 +1199,8 @@ header .logout-btn:hover {
   height: fit-content;
 }
 
-.dashboard, .profile {
+.dashboard,
+.profile {
   margin-bottom: 1rem;
 }
 

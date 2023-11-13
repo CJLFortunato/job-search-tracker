@@ -1,0 +1,12 @@
+@use 'variables';
+
+@mixin btn-outline($color, $backgroundColor: transparent) {
+    color: $color;
+    border: 1px solid $color;
+    background-color: $backgroundColor;
+}
+
+@mixin column {
+    border-radius: 15px;
+    background-color: variables.$background;
+}

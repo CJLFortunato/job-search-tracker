@@ -26,6 +26,7 @@ function AppDetails(props: AppDetailsProps) {
                 <span>Modifier</span>
               </>
             )}
+            btnStyle="details-btn"
           >
             <AddForm isUpdate app={app} />
           </Modal>
@@ -36,6 +37,7 @@ function AppDetails(props: AppDetailsProps) {
                 <span>Supprimer</span>
               </>
             )}
+            btnStyle="details-btn"
           >
             <DeleteButton id={app._id || ''} />
           </Modal>
