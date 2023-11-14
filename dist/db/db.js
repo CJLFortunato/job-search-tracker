@@ -7,15 +7,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-/* eslint-disable no-console */
 import mongoose from 'mongoose';
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const conn = yield mongoose.connect(process.env.MONGO_URI);
-        console.log(`DB connected: ${conn.connection.host}`);
+        yield mongoose.connect(process.env.MONGO_URI);
     }
     catch (error) {
-        console.log(error);
         process.exit(1);
     }
 });

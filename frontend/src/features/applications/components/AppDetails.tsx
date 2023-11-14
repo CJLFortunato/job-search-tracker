@@ -12,8 +12,7 @@ import { AppDetailsProps } from '../types';
 
 function AppDetails(props: AppDetailsProps) {
   const { app, setOpen } = props;
-  console.log(app.jobLink);
-  console.log(app.companyLink);
+
   return (
     <div className="app-details">
       <dialog className="app-dialog">

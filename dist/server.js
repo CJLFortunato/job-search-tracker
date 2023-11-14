@@ -29,5 +29,5 @@ app.use('/v1/api/tags', tagsRouter);
 app.use('/v1/api/users', userRouter);
 app.use(errorHandler);
 // eslint-disable-next-line no-console
-app.listen(port, () => console.log(`Express is listening at http://localhost:${port}`));
+app.listen(port, () => console.log('Server has started'));
 //# sourceMappingURL=server.js.map

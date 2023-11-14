@@ -263,7 +263,7 @@ function AddForm(props: AddFormProps) {
         }
         <div className="btn-ctn">
           <button type="submit">{isUpdate ? 'Modifier' : 'Ajouter'}</button>
-          <button type="button" onClick={handleCancel}>Annuler</button>
+          <button type="button" onClick={handleCancel} className="cancel-btn">Annuler</button>
         </div>
       </form>
     </dialog>

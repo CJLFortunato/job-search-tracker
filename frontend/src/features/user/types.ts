@@ -22,4 +22,5 @@ export interface UserFormProps {
 
 export interface DeleteButtonProps {
   id: string
+  setOpen?: Function,
 }

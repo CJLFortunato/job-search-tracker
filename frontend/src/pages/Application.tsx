@@ -8,7 +8,7 @@ import AppDetails from 'features/applications/components/AppDetails';
 function Application() {
   const { appId } = useParams();
   const app = useAppSelector((state) => selectAppById(state, appId || ''));
-  console.log(app);
+
   return (
     <div className="page application">
       <Link to="/dashboard">

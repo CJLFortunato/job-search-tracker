@@ -23,7 +23,7 @@ function ApplyStep(props: StepsProps) {
       [name]: value,
     });
   };
-  console.log(application);
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const { error: err } = commonStepForm.validate(formData);
@@ -97,7 +97,7 @@ function ApplyStep(props: StepsProps) {
         }
         <div className="btn-ctn">
           <button type="submit">Valider</button>
-          <button type="button" onClick={handleCancel}>Annuler</button>
+          <button type="button" onClick={handleCancel} className="cancel-btn">Annuler</button>
         </div>
       </form>
     </div>

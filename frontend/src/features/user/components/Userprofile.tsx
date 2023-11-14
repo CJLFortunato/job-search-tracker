@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Divider from 'components/Divider';
+import Modal from 'components/Modal';
 
 import DeleteButton from './DeleteButton';
 import { emailChangeForm, passwordChangeForm } from '../user.schemas';
@@ -150,7 +151,9 @@ function UserProfile() {
         <button type="submit">Enregistrer les modifications</button>
       </form>
       <Divider text="Suppression de compte" />
-      <DeleteButton id={user?._id || ''} />
+      <Modal buttonLabel="Supprimer" btnStyle="delete-account-btn">
+        <DeleteButton id={user?._id || ''} />
+      </Modal>
     </div>
   );
 }

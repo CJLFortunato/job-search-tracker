@@ -101,7 +101,7 @@ function FollowUpStep(props: StepsProps) {
         }
         <div className="btn-ctn">
           <button type="submit">Valider</button>
-          <button type="button" onClick={handleCancel}>Annuler</button>
+          <button type="button" onClick={handleCancel} className="cancel-btn">Annuler</button>
         </div>
       </form>
     </div>

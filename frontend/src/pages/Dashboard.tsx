@@ -38,15 +38,10 @@ function Dashboard() {
   }, [userError, appError, tagError]);
 
   const onDragEnd = (result: any) => {
-    console.log(result);
     setDestinationId(result.destination.droppableId);
     setappId(result.draggableId);
     setOpenDispatch(true);
   };
-
-  useEffect(() => {
-    console.log(destinationId);
-  }, [destinationId]);
 
   return (
     <div className="page dashboard">

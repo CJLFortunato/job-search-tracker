@@ -1,4 +1,5 @@
 @use 'variables';
+@use 'mixins';
 
 .profile-form {
   display: flex;
@@ -38,14 +39,36 @@
   }
 
   .delete-account-btn {
-    border: 1px solid variables.$error;
-    color: variables.$error;
-    background-color: transparent;
+    @include mixins.btn-outline(variables.$error);
     align-self: flex-start;
   }
 
   .delete-account-btn:hover {
     background-color: hsla(350, 100%, 50%, 0.2);
+  }
+
+  .modal-delete {
+    background-color: white;
+    position: absolute;
+    width: 90vw;
+    top: 50vh;
+    left: 5%;
+    height: 200px;
+    padding: 2%;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px 10px hsla(0, 0%, 0%, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      margin: .5rem;
+    }
+
+    .alert {
+      color: variables.$error;
+      font-weight: bold;
+    }
   }
 }
 

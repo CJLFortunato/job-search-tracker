@@ -15,11 +15,13 @@ function Home() {
       <img src={img} alt="" />
       <div className="statement">
         <h1>Objectif Emploi</h1>
-        <p>
-          Bienvenue sur Back To Work, l&apos;outil de suivi de
-          candidature à destination des demandeurs d&apos;emploi.
-          Sauvegardez toutes vos candidatures et retrouvez en un clic les détails des offres.
-          Avec Back To Work la recherche d&apos;emploi n&apos;a jamais été aussi facile!
+        <div>
+          <p>
+            Bienvenue sur Back To Work, l&apos;outil de suivi de
+            candidature à destination des demandeurs d&apos;emploi.
+            Sauvegardez toutes vos candidatures et retrouvez en un clic les détails des offres.
+            Avec Back To Work la recherche d&apos;emploi n&apos;a jamais été aussi facile!
+          </p>
           <div className="links-ctn">
             <Link to="/login">
               Se connecter
@@ -28,7 +30,7 @@ function Home() {
               S&apos;inscrire
             </Link>
           </div>
-        </p>
+        </div>
       </div>
     </div>
   );

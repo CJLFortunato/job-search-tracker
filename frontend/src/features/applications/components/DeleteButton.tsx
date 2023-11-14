@@ -15,8 +15,14 @@ function DeleteButton(props: DeleteButtonProps) {
       <p>Êtes-vous sûr(e) de vouloir supprimer cette candidature ?</p>
       <p className="alert">Vous ne pourrez pas revenir en arrière!</p>
       <div className="btn-ctn">
-        <button type="button" onClick={handleDelete}>Supprimer</button>
-        <button type="button" onClick={() => { if (setOpen) setOpen(false); }}>Annuler</button>
+        <button type="button" onClick={handleDelete} className="delete-btn">Supprimer</button>
+        <button
+          type="button"
+          onClick={() => { if (setOpen) setOpen(false); }}
+          className="cancel-btn"
+        >
+          Annuler
+        </button>
       </div>
     </dialog>
   );

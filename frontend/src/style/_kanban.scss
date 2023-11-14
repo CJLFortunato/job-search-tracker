@@ -53,6 +53,12 @@ h2 {
 .filter-bar {
   margin-bottom: 1rem;
 
+  button {
+    i:nth-last-child(1) {
+      margin-left: 10px;
+    }
+  }
+
   form {
     display: flex;
     flex-direction: column;
@@ -64,7 +70,8 @@ h2 {
       margin-bottom: .5rem;
       width: 100%;
 
-      input {
+      input,
+      select {
         width: 60%;
       }
     }
@@ -332,15 +339,15 @@ dialog::-webkit-scrollbar-corner {
       flex-direction: row;
     }
 
-    section {
-      // @include column;
-      // // border: 1px solid lightsalmon;
-      // width: 20%;
-      // display: flex;
-      // flex-flow: column nowrap;
-      // align-items: center;
-      // margin: 0 .5%;
-    }
+    // section {
+    //   // @include column;
+    //   // // border: 1px solid lightsalmon;
+    //   // width: 20%;
+    //   // display: flex;
+    //   // flex-flow: column nowrap;
+    //   // align-items: center;
+    //   // margin: 0 .5%;
+    // }
   }
 
   h2 {
@@ -392,16 +399,16 @@ dialog::-webkit-scrollbar-corner {
         flex-direction: row;
         // z-index: 20;
 
-        section {
-          // @include column;
-          // // border: 1px solid green;
-          // width: 80vw;
-          // height: 93vh;
-          // display: flex;
-          // flex-flow: column nowrap;
-          // align-items: center;
-          // margin: 0;
-        }
+        // section {
+        //   // @include column;
+        //   // // border: 1px solid green;
+        //   // width: 80vw;
+        //   // height: 93vh;
+        //   // display: flex;
+        //   // flex-flow: column nowrap;
+        //   // align-items: center;
+        //   // margin: 0;
+        // }
       }
     }
   }
