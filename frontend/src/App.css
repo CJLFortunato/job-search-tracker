@@ -174,8 +174,8 @@ h2 {
 .app-card {
   width: 95%;
   border-radius: 10px;
-  height: 200px;
-  margin: 1% auto;
+  height: 180px;
+  margin: 0.5rem auto;
   box-shadow: 1px 1px 2px 0px hsla(0, 30%, 18%, 0.4);
   background-color: white;
 }
@@ -191,7 +191,20 @@ h2 {
 .app-card h4 {
   padding: 0 5%;
   margin: 0;
-  color: hsl(0, 0%, 50%);
+  color: #7fb0d8;
+}
+.app-card ul {
+  list-style-type: none;
+  padding-left: 5%;
+  margin-top: 0;
+}
+.app-card p {
+  align-self: flex-end;
+  width: fit-content;
+  float: right;
+  margin-right: 1rem;
+  color: #7fb0d8;
+  font-style: italic;
 }
 
 .close-btn {
@@ -387,28 +400,6 @@ dialog::-webkit-scrollbar-corner {
   .app-card-ctn {
     width: 100%;
     background-color: transparent;
-  }
-  .app-card {
-    width: 95%;
-    border-radius: 10px;
-    height: 200px;
-    margin: 1% auto;
-    box-shadow: 1px 1px 2px 0px hsla(0, 30%, 18%, 0.4);
-    background-color: white;
-  }
-  .app-card h3 {
-    padding: 5%;
-    padding-bottom: 1%;
-    font-size: 1.05rem;
-    margin: 0;
-    width: 90%;
-    color: #050a1e;
-    font-family: "Montserrat", sans-serif;
-  }
-  .app-card h4 {
-    padding: 0 5%;
-    margin: 0;
-    color: hsl(0, 0%, 50%);
   }
   .close-btn {
     background-color: transparent;

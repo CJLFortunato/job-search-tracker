@@ -2,7 +2,6 @@
 @use 'mixins';
 
 .btn-ctn {
-  // border: 1px solid blue;
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 0 1%;
@@ -84,7 +83,6 @@ h2 {
 }
 
 .kanban-carousel {
-  // border: 1px solid lightsalmon;
   min-height: 83vh;
   display: flex;
   width: 98%;
@@ -98,27 +96,22 @@ h2 {
 
   .carousel {
     overflow-x: hidden;
-    // border: 1px solid red;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     width: 80vw;
-    // z-index: 20;
 
     .inner {
       white-space: nowrap;
       transition: transform 0.3s;
-      // border: 1px solid blue;
       padding: 0;
       display: flex;
       align-items: flex-start;
       flex-direction: row;
-      // z-index: 20;
 
       section {
         @include mixins.column;
-        // border: 1px solid green;
         width: 80vw;
         min-height: 93vh;
         display: flex;
@@ -137,21 +130,19 @@ h2 {
 .app-card-ctn {
   width: 100%;
   background-color: transparent;
-  // border: 1px solid coral;
 }
 
 .app-card {
   width: 95%;
   border-radius: 10px;
-  height: 200px;
-  margin: 1% auto;
+  height: 180px;
+  margin: .5rem auto;
   box-shadow: 1px 1px 2px 0px hsla(0, 30%, 18%, 0.4);
   background-color: white;
 
   h3 {
     padding: 5%;
     padding-bottom: 1%;
-    // border: 1px solid coral;
     font-size: 1.05rem;
     margin: 0;
     width: 90%;
@@ -162,7 +153,22 @@ h2 {
   h4 {
     padding: 0 5%;
     margin: 0;
-    color: hsl(0, 0%, 50%);
+    color: variables.$accent;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 5%;
+    margin-top: 0;
+  }
+
+  p {
+    align-self: flex-end;
+    width: fit-content;
+    float: right;
+    margin-right: 1rem;
+    color: variables.$accent;
+    font-style: italic;
   }
 }
 
@@ -174,7 +180,6 @@ h2 {
   width: 100%;
 
   .app-dialog {
-    // border: 1px solid red;
     background-color: white;
     padding: 2%;
     border-radius: 15px;
@@ -198,15 +203,12 @@ h2 {
     }
 
     h3 {
-      // text-align: center;
-      // border: 1px solid red;
       padding: 1%;
       margin-bottom: 0;
       border-bottom: 2px solid variables.$primary;
       width: 100%;
       display: flex;
       flex-direction: column;
-      // border-radius: 15px 15px 0 0;
 
       a {
         font-size: 1.5rem;
@@ -243,7 +245,6 @@ h2 {
     }
 
     ul {
-      // border: 1px solid seagreen;
       padding-left: 1%;
       width: 90%;
       line-height: 2rem;
@@ -253,7 +254,6 @@ h2 {
 }
 
 .actions-ctn {
-  // border: 1px solid deeppink;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -267,11 +267,9 @@ h2 {
 .select-step-btn {
   background-color: variables.$background;
   color: variables.$text;
-  // border: 1px solid variables.$primary;
 }
 
 .select-menu {
-  // border: 1px solid variables.$accent;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -313,7 +311,6 @@ dialog::-webkit-scrollbar-corner {
 
 @media screen and (min-width: 1024px) {
   .btn-ctn {
-    // border: 1px solid blue;
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding: 0 1%;
@@ -326,7 +323,6 @@ dialog::-webkit-scrollbar-corner {
   }
 
   .kanban-large {
-    // border: 1px solid lightsalmon;
     min-height: 80vh;
     display: none;
     width: 95%;
@@ -338,16 +334,6 @@ dialog::-webkit-scrollbar-corner {
       display: flex;
       flex-direction: row;
     }
-
-    // section {
-    //   // @include column;
-    //   // // border: 1px solid lightsalmon;
-    //   // width: 20%;
-    //   // display: flex;
-    //   // flex-flow: column nowrap;
-    //   // align-items: center;
-    //   // margin: 0 .5%;
-    // }
   }
 
   h2 {
@@ -367,7 +353,6 @@ dialog::-webkit-scrollbar-corner {
   }
 
   .kanban-carousel {
-    // border: 1px solid lightsalmon;
     min-height: 83vh;
     display: flex;
     width: 98%;
@@ -381,34 +366,19 @@ dialog::-webkit-scrollbar-corner {
 
     .carousel {
       overflow: hidden;
-      // border: 1px solid red;
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: flex-start;
       width: 80vw;
-      // z-index: 20;
 
       .inner {
         white-space: nowrap;
         transition: transform 0.3s;
-        // border: 1px solid blue;
         padding: 0;
         display: flex;
         align-items: flex-start;
         flex-direction: row;
-        // z-index: 20;
-
-        // section {
-        //   // @include column;
-        //   // // border: 1px solid green;
-        //   // width: 80vw;
-        //   // height: 93vh;
-        //   // display: flex;
-        //   // flex-flow: column nowrap;
-        //   // align-items: center;
-        //   // margin: 0;
-        // }
       }
     }
   }
@@ -420,33 +390,6 @@ dialog::-webkit-scrollbar-corner {
   .app-card-ctn {
     width: 100%;
     background-color: transparent;
-    // border: 1px solid coral;
-  }
-
-  .app-card {
-    width: 95%;
-    border-radius: 10px;
-    height: 200px;
-    margin: 1% auto;
-    box-shadow: 1px 1px 2px 0px hsla(0, 30%, 18%, 0.4);
-    background-color: white;
-
-    h3 {
-      padding: 5%;
-      padding-bottom: 1%;
-      // border: 1px solid coral;
-      font-size: 1.05rem;
-      margin: 0;
-      width: 90%;
-      color: variables.$text;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    h4 {
-      padding: 0 5%;
-      margin: 0;
-      color: hsl(0, 0%, 50%);
-    }
   }
 
   .close-btn {
@@ -481,7 +424,6 @@ dialog::-webkit-scrollbar-corner {
       animation: .1s ease-in-out 0s 1 running popin forwards;
 
       h3 {
-        // text-align: center;
         padding: 1%;
         margin-bottom: 0;
 
@@ -514,13 +456,11 @@ dialog::-webkit-scrollbar-corner {
       }
 
       ul {
-        // border: 1px solid seagreen;
         margin-top: 0;
         margin-left: 3%;
         width: 70%;
         line-height: 2rem;
         list-style-type: '\279C';
-        // border: 1px solid seagreen;
       }
 
       strong {
@@ -531,7 +471,6 @@ dialog::-webkit-scrollbar-corner {
         display: flex;
         flex-flow: row wrap;
         margin-bottom: 1rem;
-        // border: 1px solid seagreen;
       }
     }
   }

@@ -9,7 +9,6 @@
 body {
   background-color: white;
   font-family: 'Hind', sans-serif;
-  // border: 1px solid dodgerblue;
 }
 
 header {
@@ -45,8 +44,6 @@ header {
   .app-title {
     justify-self: flex-start;
     font-size: 1.5rem;
-    // border: 1px solid green;
-    // margin-left: 4rem;
     color: white;
     padding: 5px 0;
     font-family: 'Montserrat', sans-serif;
@@ -71,9 +68,7 @@ header {
 }
 
 .page {
-  // border: 1px solid deeppink;
   min-height: 84.3vh;
-  // max-height: fit-content;
   height: fit-content;
 }
 
@@ -101,7 +96,6 @@ header {
   }
 
   .links-ctn {
-    // border: 1px solid blue;
     width: 100%;
     margin: 2rem auto;
     margin-top: 3rem;
@@ -134,7 +128,6 @@ img {
   height: 87.8vh;
   width: 100vw;
   object-fit: cover;
-  // border: 1px solid chartreuse;
   margin-bottom: 0;
   z-index: 0;
 }
@@ -227,7 +220,6 @@ dialog {
 
 .divider {
   width: 100%;
-  // border: 1px solid red;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -298,7 +290,6 @@ footer {
     align-items: center;
     justify-content: space-between;
     background: variables.$primary;
-    // width: 99vw;
 
     .header-ctn {
       background-color: transparent;
@@ -307,7 +298,6 @@ footer {
       align-items: center;
       justify-content: flex-end;
       margin-right: 1.5rem;
-      // border: 1px solid black;
     }
 
     a {
@@ -354,7 +344,6 @@ footer {
     height: 87.8vh;
     width: 100vw;
     object-fit: cover;
-    // border: 1px solid chartreuse;
     margin-bottom: 0;
     z-index: 0;
   }
@@ -383,7 +372,6 @@ footer {
     }
 
     .links-ctn {
-      // border: 1px solid blue;
       width: 50%;
       margin: 2rem auto;
       margin-top: 3rem;

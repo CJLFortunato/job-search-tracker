@@ -61,8 +61,8 @@ function Appcard(props: AppCardProps) {
                   <ul>
                     <li>{CONTRACT_TYPE[app.contractType as keyof typeof CONTRACT_TYPE]}</li>
                     <li>{app.location}</li>
-                    <li>{new Date(app.createdAt || '').toLocaleDateString()}</li>
                   </ul>
+                  <p>{new Date(app.createdAt || '').toLocaleDateString()}</p>
                 </div>
               )}
             </Draggable>

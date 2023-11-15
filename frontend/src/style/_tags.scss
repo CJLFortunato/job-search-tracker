@@ -10,7 +10,6 @@
 
 .tag-chip {
   display: flex;
-  // border: 1px solid blue;
   justify-content: flex-end;
   align-items: center;
   margin: .5rem;
@@ -30,12 +29,10 @@
     background-color: transparent;
     box-shadow: none;
     height: 1.6rem;
-    // border: 1px solid red;
   }
 }
 
 .select-tags {
-  // border: 1px solid green;
   height: 6.5rem;
   overflow: scroll;
   margin: 0 auto;
@@ -95,13 +92,11 @@
     label {
       display: flex;
       flex-direction: column;
-      // border: 1px solid purple;
 
       .ctn {
         display: flex;
         align-items: center;
         width: 100%;
-        // border: 1px solid purple;
 
         input {
           width: 85%;
@@ -129,7 +124,6 @@
 
   .tag-chip {
     display: flex;
-    // border: 1px solid blue;
     justify-content: flex-end;
     align-items: center;
     margin: .5rem;
@@ -147,12 +141,10 @@
       margin: 0;
       box-shadow: none;
       height: 1.6rem;
-      // border: 1px solid red;
     }
   }
 
   .select-tags {
-    // border: 1px solid green;
     height: 6.5rem;
     overflow: scroll;
     margin: 0 auto;
@@ -197,13 +189,11 @@
       label {
         display: flex;
         flex-direction: column;
-        // border: 1px solid purple;
 
         .ctn {
           display: flex;
           align-items: center;
           width: 100%;
-          // border: 1px solid purple;
 
           input {
             width: 85%;

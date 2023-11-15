@@ -16,13 +16,11 @@
     width: 100%;
     height: fit-content;
     padding: 2%;
-    // border-radius: 15px;
     overflow-y: scroll;
     animation: .1s ease-in-out 0s 1 running popin forwards;
 
     .tags-label {
       margin: 0;
-      // border: 1px solid blue;
       margin: 0 auto;
       width: 90%;
     }
@@ -32,18 +30,15 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      // border: 1px solid blue;
 
       label {
         display: flex;
-        // border: 1px solid blue;
         flex-direction: column;
         margin-bottom: 1rem;
         width: 80%;
 
         input,
         select {
-          // margin-top: .3rem;
           width: 90%;
           align-self: center;
         }
@@ -51,13 +46,11 @@
     }
 
     .radio-ctn {
-      // border: 1px solid green;
       width: 90%;
       margin: 0 auto;
 
       .label-ctn {
         display: flex;
-        // border: 1px solid blue;
       }
 
       p {
@@ -66,7 +59,6 @@
 
       label {
         display: flex;
-        // border: 1px solid red;
         margin-bottom: .5rem;
         margin-right: 2rem;
         justify-content: space-between;
@@ -146,7 +138,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      // border: 1px solid blue;
       width: 90%;
       margin-bottom: 2rem;
 
@@ -161,7 +152,6 @@
       flex-direction: row;
       justify-content: space-around;
       width: 38%;
-      // border: 1px solid blue;
     }
   }
 }
@@ -218,7 +208,6 @@
 
       .tags-label {
         margin: 0;
-        // border: 1px solid blue;
         margin: 0 auto;
         width: 90%;
       }
@@ -229,18 +218,16 @@
         grid-auto-rows: 6rem;
         align-items: center;
         justify-items: center;
-        // border: 1px solid blue;
 
         label {
           display: flex;
-          // border: 1px solid blue;
+
           flex-direction: column;
           margin-bottom: 1rem;
           width: 80%;
 
           input,
           select {
-            // margin-top: .3rem;
             width: 90%;
             align-self: center;
           }
@@ -248,13 +235,12 @@
       }
 
       .radio-ctn {
-        // border: 1px solid blue;
         width: 90%;
         margin: 0 auto;
 
         .label-ctn {
           display: flex;
-          // border: 1px solid blue;
+
         }
 
         p {
@@ -263,7 +249,6 @@
 
         label {
           display: flex;
-          // border: 1px solid blue;
           margin-bottom: .5rem;
           margin-right: 2rem;
           justify-content: space-between;
@@ -318,7 +303,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        // border: 1px solid blue;
         width: 70%;
         margin-bottom: 1rem;
 
@@ -333,7 +317,6 @@
         flex-direction: row;
         justify-content: space-around;
         width: 38%;
-        // border: 1px solid blue;
       }
     }
   }
