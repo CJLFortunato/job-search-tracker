@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 
 import bcrypt from 'bcrypt';
-// import cookie from 'cookie';
 import jwt from 'jsonwebtoken';
 import { Types } from 'mongoose';
 

@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# Back To Work
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+Application web permettant aux demandeurs d'emploi de sauvegarder les candidatures qui les intéressent et de visualiser leur position dans le processus de recrutement.
 
-## Available Scripts
+## Sommaire
 
-In the project directory, you can run:
+* [Technologies utilisées](#technologiesutilisées)
+* [Features](#features)
+* [Autres informations](#autres-informations)
 
-### `npm start`
+## Technologies utilisées
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Front-end
+* React
+* React-Redux
+* @reduxjs/toolkit
+* React-beautiful-dnd
+* Redux-saga
+* sass
+* create-react-app (template redux-typescript)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Back-end
+* Express
+* Mongoose
+* Bcrypt
+* Cookie-parser
+* Jsonwebtoken
 
-### `npm test`
+### Autres / Commun
+* Typescript
+* Joi
+* Eslint
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+* Créer, modifier et supprimer son compte utilisateur
+* Sauvegarder, modifier et supprimer ses candidatures
+* Voir l'étape à laquelle se situe sa candidature, et faire progresser sa candidature d'étape en étape
+* Filtrer ses candidatures par intitulé de poste, entreprise, type et contrat, localisation et tags
+* Créer, supprimer et attribuer des tags à ses candidatures
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Autres informations
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Projet créé pour l'examen de fin d'année de la formation Full Stack Développeur de la 3W Academy.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Le fichier .env avec entre autres l'adresse de la base de données n'est pas commité.**
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
