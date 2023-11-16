@@ -9,6 +9,11 @@ export interface NewUser {
   email: string;
   password: string;
 }
+
+export interface UpdateProps {
+  _id: string,
+  email: string,
+}
 // ================================== props types
 
 export interface State {

@@ -1,9 +1,4 @@
-import { NewUser } from './types';
-
-interface UpdateProps {
-  _id: string,
-  email: string,
-}
+import { NewUser, UpdateProps } from './types';
 
 class UserAPI {
   static async register (payload: NewUser) {
