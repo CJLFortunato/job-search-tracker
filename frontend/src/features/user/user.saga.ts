@@ -2,6 +2,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 import { reset } from 'features/applications/apps.slice';
+import { reset as resetTags } from 'features/tags/tags.slice';
 
 import { NewUser, User } from './types';
 import UserAPI from './user.api';
@@ -68,6 +69,7 @@ function* workLogout(): any {
     const response: any = yield call(UserAPI.logout);
     sessionStorage.removeItem('user');
     yield put(reset());
+    yield put(resetTags());
     yield put(logoutSuccess(response));
   } catch (err: any) {
     yield put(logoutFailure(err.message));
