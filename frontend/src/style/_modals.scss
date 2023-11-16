@@ -15,7 +15,7 @@
     top: 0;
     width: 100%;
     height: fit-content;
-    padding: 2%;
+    padding: 1%;
     overflow-y: scroll;
     animation: .1s ease-in-out 0s 1 running popin forwards;
 
@@ -199,8 +199,9 @@
       left: 20%;
       top: 10%;
       width: 60%;
-      height: 700px;
-      padding: 2%;
+      min-height: 700px;
+      max-height: 900px;
+      padding: 1%;
       border-radius: 15px;
       animation: .1s ease-in-out 0s 1 running popin forwards;
       overflow-y: scroll;

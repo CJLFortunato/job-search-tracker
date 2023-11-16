@@ -817,7 +817,7 @@ dialog::-webkit-scrollbar-corner {
   top: 0;
   width: 100%;
   height: fit-content;
-  padding: 2%;
+  padding: 1%;
   overflow-y: scroll;
   animation: 0.1s ease-in-out 0s 1 running popin forwards;
 }
@@ -1013,8 +1013,9 @@ dialog::-webkit-scrollbar-corner {
     left: 20%;
     top: 10%;
     width: 60%;
-    height: 700px;
-    padding: 2%;
+    min-height: 700px;
+    max-height: 900px;
+    padding: 1%;
     border-radius: 15px;
     animation: 0.1s ease-in-out 0s 1 running popin forwards;
     overflow-y: scroll;
@@ -1207,7 +1208,7 @@ header a {
   margin: 0 0.5rem;
   text-decoration: none;
   font-weight: bold;
-  color: white;
+  color: #10355f;
   font-size: 0.825rem;
 }
 header a:hover {
@@ -1216,12 +1217,12 @@ header a:hover {
 header .app-title {
   justify-self: flex-start;
   font-size: 1.5rem;
-  color: white;
+  color: #10355f;
   padding: 5px 0;
   font-family: "Montserrat", sans-serif;
 }
 header .logout-btn {
-  color: white;
+  color: #10355f;
   background-color: transparent;
   box-shadow: none;
   font-weight: bold;
@@ -1273,7 +1274,7 @@ header .logout-btn:hover {
   font-size: 1.3rem;
   line-height: 3rem;
   background-color: #f5b608;
-  color: white;
+  color: #10355f;
   text-decoration: none;
   border-radius: 7px;
   padding: 1% 3%;
@@ -1354,7 +1355,7 @@ button {
   border-radius: 10px;
   padding: 0 10px;
   font-weight: bold;
-  color: white;
+  color: #10355f;
 }
 button i {
   margin-right: 5px;
@@ -1412,6 +1413,7 @@ footer a:hover {
 
 .delete-btn {
   background-color: #dd1234;
+  color: white;
 }
 
 .cancel-btn {
@@ -1525,7 +1527,7 @@ footer a:hover {
     font-size: 1.5rem;
     line-height: 3rem;
     background-color: #f5b608;
-    color: white;
+    color: #10355f;
     text-decoration: none;
     border-radius: 7px;
     padding: 1% 3%;
