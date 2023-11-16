@@ -323,7 +323,7 @@
 
   .step {
     top: 20%;
-    left: 7%;
+    left: 16%;
     height: 350px;
     width: 640px;
   }
@@ -348,6 +348,13 @@
     .alert {
       color: variables.$error;
       font-weight: bold;
+    }
+  }
+
+  .step-drag-dispatch {
+    .step {
+      top: 20%;
+      left: 30%;
     }
   }
 }

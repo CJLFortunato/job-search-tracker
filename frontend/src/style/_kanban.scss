@@ -135,10 +135,13 @@ h2 {
 .app-card {
   width: 95%;
   border-radius: 10px;
-  height: 180px;
+  min-height: 180px;
   margin: .5rem auto;
   box-shadow: 1px 1px 2px 0px hsla(0, 30%, 18%, 0.4);
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
   h3 {
     padding: 5%;
@@ -165,7 +168,6 @@ h2 {
   p {
     align-self: flex-end;
     width: fit-content;
-    float: right;
     margin-right: 1rem;
     color: variables.$accent;
     font-style: italic;
@@ -323,7 +325,7 @@ dialog::-webkit-scrollbar-corner {
   }
 
   .kanban-large {
-    min-height: 80vh;
+    min-height: 60vh;
     display: none;
     width: 95%;
     margin: 0 auto;
@@ -346,6 +348,10 @@ dialog::-webkit-scrollbar-corner {
     color: variables.$secondary;
     border-radius: 15px 15px 0 0;
     font-family: 'Montserrat', sans-serif;
+  }
+
+  section {
+    min-height: 50vh;
   }
 
   .kanban-carousel-ctn {

@@ -174,10 +174,13 @@ h2 {
 .app-card {
   width: 95%;
   border-radius: 10px;
-  height: 180px;
+  min-height: 180px;
   margin: 0.5rem auto;
   box-shadow: 1px 1px 2px 0px hsla(0, 30%, 18%, 0.4);
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .app-card h3 {
   padding: 5%;
@@ -201,7 +204,6 @@ h2 {
 .app-card p {
   align-self: flex-end;
   width: fit-content;
-  float: right;
   margin-right: 1rem;
   color: #7fb0d8;
   font-style: italic;
@@ -342,7 +344,7 @@ dialog::-webkit-scrollbar-corner {
     margin-left: 1rem;
   }
   .kanban-large {
-    min-height: 80vh;
+    min-height: 60vh;
     display: none;
     width: 95%;
     margin: 0 auto;
@@ -363,6 +365,9 @@ dialog::-webkit-scrollbar-corner {
     color: #10355f;
     border-radius: 15px 15px 0 0;
     font-family: "Montserrat", sans-serif;
+  }
+  section {
+    min-height: 50vh;
   }
   .kanban-carousel-ctn {
     display: block;
@@ -1139,7 +1144,7 @@ dialog::-webkit-scrollbar-corner {
   }
   .step {
     top: 20%;
-    left: 7%;
+    left: 16%;
     height: 350px;
     width: 640px;
   }
@@ -1162,6 +1167,10 @@ dialog::-webkit-scrollbar-corner {
   .modal-delete .alert {
     color: #dd1234;
     font-weight: bold;
+  }
+  .step-drag-dispatch .step {
+    top: 20%;
+    left: 30%;
   }
 }
 @keyframes popin {

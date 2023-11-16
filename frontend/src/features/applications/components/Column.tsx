@@ -35,7 +35,7 @@ function Column(props: ColumnProps) {
                   ref={provided.innerRef}
                   style={{
                     backgroundColor: snapshot.isDraggingOver
-                      ? 'hsla(25, 50%, 50%, 0.4)'
+                      ? 'hsla(207, 53%, 67%, 0.4)'
                       : 'transparent',
                     width: '100%',
                   }}

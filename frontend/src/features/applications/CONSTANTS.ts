@@ -26,6 +26,7 @@ export const CONTRACT_TYPE = {
   cdd: 'CDD',
   stage: 'Stage',
   Alternance: 'Alternance',
+  alternance: 'Alternance',
   interim: 'Intérim',
   autre: 'Autre',
 };
