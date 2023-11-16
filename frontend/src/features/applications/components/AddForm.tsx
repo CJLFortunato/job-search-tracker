@@ -90,6 +90,7 @@ function AddForm(props: AddFormProps) {
     if (setOpen) setOpen(false);
     setFormData(cleanForm);
   };
+
   return (
     <dialog className={isUpdate ? 'update-dialog' : 'add-dialog'}>
       <form onSubmit={handleSubmit} className={isUpdate ? 'update-form' : 'add-form'}>

@@ -1,4 +1,4 @@
-import { Tag } from "features/tags/types"
+import { Tag } from 'features/tags/types';
 
 // data Types
 interface Apply {
