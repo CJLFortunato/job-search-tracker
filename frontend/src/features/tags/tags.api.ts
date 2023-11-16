@@ -7,7 +7,7 @@ class TagsAPI {
       body: JSON.stringify(payload),
       headers: {
         'Content-Type': 'Application/JSON',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
       },
       credentials: 'include',
     });
@@ -18,6 +18,9 @@ class TagsAPI {
 
   static async getTags () {
     const response = await fetch('http://localhost:5000/v1/api/tags/', {
+      headers: {
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
+      },
       credentials: 'include',
     });
     const data = await response.json();
@@ -27,6 +30,9 @@ class TagsAPI {
 
   static async deleteTag (payload: string) {
     const response = await fetch(`http://localhost:5000/v1/api/tags/${payload}`, {
+      headers: {
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
+      },
       method: 'DELETE',
       credentials: 'include',
     });

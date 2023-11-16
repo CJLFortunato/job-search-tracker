@@ -7,7 +7,7 @@ class AppAPI {
       body: JSON.stringify(payload),
       headers: {
         'Content-Type': 'Application/JSON',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
       },
       credentials: 'include',
     });
@@ -18,6 +18,9 @@ class AppAPI {
 
   static async getApps () {
     const response = await fetch('http://localhost:5000/v1/api/apps', {
+      headers: {
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
+      },
       credentials: 'include',
     });
     const data = await response.json();
@@ -31,7 +34,7 @@ class AppAPI {
       body: JSON.stringify(payload),
       headers: {
         'Content-Type': 'Application/JSON',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
       },
       credentials: 'include',
     });
@@ -44,6 +47,9 @@ class AppAPI {
     const response = await fetch(`http://localhost:5000/v1/api/apps/${payload}`, {
       method: 'DELETE',
       credentials: 'include',
+      headers: {
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
+      },
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message);

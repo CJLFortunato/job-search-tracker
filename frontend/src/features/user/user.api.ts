@@ -12,7 +12,7 @@ class UserAPI {
       body: JSON.stringify(payload),
       headers: {
         'Content-Type': 'Application/JSON',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
       },
       credentials: 'include',
     });
@@ -27,7 +27,7 @@ class UserAPI {
       body: JSON.stringify(payload),
       headers: {
         'Content-Type': 'Application/JSON',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
       },
       credentials: 'include',
     });
@@ -42,7 +42,7 @@ class UserAPI {
       body: JSON.stringify(payload),
       headers: {
         'Content-Type': 'Application/JSON',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
       },
       credentials: 'include',
     });
@@ -54,6 +54,9 @@ class UserAPI {
   static async deleteUser (payload: any) {
     const response = await fetch(`http://localhost:5000/v1/api/users/${payload}`, {
       method: 'DELETE',
+      headers: {
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
+      },
       credentials: 'include',
     });
     const data = await response.json();
@@ -64,7 +67,7 @@ class UserAPI {
   static async logout () {
     const response = await fetch('http://localhost:5000/v1/api/users/logout', {
       headers: {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
       },
       credentials: 'include',
     });

@@ -57,6 +57,8 @@ function* workUpdateUser(action: PayloadAction<User>): any {
 function* workDeleteUser(action: PayloadAction<string>): any {
   try {
     yield call(UserAPI.deleteUser, action.payload);
+    yield put(reset());
+    yield put(resetTags());
     sessionStorage.removeItem('user');
     yield put(deleteUserSuccess());
   } catch (err: any) {
